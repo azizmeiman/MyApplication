@@ -1,7 +1,7 @@
 package com.example.abdulaziz.myapplication;
 
 public class Admin {
-
+//asaadadada
     private int AdminID;
     private String Admin_user_name;
     private String Admin_password;

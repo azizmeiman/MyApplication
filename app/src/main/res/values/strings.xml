@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Seasonal Employment System</string>
+    <string name="welcoming">Welcome To Seasonal Employment System</string>
+    <string name="employer">Employer</string>
+    <string name="worker_poster">Worker Poster</string>
+    <string name="sign_in">Sign In</string>
+</resources>

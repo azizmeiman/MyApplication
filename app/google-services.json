@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "993246104353",
+    "firebase_url": "https://seasonal-employment-system.firebaseio.com",
+    "project_id": "seasonal-employment-system",
+    "storage_bucket": "seasonal-employment-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993246104353:android:9270d4f95bd27c4f",
+        "android_client_info": {
+          "package_name": "com.example.abdulaziz.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993246104353-q2e2k95beinlmb4m580i79t4robaigf6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abdulaziz.myapplication",
+            "certificate_hash": "6a9ac7e88a28e2bda79678f25d370b0918144960"
+          }
+        },
+        {
+          "client_id": "993246104353-n27vu5tu9cpn5vdmn5cmq27hfhc57dp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBp21nG4ocDAXq3V2Lyrkp2i84Clr_gUcQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993246104353-n27vu5tu9cpn5vdmn5cmq27hfhc57dp6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

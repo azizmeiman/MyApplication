@@ -1,5 +1,6 @@
 package com.example.abdulaziz.myapplication;
 
+
 public class Admin {
 //asaadadada
     private int AdminID;
@@ -20,6 +21,7 @@ public class Admin {
         Admin_user_name = admin_user_name;
         Admin_password = admin_password;
     }
+
 
     public String getAdmin_user_name() {
 

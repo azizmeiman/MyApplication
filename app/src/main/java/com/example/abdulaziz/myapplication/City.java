@@ -5,6 +5,9 @@ public class City {
     private String cityName ;
     private String cityID ;
 
+    public City(){
+
+    }
     public City(String name, String ID) {
         this.cityName = name;
         this.cityID = ID;

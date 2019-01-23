@@ -3,52 +3,55 @@ package com.example.abdulaziz.myapplication;
 
 public class Admin {
 //asaadadada
-    private int AdminID;
-    private String Admin_user_name;
-    private String Admin_password;
+    private int adminID;
+    private String adminUserName;
+    private String adminPassword;
 
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "AdminID=" + AdminID +
-                ", Admin_user_name='" + Admin_user_name + '\'' +
-                ", Admin_password='" + Admin_password + '\'' +
-                '}';
-    }
 
     public Admin(int adminID, String admin_user_name, String admin_password) {
-        AdminID = adminID;
-        Admin_user_name = admin_user_name;
-        Admin_password = admin_password;
+        adminID = adminID;
+        adminUserName = admin_user_name;
+        adminPassword = admin_password;
+    }
+    public Admin(){
+
     }
 
 
     public String getAdmin_user_name() {
 
-        return Admin_user_name;
+        return adminUserName;
     }
 
-    public void setAdmin_user_name(String admin_user_name) {
-        Admin_user_name = admin_user_name;
+    public void setAdmin_user_name(String adminUserName) {
+        adminUserName = adminUserName;
     }
 
     public int getAdminID() {
-        return AdminID;
+        return adminID;
     }
 
     public void setAdminID(int adminID) {
-        AdminID = adminID;
+        adminID = adminID;
     }
 
 
     public String getAdmin_password() {
-        return Admin_password;
+        return adminPassword;
     }
 
     public void setAdmin_password(String admin_password) {
-        Admin_password = admin_password;
+        adminPassword = adminPassword;
     }
 
 
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "AdminID=" + adminID +
+                ", Admin_user_name='" + adminUserName + '\'' +
+                ", Admin_password='" + adminPassword + '\'' +
+                '}';
+    }
 
 }

@@ -15,6 +15,10 @@ public class Chat {
     private String to ;
 
 
+    public Chat(){
+
+    }
+
     public Chat(int adminID, int WPID, int empID, int chatID, String message, String dateAndTime, String from, String to) {
         this.adminID = adminID;
         this.WPID = WPID;

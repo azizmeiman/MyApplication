@@ -14,6 +14,9 @@ public class Contract {
     private int Totalprice ;
 
 
+    public Contract(){
+
+    }
     public Contract(int contractID, int workerID, int empID, int posterID, String period, Date startDate, int totalprice) {
 
         ContractID = contractID;

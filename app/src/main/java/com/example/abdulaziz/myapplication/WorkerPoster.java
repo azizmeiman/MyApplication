@@ -19,6 +19,9 @@ public class WorkerPoster {
     private String bio;
     private ArrayList workers;
 
+    public WorkerPoster(){
+
+    }
     public WorkerPoster(int WPID, String username, String password, String RPname, String RPID, int RPphone, String cityID, String googleMapLoc, String orgName, String orgPic, String orgDoc, String bio, ArrayList workers) {
         this.WPID = WPID;
         this.username = username;

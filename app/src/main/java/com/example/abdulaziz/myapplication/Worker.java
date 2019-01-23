@@ -18,6 +18,9 @@ public class Worker {
     private int CityID;
     private int WorkerPosterID;
 
+    public Worker(){
+
+    }
     public Worker(String name, int workerID, int workerstatus, String bio, ArrayList skills, int price, String picture, String nationality, String phonenumber, DateFormat birthDate, int cityID, int workerPosterID) {
         this.name = name;
         WorkerID = workerID;

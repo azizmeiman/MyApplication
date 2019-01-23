@@ -5,6 +5,9 @@ public class Skill {
     private String skillName;
     private String skillID;
 
+    public Skill(){
+
+    }
     public Skill(String name, String ID) {
         this.skillName = name;
         this.skillID = ID;

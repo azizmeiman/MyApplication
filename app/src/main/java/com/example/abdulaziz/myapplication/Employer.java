@@ -18,6 +18,10 @@ public class Employer {
     private String orgPic ;        //the URL of the pic
 
 
+
+    public Employer(){
+
+    }
     public Employer(int empID, String userName, String password, String RPname, String RPID, String RPphoneNum, int cityID, String googleMapLoc, String orgName, String orgDoc, String bio, String orgPic) {
         this.empID = empID;
         this.userName = userName;

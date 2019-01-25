@@ -34,11 +34,11 @@ public class MainActivity extends AppCompatActivity {
         //FirebaseDatabase database = FirebaseDatabase.getInstance();
         //DatabaseReference myRef = database.getReference("Employer");
 
-        Employer emp1 = new Employer(011,"Ahmed","123","khalid","000012","0566",01,"wwww.googlemap.com","MAC.co","www.com","hi there","http//:");
+        //Employer emp1 = new Employer(011,"Ahmed","123","khalid","000012","0566",01,"wwww.googlemap.com","MAC.co","www.com","hi there","http//:");
         //myRef.push().setValue(emp1);
 
-        DBAccess d = new DBAccess();
-        d.insertEmployer(emp1);
+        //DBAccess d = new DBAccess();
+       // d.insertEmployer(emp1);
 
         //myRef.push("40","makkah","fahad");
         //myRef.child("city").push().setValue("makkah");

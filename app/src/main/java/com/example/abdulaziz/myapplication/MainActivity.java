@@ -1,7 +1,11 @@
 package com.example.abdulaziz.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 import java.util.HashMap;
@@ -13,6 +17,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button EmpButton = (Button)findViewById(R.id.EmployerReg);
+
+
+        EmpButton.setOnClickListener(new View.OnClickListener() {
+
+            Intent intentEmp = new Intent(MainActivity.this,EmpRegistaration.class);
+            @Override
+            public void onClick(View v) {
+
+                startActivity(intentEmp);
+            }
+        });
 
         // Write a message to the database
         //FirebaseDatabase database = FirebaseDatabase.getInstance();

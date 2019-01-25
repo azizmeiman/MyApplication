@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.681" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/EmployerReg"
         android:layout_width="98dp"
         android:layout_height="49dp"
         android:layout_marginStart="8dp"

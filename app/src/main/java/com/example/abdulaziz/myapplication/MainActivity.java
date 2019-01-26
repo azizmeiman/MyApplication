@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         EmpButton.setOnClickListener(new View.OnClickListener() {
 
-            Intent intentEmp = new Intent(MainActivity.this,EmpRegistaration.class);
+            Intent intentEmp = new Intent(MainActivity.this,RegExpEmp.class);
             @Override
             public void onClick(View v) {
 

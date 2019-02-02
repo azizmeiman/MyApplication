@@ -18,6 +18,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button EmpButton = (Button)findViewById(R.id.EmployerReg);
+        Button PosterReg = (Button)findViewById(R.id.PosterReg);
+
+        PosterReg.setOnClickListener(new View.OnClickListener() {
+
+            Intent intentPoster = new Intent(MainActivity.this, PosterRegisaration.class);
+
+            @Override
+            public void onClick(View v) {
+
+                startActivity(intentPoster);
+            }
+
+
+        });
 
 
         EmpButton.setOnClickListener(new View.OnClickListener() {

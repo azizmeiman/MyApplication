@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".SignInActivity" />
         <activity android:name=".EmpRegistaration" />
-        <activity android:name=".RegExpEmp"></activity>
+        <activity android:name=".RegExpEmp" />
+        <activity android:name=".PosterRegisaration"></activity>
     </application>
 
 </manifest>

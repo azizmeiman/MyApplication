@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button EmpButton = (Button)findViewById(R.id.EmployerReg);
         Button PosterReg = (Button)findViewById(R.id.PosterReg);
+        Button gotoLogin = (Button)findViewById(R.id.gotoLogin);
+
 
         PosterReg.setOnClickListener(new View.OnClickListener() {
 
@@ -42,6 +44,19 @@ public class MainActivity extends AppCompatActivity {
 
                 startActivity(intentEmp);
             }
+        });
+
+        gotoLogin.setOnClickListener(new View.OnClickListener() {
+
+            Intent intentPoster = new Intent(MainActivity.this, Login.class);
+
+            @Override
+            public void onClick(View v) {
+
+                startActivity(intentPoster);
+            }
+
+
         });
 
         // Write a message to the database

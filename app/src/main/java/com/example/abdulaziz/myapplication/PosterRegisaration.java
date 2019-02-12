@@ -19,16 +19,6 @@ public class PosterRegisaration extends AppCompatActivity {
     FirebaseUser updateUI;
     String Email ;
     String password ;
-    String RPname ;
-    String RPID ;
-    String RPphoneNum ;
-     int cityID;
-    String googleMapLoc ;  //the URL of Google map location
-   String orgName ;
-   String orgDoc ;
-   String bio ;
-   String orgPic ; //the URL of the pic
-    ProgressBar progressBar;
 
 
 
@@ -40,15 +30,6 @@ public class PosterRegisaration extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         final EditText EmailP = (EditText)findViewById(R.id.EmailP);
         final EditText PasswordP = (EditText)findViewById(R.id.PasswordP);
-        final EditText RPname = (EditText)findViewById(R.id.nameemp);
-        final EditText RPID = (EditText)findViewById(R.id.RPID);
-        final EditText RPphoneNum = (EditText)findViewById(R.id.RPphoneNum);
-        final EditText cityID = (EditText)findViewById(R.id.cityID);
-        final EditText googleMapLoc = (EditText)findViewById(R.id.googleMapLoc);
-        final EditText orgName = (EditText)findViewById(R.id.orgName);
-        final EditText orgDoc = (EditText)findViewById(R.id.orgDoc);
-        final EditText bio = (EditText)findViewById(R.id.bio);
-        final EditText orgPic = (EditText)findViewById(R.id.orgPic);
 
 
 
@@ -65,7 +46,9 @@ public class PosterRegisaration extends AppCompatActivity {
             public void onClick(View v) {
                 Email = EmailP.getText().toString();
                 password = PasswordP.getText().toString();
-                
+
+
+
                 mAuth.createUserWithEmailAndPassword(Email, password);
                 Toast.makeText(PosterRegisaration.this,"Registration Done!",Toast.LENGTH_SHORT).show();
                 finish();

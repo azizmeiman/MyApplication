@@ -4,4 +4,9 @@
     <string name="employer">Employer</string>
     <string name="worker_poster">Worker Poster</string>
     <string name="sign_in">Sign In</string>
+    <string name="newAccAr">حساب جديد؟</string>
+    <string name="haveAccAr">لديك حساب؟</string>
+    <string name="loginAr">تسجيل الدخول</string>
+    <string name="employerAr">باحث عن عامل</string>
+    <string name="workerPosAr">عارض العمال</string>
 </resources>

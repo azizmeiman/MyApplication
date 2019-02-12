@@ -39,6 +39,80 @@
             android:hint="Password"
             android:inputType="textPassword" />
 
+        <EditText
+            android:id="@+id/nameemp"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:hint="Full name"
+            android:inputType=""
+            tools:text="Full name" />
+
+        <EditText
+            android:id="@+id/RPID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="ID"
+            android:inputType=" "
+            tools:text="ID" />
+
+        <EditText
+            android:id="@+id/RPphoneNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Phone Number"
+            android:inputType=" "
+            tools:text="Phone Number" />
+
+        <EditText
+            android:id="@+id/cityID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="cityID"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/googleMapLoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="googleMapLoc"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/orgName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="orgName"
+            android:inputType=" " />
+        <EditText
+            android:id="@+id/orgDoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="orgDoc"
+            android:inputType=" " />
+        <EditText
+            android:id="@+id/bio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="bio"
+            android:inputType=" " />
+        <EditText
+            android:id="@+id/orgPic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="orgPic"
+            android:inputType=" " />
+
+
+
     </LinearLayout>
 
     <Button
@@ -48,9 +122,30 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="226dp"
+        android:layout_marginBottom="0dp"
         android:background="@color/colorPrimary"
         android:text="Register"
         android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="509dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="0dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </android.support.v4.widget.NestedScrollView>
 
 </RelativeLayout>

@@ -4,8 +4,7 @@ package com.example.abdulaziz.myapplication;
 
 public class Employer {
 
-    private int empID ;
-    private String userName ;
+     private String userName ;
     private String password ;
     private String RPname ;
     private String RPID ;
@@ -22,9 +21,8 @@ public class Employer {
     public Employer(){
 
     }
-    public Employer(int empID, String userName, String password, String RPname, String RPID, String RPphoneNum, int cityID, String googleMapLoc, String orgName, String orgDoc, String bio, String orgPic) {
-        this.empID = empID;
-        this.userName = userName;
+    public Employer(  String userName, String password, String RPname, String RPID, String RPphoneNum, int cityID, String googleMapLoc, String orgName, String orgDoc, String bio, String orgPic) {
+         this.userName = userName;
         this.password = password;
         this.RPname = RPname;
         this.RPID = RPID;
@@ -38,9 +36,6 @@ public class Employer {
     }
 
 
-    public void setEmpID(int empID) {
-        this.empID = empID;
-    }
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -86,9 +81,6 @@ public class Employer {
         this.orgPic = orgPic;
     }
 
-    public int getEmpID() {
-        return empID;
-    }
 
     public String getUserName() {
         return userName;

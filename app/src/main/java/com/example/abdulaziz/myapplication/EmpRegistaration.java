@@ -48,8 +48,7 @@ public class EmpRegistaration extends AppCompatActivity {
 //         int CityIDInt=Integer.parseInt(CityID);
 
 
-            emp.setEmpID(1000);
-            emp.setUserName(UserNameEmp.getText().toString());
+             emp.setUserName(UserNameEmp.getText().toString());
             emp.setPassword(PasswordEmp.getText().toString());
             emp.setRPname("Test");
             emp.setRPID("1000Test");

@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class WorkerPoster {
 
 
-    private int WPID;
-    private String username;
+     private String username;
     private String password;
     private String RPname;
     private String RPID;
@@ -22,8 +21,7 @@ public class WorkerPoster {
     public WorkerPoster(){
 
     }
-    public WorkerPoster(int WPID, String username, String password, String RPname, String RPID, int RPphone, String cityID, String googleMapLoc, String orgName, String orgPic, String orgDoc, String bio, ArrayList workers) {
-        this.WPID = WPID;
+    public WorkerPoster(String username, String password, String RPname, String RPID, int RPphone, String cityID, String googleMapLoc, String orgName, String orgPic, String orgDoc, String bio, ArrayList workers) {
         this.username = username;
         this.password = password;
         this.RPname = RPname;
@@ -38,13 +36,6 @@ public class WorkerPoster {
         this.workers = workers;
     }
 
-    public int getWPID() {
-        return WPID;
-    }
-
-    public void setWPID(int WPID) {
-        this.WPID = WPID;
-    }
 
     public String getUsername() {
         return username;

@@ -106,11 +106,14 @@ public class RegExpEmp extends AppCompatActivity {
                                     .setValue(emp).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(RegExpEmp.this,"Registration Done!",Toast.LENGTH_SHORT).show();                                    } else {
-                                        //display a failure message
-                                    }
+                                   // if (task.isSuccessful()) {
+                                        Toast.makeText(RegExpEmp.this,"Registration Done!",Toast.LENGTH_SHORT).show();
+                                    finish();
                                 }
+                                 //       else {
+                                   //     //display a failure message
+                                    //}
+                                //}
                             });
 
                         } else {

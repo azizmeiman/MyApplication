@@ -17,100 +17,114 @@
         android:layout_marginTop="2dp"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="370dp"
-            android:layout_height="79dp"
-            app:srcCompat="@drawable/logop" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/EmailE"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
-        <EditText
-            android:id="@+id/PasswordE"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword" />
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="370dp"
+                    android:layout_height="79dp"
+                    app:srcCompat="@drawable/logop" />
 
-        <EditText
-            android:id="@+id/nameemp"
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:ems="10"
-            android:hint="Full name"
-            android:inputType=""
-            tools:text="Full name" />
+                <EditText
+                    android:id="@+id/EmailE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="البريد الألكتروني"
+                    android:inputType="" />
 
-        <EditText
-            android:id="@+id/RPID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="ID"
-            android:inputType=" "
-            tools:text="ID" />
+                <EditText
+                    android:id="@+id/PasswordE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="الرقم السري"
+                    android:inputType="textPassword" />
 
-        <EditText
-            android:id="@+id/RPphoneNum"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Phone Number"
-            android:inputType=" "
-            tools:text="Phone Number" />
+                <EditText
+                    android:id="@+id/nameemp"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:ems="10"
+                    android:hint="الأسم الثلاثي"
+                    android:inputType=""
+                    tools:text="الأسم الثلاثي" />
 
-        <EditText
-            android:id="@+id/cityID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="cityID"
-            android:inputType="textPassword" />
+                <EditText
+                    android:id="@+id/RPphoneNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="رقم الجوال"
+                    android:inputType=" "
+                    tools:text="رقم الجوال" />
 
-        <EditText
-            android:id="@+id/googleMapLoc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="googleMapLoc"
-            android:inputType="textPassword" />
+                <EditText
+                    android:id="@+id/RPID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="رقم هوية المعرف"
+                    android:inputType=" "
+                    tools:text="رقم هوية المعرف" />
 
-        <EditText
-            android:id="@+id/orgName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="orgName"
-            android:inputType=" " />
-        <EditText
-            android:id="@+id/orgDoc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="orgDoc"
-            android:inputType=" " />
-        <EditText
-            android:id="@+id/bio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="bio"
-            android:inputType=" " />
-        <EditText
-            android:id="@+id/orgPic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="orgPic"
-            android:inputType=" " />
+                <EditText
+                    android:id="@+id/orgName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="اسم المنظمة"
+                    android:inputType=" " />
 
+                <EditText
+                    android:id="@+id/orgDoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="وثائق المنظمة"
+                    android:inputType=" " />
+
+                <EditText
+                    android:id="@+id/cityID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="المدينة"
+                    android:inputType=" " />
+
+                <EditText
+                    android:id="@+id/orgPic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="صورة المنظمة"
+                    android:inputType=" " />
+
+                <EditText
+                    android:id="@+id/googleMapLoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Google Map Location"
+                    android:inputType=" " />
+
+                <EditText
+                    android:id="@+id/bio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="نبذة تعريفية"
+                    android:inputType=" " />
+
+            </LinearLayout>
+        </ScrollView>
 
 
     </LinearLayout>
@@ -133,31 +147,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="509dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="0dp"
-        android:fillViewport="true">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </android.support.v4.widget.NestedScrollView>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
 
 </RelativeLayout>

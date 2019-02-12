@@ -17,27 +17,115 @@
         android:layout_marginTop="2dp"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="370dp"
-            android:layout_height="79dp"
-            app:srcCompat="@drawable/logop" />
-
-        <EditText
-            android:id="@+id/EmailP"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/PasswordP"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="370dp"
+                    android:layout_height="79dp"
+                    app:srcCompat="@drawable/logop" />
+
+                <EditText
+                    android:id="@+id/EmailP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="البريد الألكتروني"
+                    android:inputType="" />
+
+                <EditText
+                    android:id="@+id/PasswordP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="الرقم السري"
+                    android:inputType="textPassword" />
+
+                <EditText
+                    android:id="@+id/namep"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:ems="10"
+                    android:hint="الأسم الثلاثي"
+                    android:inputType=""
+                    tools:text="الأسم الثلاثي" />
+
+                <EditText
+                    android:id="@+id/RPphoneNumP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="رقم الجوال"
+                    android:inputType=" "
+                    tools:text="رقم الجوال" />
+
+                <EditText
+                    android:id="@+id/RPIDP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="رقم هوية المعرف"
+                    android:inputType=" "
+                    tools:text="رقم هوية المعرف" />
+
+                <EditText
+                    android:id="@+id/orgNameP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="اسم المنظمة"
+                    android:inputType=" " />
+
+                <EditText
+                    android:id="@+id/orgDocP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="وثائق المنظمة"
+                    android:inputType=" " />
+
+                <EditText
+                    android:id="@+id/cityIDP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="المدينة"
+                    android:inputType=" " />
+
+                <EditText
+                    android:id="@+id/orgPicP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="صورة المنظمة"
+                    android:inputType=" " />
+
+                <EditText
+                    android:id="@+id/googleMapLocP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Google Map Location"
+                    android:inputType=" " />
+
+                <EditText
+                    android:id="@+id/bioP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="نبذة تعريفية"
+                    android:inputType=" " />
+
+            </LinearLayout>
+        </ScrollView>
+
 
     </LinearLayout>
 
@@ -48,9 +136,17 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="226dp"
+        android:layout_marginBottom="0dp"
         android:background="@color/colorPrimary"
         android:text="Register"
         android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+
 
 </RelativeLayout>

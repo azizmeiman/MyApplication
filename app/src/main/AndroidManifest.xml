@@ -22,8 +22,7 @@
         <activity android:name=".RegExpEmp" />
         <activity android:name=".PosterRegisaration" />
         <activity android:name=".Login" />
-        <activity android:name=".ActivityTestForLoginLogout" />
-        <activity android:name=".ChatActivity"></activity>
+        <activity android:name=".ActivityTestForLoginLogout" ></activity>
     </application>
 
 </manifest>

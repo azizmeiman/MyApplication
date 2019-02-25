@@ -9,4 +9,6 @@
     <string name="loginAr">تسجيل الدخول</string>
     <string name="employerAr">باحث عن عامل</string>
     <string name="workerPosAr">عارض العمال</string>
+    <string name="Search02">🔍Search</string>
+    <string name="listAllWorkers">List All Workers</string>
 </resources>

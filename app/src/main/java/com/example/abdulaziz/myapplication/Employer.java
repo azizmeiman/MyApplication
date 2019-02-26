@@ -4,8 +4,7 @@ package com.example.abdulaziz.myapplication;
 
 public class Employer {
 
-    private String userName ;
-    private String password ;
+    private String Email;
     private String RPname ;
     private String RPID ;
     private String RPphoneNum ;
@@ -13,16 +12,15 @@ public class Employer {
     private String orgName ;
     private String orgDoc ;
     private String orgPic ;        //the URL of the pic
-    private int checkUser;
+
 
 
 
     public Employer(){
 
     }
-    public Employer(  String userName, String password, String RPname, String RPID, String RPphoneNum, String cityID, String orgName, String orgDoc, String orgPic, int CheckUser) {
-         this.userName = userName;
-        this.password = password;
+    public Employer(  String Email, String RPname, String RPID, String RPphoneNum, String cityID, String orgName, String orgDoc, String orgPic) {
+        this.Email = Email;
         this.RPname = RPname;
         this.RPID = RPID;
         this.RPphoneNum = RPphoneNum;
@@ -30,23 +28,12 @@ public class Employer {
         this.orgName = orgName;
         this.orgDoc = orgDoc;
         this.orgPic = orgPic;
-        this.checkUser = CheckUser;
+
     }
 
-    public int getCheckUser() {
-        return checkUser;
-    }
 
-    public void setCheckUser(int checkUser) {
-        this.checkUser = checkUser;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.Email = email;
     }
 
     public void setRPname(String RPname) {
@@ -82,13 +69,10 @@ public class Employer {
     }
 
 
-    public String getUserName() {
-        return userName;
+    public String getEmail() {
+        return Email;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     public String getRPname() {
         return RPname;

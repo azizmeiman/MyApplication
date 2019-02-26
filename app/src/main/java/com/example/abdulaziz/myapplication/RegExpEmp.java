@@ -45,7 +45,7 @@ public class RegExpEmp extends AppCompatActivity  {
     String orgNameemp;
     String orgDocemp;
     String orgPicemp; //the URL of the pic
-    int CheckUser; // will be 1,2,3 to represent each actor
+
 
 
     @Override
@@ -67,34 +67,41 @@ public class RegExpEmp extends AppCompatActivity  {
         final EditText orgName = (EditText) findViewById(R.id.orgName);
         final EditText orgDoc = (EditText) findViewById(R.id.orgDoc);
         final EditText orgPic = (EditText) findViewById(R.id.orgPic);
-        cityID.getBackground().setColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.SRC_ATOP);
 
 
-        final List<Object> CityList = new ArrayList<>();
-        myRef.child("City").addValueEventListener(new ValueEventListener() {
+//        final List<Object> CityList = new ArrayList<>();
+//        myRef.child("City").addValueEventListener(new ValueEventListener() {
 
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+//
+//                for (DataSnapshot child : children) {
+//                    Object Cities =child.getValue();
+//                    CityList.add(Cities);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Toast.makeText(RegExpEmp.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//
+//           ArrayAdapter<Object> cityAdapter = new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1, CityList);
+//           cityID.setAdapter(cityAdapter);
 
-                for (DataSnapshot child : children) {
-                    Object Cities = child.getValue();
-                    CityList.add(Cities);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(RegExpEmp.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
+        List<String> cityL = new ArrayList<String>();
+        cityL.add("Riyadh");
+        cityL.add("Dammam");
+        cityL.add("Jeddah");
 
 
-
-        ArrayAdapter<Object> cityAdapter = new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1, CityList);
-        cityID.setAdapter(cityAdapter);
-
+        ArrayAdapter<String> citites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cityL);
+        cityID.setAdapter(citites);
 
         Button Reg = (Button)findViewById(R.id.RegE);
 
@@ -108,19 +115,10 @@ public class RegExpEmp extends AppCompatActivity  {
                 RPphoneNumemp = RPphoneNum.getText().toString();
                 orgNameemp = orgName.getText().toString();
                 orgDocemp = orgDoc.getText().toString();
-                cityIDemp = "City Name"; // نبغى نقرا هنا المدينة الي اخترناها
+                cityIDemp = cityID.getSelectedItem().toString(); // نبغى نقرا هنا المدينة الي اخترناها
                 orgPicemp = orgPic.getText().toString();
-                CheckUser = 2; // For Employer
 
 
-                cityID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        Object city = parent.getItemAtPosition(position);
-                        cityIDemp = city.toString();
-                    }
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                });
 
 
                 mAuth.createUserWithEmailAndPassword(Email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -131,15 +129,13 @@ public class RegExpEmp extends AppCompatActivity  {
 
                             Employer emp = new Employer(
                                     Email,
-                                    password,
                                     RPname,
                                     RPIDemp,
                                     RPphoneNumemp,
                                     cityIDemp,
                                     orgNameemp,
                                     orgDocemp,
-                                    orgPicemp,
-                                    CheckUser
+                                    orgPicemp
 
 
                             );
@@ -151,6 +147,7 @@ public class RegExpEmp extends AppCompatActivity  {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
 
+                                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("UserType").setValue("Employer");
                                         Toast.makeText(RegExpEmp.this,"Done",Toast.LENGTH_LONG).show();
                                         Intent intentLogin = new Intent(RegExpEmp.this, Login.class);
                                         startActivity(intentLogin);

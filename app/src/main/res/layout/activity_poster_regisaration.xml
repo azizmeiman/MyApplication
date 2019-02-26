@@ -53,18 +53,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="43dp"
                     android:ems="10"
-                    android:hint="الأسم الثلاثي"
-                    android:inputType=""
-                    tools:text="الأسم الثلاثي" />
-
-                <EditText
-                    android:id="@+id/RPphoneNumP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="رقم الجوال"
-                    android:inputType=" "
-                    tools:text="رقم الجوال" />
+                    android:hint="الاسم الثلاثي"
+                    android:inputType="" />
 
                 <EditText
                     android:id="@+id/RPIDP"
@@ -72,8 +62,23 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="رقم هوية المعرف"
-                    android:inputType=" "
-                    tools:text="رقم هوية المعرف" />
+                    android:inputType=" " />
+
+                <EditText
+                    android:id="@+id/RPphoneNumP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="رقم الجوال"
+                    android:inputType=" " />
+                <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cityPoster"
+                    android:textSize="20sp"
+
+                    />
+
 
                 <EditText
                     android:id="@+id/orgNameP"
@@ -92,35 +97,11 @@
                     android:inputType=" " />
 
                 <EditText
-                    android:id="@+id/cityIDP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="المدينة"
-                    android:inputType=" " />
-
-                <EditText
                     android:id="@+id/orgPicP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="صورة المنظمة"
-                    android:inputType=" " />
-
-                <EditText
-                    android:id="@+id/googleMapLocP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Google Map Location"
-                    android:inputType=" " />
-
-                <EditText
-                    android:id="@+id/bioP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="نبذة تعريفية"
                     android:inputType=" " />
 
             </LinearLayout>

@@ -5,54 +5,39 @@ import java.util.ArrayList;
 public class WorkerPoster {
 
 
-     private String username;
-    private String password;
+    private String Email;
     private String RPname;
     private String RPID;
     private String RPphone ;
     private String cityID;
-    private String googleMapLoc;
     private String orgName;
     private String orgPic;
     private String orgDoc;
-    private String bio;
+
     private ArrayList workers;
-    private int CheckUser;
+
 
     public WorkerPoster(){
 
     }
-    public WorkerPoster(String username, String password, String RPname, String RPID, String RPphone, String cityID, String googleMapLoc, String orgName, String orgPic, String orgDoc, String bio, int CheckUser) {
-        this.username = username;
-        this.password = password;
+    public WorkerPoster(String Email, String RPname, String RPID, String RPphone, String cityID, String orgName, String orgPic, String orgDoc) {
         this.RPname = RPname;
         this.RPID = RPID;
         this.RPphone = RPphone;
         this.cityID = cityID;
-        this.googleMapLoc = googleMapLoc;
         this.orgName = orgName;
         this.orgPic = orgPic;
         this.orgDoc = orgDoc;
-        this.bio = bio;
         this.workers = workers;
-        this.CheckUser = CheckUser;
+
     }
 
-
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        Email = email;
     }
 
     public String getRPname() {
@@ -87,14 +72,6 @@ public class WorkerPoster {
         this.cityID = cityID;
     }
 
-    public String getGoogleMapLoc() {
-        return googleMapLoc;
-    }
-
-    public void setGoogleMapLoc(String googleMapLoc) {
-        this.googleMapLoc = googleMapLoc;
-    }
-
     public String getOrgName() {
         return orgName;
     }
@@ -117,14 +94,6 @@ public class WorkerPoster {
 
     public void setOrgDoc(String orgDoc) {
         this.orgDoc = orgDoc;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
     }
 
     public ArrayList getWorkers() {

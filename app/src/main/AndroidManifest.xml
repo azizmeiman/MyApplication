@@ -21,7 +21,8 @@
         <activity android:name=".RegExpEmp" />
         <activity android:name=".PosterRegisaration" />
         <activity android:name=".Login" />
-        <activity android:name=".ActivityTestForLoginLogout" ></activity>
+        <activity android:name=".ActivityTestForLoginLogout" />
+        <activity android:name=".WorkerPosterMain"></activity>
     </application>
 
 </manifest>

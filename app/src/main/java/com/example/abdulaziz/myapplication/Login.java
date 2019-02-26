@@ -1,6 +1,7 @@
 package com.example.abdulaziz.myapplication;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static android.view.View.*;
 
@@ -22,6 +29,8 @@ public class Login extends AppCompatActivity {
     String password;
     private FirebaseAuth mAuth;
 
+
+    private DatabaseReference jLoginDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,33 +68,49 @@ public class Login extends AppCompatActivity {
 
             public void onComplete(Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Intent intentLogin = new Intent(Login.this, EmployerMainActivity.class);
-                    Toast.makeText(Login.this, "Admin", Toast.LENGTH_LONG).show();
-//                    if (u1.Checkuser() == 1) {
-//                        Toast.makeText(Login.this, "Admin", Toast.LENGTH_LONG).show();
-//                        Intent intentLogin = new Intent(Login.this, AdminMain.class);
-//                        startActivity(intentLogin);
-//                    }
-//                    if (u1.Checkuser() == 2) {
-//                        Toast.makeText(Login.this, "Employer", Toast.LENGTH_LONG).show();
-//                        Intent intentLogin = new Intent(Login.this, EmployerMainActivity.class);
-//                        startActivity(intentLogin);
-//                    }
-//                    if (u1.Checkuser() == 3) {
-//                        Toast.makeText(Login.this, "WorkerPoster", Toast.LENGTH_LONG).show();
-//                        Intent intentLogin = new Intent(Login.this, WorkerPosterMain.class);
-//                        startActivity(intentLogin);
-//                    } else
-//                        Toast.makeText(Login.this, "nothing", Toast.LENGTH_SHORT).show();
-//
-//
-//                }
-//            }
+
+                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                    String RegisteredUserID = currentUser.getUid();
+
+                    jLoginDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(RegisteredUserID);
+
+                    jLoginDatabase.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String userType = dataSnapshot.child("UserType").getValue().toString();
+
+
+                            if (userType.equals("Admin")) {
+                                Toast.makeText(Login.this, "Admin", Toast.LENGTH_SHORT).show();
+//                                Intent intentMain = new Intent(Login.this, ActivityTestForLoginLogout.class);
+//                                startActivity(intentMain);
+                            } else if (userType.equals("WorkerPoster")) {
+                                Toast.makeText(Login.this, "Worker Poster", Toast.LENGTH_SHORT).show();
+//                                Intent intentMain = new Intent(Login.this, ActivityTestForLoginLogout.class);
+//                                startActivity(intentMain);
+                            } else if (userType.equals("Employer")) {
+
+                                Intent intentMain = new Intent(Login.this, ActivityTestForLoginLogout.class);
+                                startActivity(intentMain);
+                            } else {
+                                Toast.makeText(Login.this, "Failed Login. Please Try Again", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+
+                    });
 
                 }
-
             }
-        });
 
-    }
+
+
+
+      });
+   }
 }

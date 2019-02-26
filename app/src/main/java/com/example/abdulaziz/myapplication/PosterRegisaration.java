@@ -27,12 +27,13 @@ public class PosterRegisaration extends AppCompatActivity {
     String RPnamePoster;
     String RPIDPoster;
     String RPphoneNumPoster;
-    int cityIDposter;
+    String cityIDposter;
     String googleMapLocPoster;  //the URL of Google map location
     String orgNamePoster;
     String orgDocPoster;
     String bioPoster;
     String orgPicPoster; //the URL of the pic
+    int Checkuser;
 
 
     @Override
@@ -65,19 +66,20 @@ public class PosterRegisaration extends AppCompatActivity {
                 RPnamePoster = namep.getText().toString();
                 RPIDPoster = RPIDP.getText().toString();
                 RPphoneNumPoster = RPphoneNumP.getText().toString();
-                cityIDposter = cityIDP.getText().length();
+                cityIDposter = "";//We do after city list finish
                 googleMapLocPoster = googleMapLocP.getText().toString();
                 orgNamePoster = orgNameP.getText().toString();
                 orgDocPoster = orgDocP.getText().toString();
                 bioPoster = bioP.getText().toString();
                 orgPicPoster = orgPicP.getText().toString();
+                Checkuser = 3; //user number 3 is the workerposter
                 mAuth.createUserWithEmailAndPassword(Email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
 
-                            Employer emp = new Employer(
+                            WorkerPoster workerposter1 = new WorkerPoster(
                                     Email,
                                     password,
                                     RPnamePoster,
@@ -88,14 +90,15 @@ public class PosterRegisaration extends AppCompatActivity {
                                     orgNamePoster,
                                     orgDocPoster,
                                     bioPoster,
-                                    orgPicPoster
+                                    orgPicPoster,
+                                    Checkuser
 
 
                             );
 
                             FirebaseDatabase.getInstance().getReference("WorkerPoster")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(emp).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    .setValue(workerposter1).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     // if (task.isSuccessful()) {

@@ -4,38 +4,42 @@ package com.example.abdulaziz.myapplication;
 
 public class Employer {
 
-     private String userName ;
+    private String userName ;
     private String password ;
     private String RPname ;
     private String RPID ;
     private String RPphoneNum ;
-    private int cityID ;
-    private String googleMapLoc ;  //the URL of Google map location
+    private String cityID ;
     private String orgName ;
     private String orgDoc ;
-    private String bio ;
     private String orgPic ;        //the URL of the pic
+    private int checkUser;
 
 
 
     public Employer(){
 
     }
-    public Employer(  String userName, String password, String RPname, String RPID, String RPphoneNum, int cityID, String googleMapLoc, String orgName, String orgDoc, String bio, String orgPic) {
+    public Employer(  String userName, String password, String RPname, String RPID, String RPphoneNum, String cityID, String orgName, String orgDoc, String orgPic, int CheckUser) {
          this.userName = userName;
         this.password = password;
         this.RPname = RPname;
         this.RPID = RPID;
         this.RPphoneNum = RPphoneNum;
         this.cityID = cityID;
-        this.googleMapLoc = googleMapLoc;
         this.orgName = orgName;
         this.orgDoc = orgDoc;
-        this.bio = bio;
         this.orgPic = orgPic;
+        this.checkUser = CheckUser;
     }
 
+    public int getCheckUser() {
+        return checkUser;
+    }
 
+    public void setCheckUser(int checkUser) {
+        this.checkUser = checkUser;
+    }
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -57,13 +61,11 @@ public class Employer {
         this.RPphoneNum = RPphoneNum;
     }
 
-    public void setCityID(int cityID) {
+    public void setCityID(String cityID) {
         this.cityID = cityID;
     }
 
-    public void setGoogleMapLoc(String googleMapLoc) {
-        this.googleMapLoc = googleMapLoc;
-    }
+
 
     public void setOrgName(String orgName) {
         this.orgName = orgName;
@@ -73,9 +75,7 @@ public class Employer {
         this.orgDoc = orgDoc;
     }
 
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
+
 
     public void setOrgPic(String orgPic) {
         this.orgPic = orgPic;
@@ -102,13 +102,11 @@ public class Employer {
         return RPphoneNum;
     }
 
-    public int getCityID() {
+    public String getCityID() {
         return cityID;
     }
 
-    public String getGoogleMapLoc() {
-        return googleMapLoc;
-    }
+
 
     public String getOrgName() {
         return orgName;
@@ -118,9 +116,7 @@ public class Employer {
         return orgDoc;
     }
 
-    public String getBio() {
-        return bio;
-    }
+
 
     public String getOrgPic() {
         return orgPic;

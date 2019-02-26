@@ -18,7 +18,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignInActivity" />
-        <activity android:name=".EmpRegistaration" />
         <activity android:name=".RegExpEmp" />
         <activity android:name=".PosterRegisaration" />
         <activity android:name=".Login" />

@@ -9,7 +9,7 @@ public class WorkerPoster {
     private String password;
     private String RPname;
     private String RPID;
-    private int RPphone ;
+    private String RPphone ;
     private String cityID;
     private String googleMapLoc;
     private String orgName;
@@ -17,11 +17,12 @@ public class WorkerPoster {
     private String orgDoc;
     private String bio;
     private ArrayList workers;
+    private int CheckUser;
 
     public WorkerPoster(){
 
     }
-    public WorkerPoster(String username, String password, String RPname, String RPID, int RPphone, String cityID, String googleMapLoc, String orgName, String orgPic, String orgDoc, String bio, ArrayList workers) {
+    public WorkerPoster(String username, String password, String RPname, String RPID, String RPphone, String cityID, String googleMapLoc, String orgName, String orgPic, String orgDoc, String bio, int CheckUser) {
         this.username = username;
         this.password = password;
         this.RPname = RPname;
@@ -34,6 +35,7 @@ public class WorkerPoster {
         this.orgDoc = orgDoc;
         this.bio = bio;
         this.workers = workers;
+        this.CheckUser = CheckUser;
     }
 
 
@@ -69,11 +71,11 @@ public class WorkerPoster {
         this.RPID = RPID;
     }
 
-    public int getRPphone() {
+    public String getRPphone() {
         return RPphone;
     }
 
-    public void setRPphone(int RPphone) {
+    public void setRPphone(String RPphone) {
         this.RPphone = RPphone;
     }
 

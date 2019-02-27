@@ -45,7 +45,7 @@ public class searchForWorkerActivity extends AppCompatActivity {
      monthL.add("12 Months");
 
         ArrayAdapter<String> months = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, monthL);
-        cityID.setAdapter(months);
+        month.setAdapter(months);
 
 
 
@@ -83,7 +83,7 @@ public class searchForWorkerActivity extends AppCompatActivity {
      dayL.add("30 days");
 
         ArrayAdapter<String> days = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dayL);
-        cityID.setAdapter(days);
+        day.setAdapter(days);
 
 
 
@@ -95,7 +95,7 @@ public class searchForWorkerActivity extends AppCompatActivity {
      skillL.add("حصاد");
 
         ArrayAdapter<String> skill = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, skillL);
-        cityID.setAdapter(skill);
+        skillID.setAdapter(skill);
 
 
     }

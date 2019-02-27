@@ -6,53 +6,33 @@ import java.text.DateFormat ;
 
 public class Worker {
     private String name;
-    private int WorkerID;
+    private String WorkerID;
     private int Workerstatus;
-    private String Bio;
-    private ArrayList Skills;
     private int price;
+    private String Skills;
     private String picture;
     private String Nationality;
     private String Phonenumber;
     private String BirthDate;
-    private int CityID;
-    private int WorkerPosterID;
 
     public Worker(){
 
     }
-    public Worker(String name, int workerID, int workerstatus, String bio, ArrayList skills, int price, String picture, String nationality, String phonenumber, DateFormat birthDate, int cityID, int workerPosterID) {
+    public Worker(String name, String workerID, int price, String picture, String nationality, String Skills, String phonenumber, String birthDate) {
         this.name = name;
-        WorkerID = workerID;
-        Workerstatus = workerstatus;
-        Bio = bio;
-        Skills = skills;
+        this.WorkerID = workerID;
+        this.Workerstatus = 1; // 1 means avilable
+        this.Skills = Skills;
         this.price = price;
         this.picture = picture;
-        Nationality = nationality;
-        Phonenumber = phonenumber;
-        this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
-        CityID = cityID;
-        WorkerPosterID = workerPosterID;
+        this.Nationality = nationality;
+        this.Phonenumber = phonenumber;
+        this.BirthDate = birthDate;
+        //this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
+
     }
 
-    @Override
-    public String toString() {
-        return "Worker{" +
-                "name='" + name + '\'' +
-                ", WorkerID=" + WorkerID +
-                ", Workerstatus=" + Workerstatus +
-                ", Bio='" + Bio + '\'' +
-                ", Skills=" + Skills +
-                ", price=" + price +
-                ", picture='" + picture + '\'' +
-                ", Nationality='" + Nationality + '\'' +
-                ", Phonenumber='" + Phonenumber + '\'' +
-                ", BirthDate='" + BirthDate + '\'' +
-                ", CityID=" + CityID +
-                ", WorkerPosterID=" + WorkerPosterID +
-                '}';
-    }
+
 
     public String getName() {
         return name;
@@ -62,11 +42,11 @@ public class Worker {
         this.name = name;
     }
 
-    public int getWorkerID() {
+    public String getWorkerID() {
         return WorkerID;
     }
 
-    public void setWorkerID(int workerID) {
+    public void setWorkerID(String workerID) {
         WorkerID = workerID;
     }
 
@@ -78,21 +58,6 @@ public class Worker {
         Workerstatus = workerstatus;
     }
 
-    public String getBio() {
-        return Bio;
-    }
-
-    public void setBio(String bio) {
-        Bio = bio;
-    }
-
-    public ArrayList getSkills() {
-        return Skills;
-    }
-
-    public void setSkills(ArrayList skills) {
-        Skills = skills;
-    }
 
     public int getPrice() {
         return price;
@@ -134,19 +99,4 @@ public class Worker {
         BirthDate = birthDate;
     }
 
-    public int getCityID() {
-        return CityID;
-    }
-
-    public void setCityID(int cityID) {
-        CityID = cityID;
-    }
-
-    public int getWorkerPosterID() {
-        return WorkerPosterID;
-    }
-
-    public void setWorkerPosterID(int workerPosterID) {
-        WorkerPosterID = workerPosterID;
-    }
 }

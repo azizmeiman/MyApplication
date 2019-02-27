@@ -1,5 +1,6 @@
 package com.example.abdulaziz.myapplication;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,8 +25,14 @@ public class DBAccess {
     }
 
     public void insetWorker(Worker w) {
-        myRef = database.getReference("Worker");
-        myRef.push().setValue(w);
+//        myRef = database.getReference("Worker");
+//        myRef.push().setValue(w);
+//        FirebaseDatabase.getInstance().getReference("Worker")
+//        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//        .setValue(w);
+                FirebaseDatabase.getInstance().getReference("Worker")
+                .push().setValue(w);
+
     }
 
     public void insertSkill(Skill s) {

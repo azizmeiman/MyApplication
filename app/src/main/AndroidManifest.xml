@@ -22,7 +22,8 @@
         <activity android:name=".PosterRegisaration" />
         <activity android:name=".Login" />
         <activity android:name=".ActivityTestForLoginLogout" />
-        <activity android:name=".WorkerPosterMain"></activity>
+        <activity android:name=".WorkerPosterMain" />
+        <activity android:name=".addworker"></activity>
     </application>
 
 </manifest>

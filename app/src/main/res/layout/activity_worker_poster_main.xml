@@ -8,4 +8,133 @@
     android:layout_height="match_parent"
     tools:context=".WorkerPosterMain">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="385dp"
+            android:layout_height="109dp">
+
+            <Button
+                android:id="@+id/ViewWorkerBut"
+                android:layout_width="105dp"
+                android:layout_height="61dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorPrimary"
+                android:text="عرض العمال"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                android:textSize="@dimen/fab_margin" />
+
+            <Button
+                android:id="@+id/AddWorkerBut"
+                android:layout_width="105dp"
+                android:layout_height="61dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorPrimary"
+                android:text="إضافة عامل"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                android:textSize="@dimen/fab_margin" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="387dp"
+            android:layout_height="151dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="120dp">
+
+            <Button
+                android:id="@+id/EditWorkerBut"
+                android:layout_width="105dp"
+                android:layout_height="61dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorPrimary"
+                android:text="تعديل عامل"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                android:textSize="@dimen/fab_margin"
+                tools:layout_editor_absoluteX="256dp"
+                tools:layout_editor_absoluteY="160dp" />
+
+            <Button
+                android:id="@+id/ViewRequestBut"
+                android:layout_width="105dp"
+                android:layout_height="61dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorPrimary"
+                android:text="عرض الطلبات"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                android:textSize="@dimen/fab_margin"
+                tools:layout_editor_absoluteX="27dp"
+                tools:layout_editor_absoluteY="160dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="393dp"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="-9dp">
+
+            <Button
+                android:id="@+id/ViewContractBut"
+                android:layout_width="105dp"
+                android:layout_height="61dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"
+                android:text="عرض العقود"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                android:textSize="@dimen/fab_margin"
+                tools:layout_editor_absoluteX="27dp"
+                tools:layout_editor_absoluteY="61dp" />
+
+            <Button
+                android:id="@+id/DeleteWorkerBut"
+                android:layout_width="105dp"
+                android:layout_height="61dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="0dp"
+                android:background="@color/colorPrimary"
+                android:text="حذف عامل"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                android:textSize="@dimen/fab_margin"
+                tools:layout_editor_absoluteX="256dp"
+                tools:layout_editor_absoluteY="61dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="133dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/ReportsBut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="التقارير"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                android:textSize="@dimen/fab_margin" />
+
+            <Button
+                android:id="@+id/ChatwithAdminBut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimary"
+                android:text="تحدث إلينا"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                android:textSize="@dimen/fab_margin" />
+        </LinearLayout>
+    </LinearLayout>
+
 </RelativeLayout>

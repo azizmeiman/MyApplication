@@ -66,7 +66,7 @@ public class Login extends AppCompatActivity {
 
         mAuth.signInWithEmailAndPassword(Email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
-            public void onComplete(Task<AuthResult> task) {
+            public void onComplete(final Task<AuthResult> task) {
                 if (task.isSuccessful()) {
 
                     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -81,19 +81,18 @@ public class Login extends AppCompatActivity {
 
 
                             if (userType.equals("Admin")) {
-                                Toast.makeText(Login.this, "Admin", Toast.LENGTH_SHORT).show();
-//                                Intent intentMain = new Intent(Login.this, ActivityTestForLoginLogout.class);
-//                                startActivity(intentMain);
-                            } else if (userType.equals("WorkerPoster")) {
-                                Toast.makeText(Login.this, "Worker Poster", Toast.LENGTH_SHORT).show();
-//                                Intent intentMain = new Intent(Login.this, ActivityTestForLoginLogout.class);
-//                                startActivity(intentMain);
-                            } else if (userType.equals("Employer")) {
 
                                 Intent intentMain = new Intent(Login.this, ActivityTestForLoginLogout.class);
                                 startActivity(intentMain);
+                            } else if (userType.equals("WorkerPoster")) {
+                                Intent intentMain = new Intent(Login.this, WorkerPosterMain.class);
+                                startActivity(intentMain);
+                            } else if (userType.equals("Employer")) {
+
+                                Intent intentMain = new Intent(Login.this, EmployerMainActivity.class);
+                                startActivity(intentMain);
                             } else {
-                                Toast.makeText(Login.this, "Failed Login. Please Try Again", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 return;
                             }
                         }

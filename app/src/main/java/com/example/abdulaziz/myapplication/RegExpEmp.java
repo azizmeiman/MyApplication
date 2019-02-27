@@ -1,12 +1,15 @@
 package com.example.abdulaziz.myapplication;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +19,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +30,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +55,11 @@ public class RegExpEmp extends AppCompatActivity  {
     String orgDocemp;
     String orgPicemp; //the URL of the pic
 
+    private Uri mImageUri;
+
+   private StorageReference mStorageRef;
+
+    private StorageTask mUploadTask;
 
 
     @Override
@@ -53,6 +67,7 @@ public class RegExpEmp extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_exp_emp);
 
+        mStorageRef = FirebaseStorage.getInstance().getReference("Pictures");
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
@@ -66,7 +81,7 @@ public class RegExpEmp extends AppCompatActivity  {
         final Spinner cityID = (Spinner) findViewById(R.id.cityID);
         final EditText orgName = (EditText) findViewById(R.id.orgName);
         final EditText orgDoc = (EditText) findViewById(R.id.orgDoc);
-        final EditText orgPic = (EditText) findViewById(R.id.orgPic);
+       // final EditText orgPic = (EditText) findViewById(R.id.orgPic);
 
 
 //        final List<Object> CityList = new ArrayList<>();
@@ -103,6 +118,20 @@ public class RegExpEmp extends AppCompatActivity  {
         ArrayAdapter<String> citites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cityL);
         cityID.setAdapter(citites);
 
+     Button pic = (Button)findViewById(R.id.PicUpload);
+
+      pic.setOnClickListener(new View.OnClickListener() {
+
+
+
+           public void onClick(View v) {
+               openFileChooser();
+
+           }
+         });
+
+
+
         Button Reg = (Button)findViewById(R.id.RegE);
 
         Reg.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +145,7 @@ public class RegExpEmp extends AppCompatActivity  {
                 orgNameemp = orgName.getText().toString();
                 orgDocemp = orgDoc.getText().toString();
                 cityIDemp = cityID.getSelectedItem().toString(); // نبغى نقرا هنا المدينة الي اخترناها
-                orgPicemp = orgPic.getText().toString();
+
 
 
 
@@ -127,6 +156,9 @@ public class RegExpEmp extends AppCompatActivity  {
 
                         if (task.isSuccessful()) {
 
+                            uploadFile();
+
+
                             Employer emp = new Employer(
                                     Email,
                                     RPname,
@@ -134,11 +166,11 @@ public class RegExpEmp extends AppCompatActivity  {
                                     RPphoneNumemp,
                                     cityIDemp,
                                     orgNameemp,
-                                    orgDocemp,
-                                    orgPicemp
+                                    orgDocemp  ,orgPicemp);
 
 
-                            );
+
+
 
                             FirebaseDatabase.getInstance().getReference("Employer")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -170,6 +202,49 @@ public class RegExpEmp extends AppCompatActivity  {
         });
 
 }
+    private static final int PICK_IMAGE_REQUEST = 1;
+
+    private void openFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+    private String getFileExtension(Uri uri) {
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    private void uploadFile() {
+        if (mImageUri != null) {
+            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
+                    + "." + getFileExtension(mImageUri));
+
+            mUploadTask = fileReference.putFile(mImageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+
+                            Toast.makeText(RegExpEmp.this, "Upload successful", Toast.LENGTH_LONG).show();
+
+                            orgPicemp=System.currentTimeMillis()
+                                    + "." + getFileExtension(mImageUri);
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(RegExpEmp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+        } else {
+            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 
 

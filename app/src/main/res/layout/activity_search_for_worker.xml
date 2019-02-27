@@ -2,15 +2,19 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     tools:context=".searchForWorkerActivity">
 
+
+
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
-        android:layout_height="29dp"
+        android:layout_height="26dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -23,7 +27,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.345" />
+        app:layout_constraintVertical_bias="0.358" />
 
     <TextView
         android:id="@+id/textView8"
@@ -45,14 +49,18 @@
 
     <Spinner
         android:id="@+id/daySpinner"
-        android:layout_width="193dp"
-        android:layout_height="63dp"
+
+        android:layout_width="192dp"
+        android:layout_height="54dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#45DBDBDB"
+
+        android:dropDownWidth="wrap_content"
+        android:spinnerMode="dropdown"
         android:textSize="27sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -62,13 +70,15 @@
 
     <Spinner
         android:id="@+id/monthSpinner"
-        android:layout_width="196dp"
-        android:layout_height="63dp"
+        android:layout_width="194dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#45DBDBDB"
+
+        android:dropDownWidth="wrap_content"
+        android:spinnerMode="dropdown"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,19 +90,20 @@
     <Spinner
         android:id="@+id/skillsSpinner"
         android:layout_width="403dp"
-        android:layout_height="63dp"
+        android:layout_height="58dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#45DBDBDB"
+
+        android:dropDownWidth="wrap_content"
+        android:spinnerMode="dropdown"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.407" />
+        app:layout_constraintVertical_bias="0.429" />
 
     <Button
         android:id="@+id/listAllWorkers"
@@ -108,10 +119,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.537" />
+        app:layout_constraintVertical_bias="0.551" />
 
     <Button
         android:id="@+id/Search"
@@ -135,20 +146,22 @@
     <Spinner
         android:id="@+id/citySpinner"
         android:layout_width="403dp"
-        android:layout_height="63dp"
+        android:layout_height="56dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#45DBDBDB"
+
+        android:dropDownWidth="wrap_content"
+        android:spinnerMode="dropdown"
         android:textSize="27sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084"
-        />
+        app:layout_constraintVertical_bias="0.084" />
 
     <TextView
         android:id="@+id/textView7"
@@ -167,4 +180,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.037" />
+
+
 </android.support.constraint.ConstraintLayout>

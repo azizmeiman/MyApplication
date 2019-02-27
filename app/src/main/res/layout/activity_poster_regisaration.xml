@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="رقم هوية المعرف"
-                    android:inputType=" " />
+                    android:inputType="text" />
 
                 <EditText
                     android:id="@+id/RPphoneNumP"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="رقم الجوال"
-                    android:inputType=" " />
+                    android:inputType="text" />
                 <Spinner
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="اسم المنظمة"
-                    android:inputType=" " />
+                    android:inputType="text" />
 
                 <EditText
                     android:id="@+id/orgDocP"
@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="وثائق المنظمة"
-                    android:inputType=" " />
+                    android:inputType="text" />
 
                 <EditText
                     android:id="@+id/orgPicP"
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="صورة المنظمة"
-                    android:inputType=" " />
+                    android:inputType="text" />
 
             </LinearLayout>
         </ScrollView>
@@ -119,7 +119,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginBottom="0dp"
         android:background="@color/colorPrimary"
-        android:text="Register"
+        android:text="@string/RegisterAr"
         android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
 

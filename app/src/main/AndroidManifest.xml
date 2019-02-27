@@ -17,12 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignInActivity" />
         <activity android:name=".RegExpEmp" />
         <activity android:name=".PosterRegisaration" />
         <activity android:name=".Login" />
         <activity android:name=".ActivityTestForLoginLogout" />
         <activity android:name=".WorkerPosterMain" />
+        <activity android:name=".EmployerMainActivity" />
+        <activity android:name=".searchForWorkerActivity" />
         <activity android:name=".addworker"></activity>
     </application>
 

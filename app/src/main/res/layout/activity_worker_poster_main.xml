@@ -28,7 +28,7 @@
                 android:background="@color/colorPrimary"
                 android:text="عرض العمال"
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                android:textSize="@dimen/fab_margin" />
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/AddWorkerBut"
@@ -39,7 +39,7 @@
                 android:background="@color/colorPrimary"
                 android:text="إضافة عامل"
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                android:textSize="@dimen/fab_margin" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,7 +58,7 @@
                 android:background="@color/colorPrimary"
                 android:text="تعديل عامل"
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                android:textSize="@dimen/fab_margin"
+                android:textSize="16sp"
                 tools:layout_editor_absoluteX="256dp"
                 tools:layout_editor_absoluteY="160dp" />
 
@@ -71,7 +71,7 @@
                 android:background="@color/colorPrimary"
                 android:text="عرض الطلبات"
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                android:textSize="@dimen/fab_margin"
+                android:textSize="16sp"
                 tools:layout_editor_absoluteX="27dp"
                 tools:layout_editor_absoluteY="160dp" />
         </LinearLayout>
@@ -91,7 +91,7 @@
                 android:background="@color/colorPrimary"
                 android:text="عرض العقود"
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                android:textSize="@dimen/fab_margin"
+                android:textSize="16sp"
                 tools:layout_editor_absoluteX="27dp"
                 tools:layout_editor_absoluteY="61dp" />
 
@@ -105,7 +105,7 @@
                 android:background="@color/colorPrimary"
                 android:text="حذف عامل"
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                android:textSize="@dimen/fab_margin"
+                android:textSize="16sp"
                 tools:layout_editor_absoluteX="256dp"
                 tools:layout_editor_absoluteY="61dp" />
 
@@ -123,7 +123,7 @@
                 android:background="@color/colorPrimary"
                 android:text="التقارير"
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                android:textSize="@dimen/fab_margin" />
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/ChatwithAdminBut"
@@ -133,7 +133,7 @@
                 android:background="@color/colorPrimary"
                 android:text="تحدث إلينا"
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                android:textSize="@dimen/fab_margin" />
+                android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
 

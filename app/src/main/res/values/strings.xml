@@ -11,4 +11,10 @@
     <string name="workerPosAr">عارض العمال</string>
     <string name="Search02">🔍Search</string>
     <string name="listAllWorkers">List All Workers</string>
+    <string name="RegisterAr">التسجيل</string>
+    <string name="ListAllWorkersAr">عرض جميع العمال</string>
+    <string name="searchAr">🔍 بحث</string>
+    <string name="CooseCityAr">اختر مدينة:</string>
+    <string name="PeriodAr">اختر المدة:</string>
+    <string name="selectSkillAr">اختر المهارات اللازمة:</string>
 </resources>

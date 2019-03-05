@@ -1,5 +1,6 @@
 package com.example.abdulaziz.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -22,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -45,13 +47,15 @@ public class PosterRegisaration extends AppCompatActivity {
     String cityIDposter;
     String orgNamePoster;
     String orgDocPoster;
-    String orgPicPoster; //the URL of the pic
+    String orgPicPoster= null; //the URL of the pic
 
+    private ProgressDialog mprogressP;
     private Uri mImageUri;
 
     private StorageReference mStorageRef;
 
     private StorageTask mUploadTask;
+
 
 
     @Override
@@ -68,8 +72,9 @@ public class PosterRegisaration extends AppCompatActivity {
         final EditText RPphoneNumP = (EditText) findViewById(R.id.RPphoneNumP);
         final Spinner Cityposter = (Spinner) findViewById(R.id.cityPoster);
         final EditText orgNameP = (EditText) findViewById(R.id.orgNameP);
-        final EditText orgDocP = (EditText) findViewById(R.id.orgDocP);
+       // final EditText orgDocP = (EditText) findViewById(R.id.orgDocP);
      //   final EditText orgPicP = (EditText) findViewById(R.id.orgPicP);
+        mprogressP = new ProgressDialog(this);
 
         List<String> cityL = new ArrayList<String>();
         cityL.add("Riyadh");
@@ -80,7 +85,7 @@ public class PosterRegisaration extends AppCompatActivity {
         ArrayAdapter<String> citites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cityL);
         Cityposter.setAdapter(citites);
 
-        Button pic = (Button)findViewById(R.id.PicUpload);
+        Button pic = (Button)findViewById(R.id.PicUploadP);
 
         pic.setOnClickListener(new View.OnClickListener() {
 
@@ -89,15 +94,50 @@ public class PosterRegisaration extends AppCompatActivity {
             public void onClick(View v) {
                 openFileChooser();
 
+
+            }
+        });
+        Button picup = (Button)findViewById(R.id.UploadthepicP);
+
+        picup.setOnClickListener(new View.OnClickListener() {
+
+
+
+            public void onClick(View v) {
+                uploadFile();
+
             }
         });
 
-        Button Reg = (Button) findViewById(R.id.RegE);
+        Button pdf = (Button)findViewById(R.id.PdfUploadP);
+
+        pdf.setOnClickListener(new View.OnClickListener() {
+
+
+
+            public void onClick(View v) {
+                openFileChooserpdf();
+
+            }
+        });
+        Button pdfup = (Button)findViewById(R.id.UploadthepdfP);
+
+        pdfup.setOnClickListener(new View.OnClickListener() {
+
+
+
+            public void onClick(View v) {
+                uploadFile();
+
+            }
+        });
+        Button Reg = (Button) findViewById(R.id.RegP);
 
 
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Email = EmailP.getText().toString();
                 password = PasswordP.getText().toString();
                 RPnamePoster = namep.getText().toString();
@@ -105,7 +145,6 @@ public class PosterRegisaration extends AppCompatActivity {
                 RPphoneNumPoster = RPphoneNumP.getText().toString();
                 cityIDposter = Cityposter.getSelectedItem().toString();
                 orgNamePoster = orgNameP.getText().toString();
-                orgDocPoster = orgDocP.getText().toString();
 
                 mAuth.createUserWithEmailAndPassword(Email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -113,7 +152,7 @@ public class PosterRegisaration extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
 
-                            uploadFile();
+
 
                             WorkerPoster workerposter1 = new WorkerPoster(
                                     Email,
@@ -158,11 +197,17 @@ public class PosterRegisaration extends AppCompatActivity {
         });
 
     }
-    private static final int PICK_IMAGE_REQUEST = 1;
+    private static final int PICK_IMAGE_REQUEST = 2;
 
     private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+    private void openFileChooserpdf() {
+        Intent intent = new Intent();
+        intent.setType("application/pdf");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
@@ -172,8 +217,20 @@ public class PosterRegisaration extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            mImageUri = data.getData();
+
+            //  Picasso.with(this).load(mImageUri).into(mImageView);
+        }
+    }
     private void uploadFile() {
         if (mImageUri != null) {
+            mprogressP.setMessage("Uploading ... ");
+            mprogressP.show();
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
                     + "." + getFileExtension(mImageUri));
 
@@ -182,17 +239,23 @@ public class PosterRegisaration extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-
+                            mprogressP.dismiss();
                             Toast.makeText(PosterRegisaration.this, "Upload successful", Toast.LENGTH_LONG).show();
 
-                            orgPicPoster=System.currentTimeMillis()
-                                    + "." + getFileExtension(mImageUri);
+                            if(orgPicPoster!=null)
+                                orgDocPoster=System.currentTimeMillis()
+                                        + "." + getFileExtension(mImageUri);
+                            else
+                                orgPicPoster=System.currentTimeMillis()
+                                        + "." + getFileExtension(mImageUri);
+
 
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            mprogressP.dismiss();
                             Toast.makeText(PosterRegisaration.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });

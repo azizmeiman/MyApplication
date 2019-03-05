@@ -1,5 +1,6 @@
 package com.example.abdulaziz.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Color;
@@ -34,6 +35,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +55,9 @@ public class RegExpEmp extends AppCompatActivity  {
     String cityIDemp;
     String orgNameemp;
     String orgDocemp;
-    String orgPicemp; //the URL of the pic
+    String orgPicemp= null;; //the URL of the pic
+
+    private ProgressDialog mprogress;
 
     private Uri mImageUri;
 
@@ -62,12 +66,13 @@ public class RegExpEmp extends AppCompatActivity  {
     private StorageTask mUploadTask;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_exp_emp);
 
-        mStorageRef = FirebaseStorage.getInstance().getReference("Pictures");
+        mStorageRef = FirebaseStorage.getInstance().getReference("All Uploads ");
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
@@ -80,9 +85,10 @@ public class RegExpEmp extends AppCompatActivity  {
         final EditText RPphoneNum = (EditText) findViewById(R.id.RPphoneNum);
         final Spinner cityID = (Spinner) findViewById(R.id.cityID);
         final EditText orgName = (EditText) findViewById(R.id.orgName);
-        final EditText orgDoc = (EditText) findViewById(R.id.orgDoc);
+        //final EditText orgDoc = (EditText) findViewById(R.id.orgDoc);
        // final EditText orgPic = (EditText) findViewById(R.id.orgPic);
 
+        mprogress = new ProgressDialog(this);
 
 //        final List<Object> CityList = new ArrayList<>();
 //        myRef.child("City").addValueEventListener(new ValueEventListener() {
@@ -129,8 +135,40 @@ public class RegExpEmp extends AppCompatActivity  {
 
            }
          });
+        Button picup = (Button)findViewById(R.id.Uploadthepic);
+
+        picup.setOnClickListener(new View.OnClickListener() {
 
 
+
+            public void onClick(View v) {
+                uploadPic();
+
+            }
+        });
+
+        Button pdf = (Button)findViewById(R.id.PdfUpload);
+
+        pdf.setOnClickListener(new View.OnClickListener() {
+
+
+
+            public void onClick(View v) {
+                openFileChooserpdf();
+
+            }
+        });
+        Button pdfup = (Button)findViewById(R.id.Uploadthepdf);
+
+        pdfup.setOnClickListener(new View.OnClickListener() {
+
+
+
+            public void onClick(View v) {
+                uploadPic();
+
+            }
+        });
 
         Button Reg = (Button)findViewById(R.id.RegE);
 
@@ -143,7 +181,6 @@ public class RegExpEmp extends AppCompatActivity  {
                 RPIDemp= RPID.getText().toString();
                 RPphoneNumemp = RPphoneNum.getText().toString();
                 orgNameemp = orgName.getText().toString();
-                orgDocemp = orgDoc.getText().toString();
                 cityIDemp = cityID.getSelectedItem().toString(); // نبغى نقرا هنا المدينة الي اخترناها
 
 
@@ -156,7 +193,7 @@ public class RegExpEmp extends AppCompatActivity  {
 
                         if (task.isSuccessful()) {
 
-                            uploadFile();
+
 
 
                             Employer emp = new Employer(
@@ -210,14 +247,34 @@ public class RegExpEmp extends AppCompatActivity  {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
+    private void openFileChooserpdf() {
+        Intent intent = new Intent();
+        intent.setType("application/pdf");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
     private String getFileExtension(Uri uri) {
         ContentResolver cR = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-    private void uploadFile() {
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            mImageUri = data.getData();
+
+          //  Picasso.with(this).load(mImageUri).into(mImageView);
+        }
+    }
+    private void uploadPic() {
+
         if (mImageUri != null) {
+
+            mprogress.setMessage("Uploading ... ");
+            mprogress.show();
+
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
                     + "." + getFileExtension(mImageUri));
 
@@ -227,10 +284,16 @@ public class RegExpEmp extends AppCompatActivity  {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
 
+                            mprogress.dismiss();
                             Toast.makeText(RegExpEmp.this, "Upload successful", Toast.LENGTH_LONG).show();
 
-                            orgPicemp=System.currentTimeMillis()
+                            if(orgPicemp!=null)
+                                orgDocemp=System.currentTimeMillis()
                                     + "." + getFileExtension(mImageUri);
+                            else
+                                orgPicemp=System.currentTimeMillis()
+                                        + "." + getFileExtension(mImageUri);
+
 
                         }
                     })

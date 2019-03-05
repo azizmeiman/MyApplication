@@ -14,11 +14,12 @@ public class Worker {
     private String Nationality;
     private String Phonenumber;
     private String BirthDate;
+    private String workerpdf;
 
     public Worker(){
 
     }
-    public Worker(String name, String workerID, int price, String picture, String nationality, String Skills, String phonenumber, String birthDate) {
+    public Worker(String name, String workerID, int price, String picture, String nationality, String Skills, String phonenumber, String birthDate,String workerpdf) {
         this.name = name;
         this.WorkerID = workerID;
         this.Workerstatus = 1; // 1 means avilable
@@ -28,6 +29,7 @@ public class Worker {
         this.Nationality = nationality;
         this.Phonenumber = phonenumber;
         this.BirthDate = birthDate;
+        this.workerpdf=workerpdf;
         //this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
 
     }

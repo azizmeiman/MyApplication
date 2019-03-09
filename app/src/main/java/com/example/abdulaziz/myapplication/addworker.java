@@ -48,7 +48,7 @@ public class addworker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addworker);
-        mStorageRef = FirebaseStorage.getInstance().getReference("Pictures");
+        mStorageRef = FirebaseStorage.getInstance().getReference("All Uploads ");
         final EditText WorkerNameEdit = (EditText) findViewById(R.id.WorkerNameText);
         final EditText WorkerIDEdit = (EditText) findViewById(R.id.WorkerIDText);
         final EditText WorkerMobileEdit = (EditText) findViewById(R.id.WorkerMobileText);
@@ -188,10 +188,10 @@ public class addworker extends AppCompatActivity {
 
 
                             if(Workerpic!=null)
-                                Workerpic=System.currentTimeMillis()
+                                Workerpdf=System.currentTimeMillis()
                                         + "." + getFileExtension(mImageUri);
                             else
-                                Workerpdf=System.currentTimeMillis()
+                                Workerpic=System.currentTimeMillis()
                                         + "." + getFileExtension(mImageUri);
 
 

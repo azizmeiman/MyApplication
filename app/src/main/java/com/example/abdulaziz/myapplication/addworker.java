@@ -29,7 +29,7 @@ public class addworker extends AppCompatActivity {
     String WorkerNationality;
     String WorkerBDDate;
     String WorkerSkills;
-    int WorkerFees;
+    String WorkerFees;
     String WorkerDocument;
     String Workerpic=null;
     String Workerpdf;
@@ -116,7 +116,7 @@ public class addworker extends AppCompatActivity {
                  WorkerNationality = WorkerNationalityEdit.getText().toString();
                  WorkerBDDate = WorkerBDateEdit.getText().toString();
                  WorkerSkills = WorkerSkillsEdit.getText().toString();
-                 WorkerFees = Integer.parseInt(WorkerFeesEdit.getText().toString());
+                 WorkerFees = WorkerFeesEdit.getText().toString();
                  PosterUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 

@@ -5,6 +5,7 @@ import java.util.Date ;
 import java.text.DateFormat ;
 
 public class Worker {
+
     private String name;
     private String WorkerID;
     private int Workerstatus;
@@ -20,7 +21,6 @@ public class Worker {
 
 
     public Worker(){
-
     }
     public Worker(String name, String workerID, int price, String picture, String nationality, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf) {
         this.name = name;
@@ -38,8 +38,24 @@ public class Worker {
 
     }
 
+    public Worker(String name, String workerID, int price, String picture, String nationality, String Skills, String phonenumber, String birthDate) {
+        this.name = name;
+        this.WorkerID = workerID;
+        this.Workerstatus = 1; // 1 means avilable
+        this.Skills = Skills;
+        this.price = price;
+        this.picture = picture;
+        this.Nationality = nationality;
+        this.Phonenumber = phonenumber;
+        this.BirthDate = birthDate;
+        this.workerpdf="Empty";
+        //this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
 
+    }
 
+    public String getSkills() {
+        return Skills;
+    }
     public String getName() {
         return name;
     }

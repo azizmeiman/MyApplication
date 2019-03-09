@@ -26,8 +26,16 @@ public class WorkerPosterMain extends AppCompatActivity {
         AddWorkerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WorkerPosterMain.this, addworker.class );
-                startActivity(intent);
+                Intent AddWorkerIntent = new Intent(WorkerPosterMain.this, addworker.class );
+                startActivity(AddWorkerIntent);
+            }
+        });
+
+        ViewWorkerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ViewWorkerIntent = new Intent(WorkerPosterMain.this, viewworkers.class );
+                startActivity(ViewWorkerIntent);
             }
         });
 

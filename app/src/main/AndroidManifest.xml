@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,7 +26,8 @@
         <activity android:name=".WorkerPosterMain" />
         <activity android:name=".EmployerMainActivity" />
         <activity android:name=".searchForWorkerActivity" />
-        <activity android:name=".addworker"></activity>
+        <activity android:name=".addworker" />
+        <activity android:name=".viewworkers"></activity>
     </application>
 
 </manifest>

@@ -14,12 +14,15 @@ public class Worker {
     private String Nationality;
     private String Phonenumber;
     private String BirthDate;
-    private String workerpdf;
+    private String PosterID;
+   private String Workerpdf;
+
+
 
     public Worker(){
 
     }
-    public Worker(String name, String workerID, int price, String picture, String nationality, String Skills, String phonenumber, String birthDate,String workerpdf) {
+    public Worker(String name, String workerID, int price, String picture, String nationality, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf) {
         this.name = name;
         this.WorkerID = workerID;
         this.Workerstatus = 1; // 1 means avilable
@@ -29,7 +32,8 @@ public class Worker {
         this.Nationality = nationality;
         this.Phonenumber = phonenumber;
         this.BirthDate = birthDate;
-        this.workerpdf=workerpdf;
+        this.PosterID = PosterID;
+        this.Workerpdf = Workerpdf;
         //this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
 
     }
@@ -101,4 +105,27 @@ public class Worker {
         BirthDate = birthDate;
     }
 
+    public String getSkills() {
+        return Skills;
+    }
+
+    public void setSkills(String skills) {
+        Skills = skills;
+    }
+
+    public String getPosterID() {
+        return PosterID;
+    }
+
+    public void setPosterID(String posterID) {
+        PosterID = posterID;
+    }
+
+    public String getWorkerpdf() {
+        return Workerpdf;
+    }
+
+    public void setWorkerpdf(String workerpdf) {
+        Workerpdf = workerpdf;
+    }
 }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -32,6 +33,7 @@ public class addworker extends AppCompatActivity {
     String WorkerDocument;
     String Workerpic=null;
     String Workerpdf;
+    String PosterUID;
 
 
     private ProgressDialog mprogress;
@@ -113,9 +115,10 @@ public class addworker extends AppCompatActivity {
                  WorkerBDDate = WorkerBDateEdit.getText().toString();
                  WorkerSkills = WorkerSkillsEdit.getText().toString();
                  WorkerFees = Integer.parseInt(WorkerFeesEdit.getText().toString());
+                 PosterUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
-                 Worker worker = new Worker(WorkerName, WorkerID, WorkerFees, Workerpic, WorkerNationality, WorkerSkills, WorkerMobile, WorkerBDDate,Workerpdf);
+                 Worker worker = new Worker(WorkerName, WorkerID, WorkerFees, Workerpic, WorkerNationality, WorkerSkills, WorkerMobile, WorkerBDDate, PosterUID, Workerpdf);
                  DBAccess dba = new DBAccess();
                  dba.insetWorker(worker);
                  Toast.makeText(addworker.this, "تمت إضافة العامل", Toast.LENGTH_SHORT).show();

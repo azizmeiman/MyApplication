@@ -58,6 +58,8 @@ public class addworker extends AppCompatActivity {
         final EditText WorkerFeesEdit = (EditText) findViewById(R.id.WorkerFeesText);
         final Button AddworkerBut = (Button) findViewById(R.id.addworkerBut);
 
+        mprogress = new ProgressDialog(this);
+
 
         Button pic = (Button)findViewById(R.id.PicUploadW);
 
@@ -70,7 +72,7 @@ public class addworker extends AppCompatActivity {
 
             }
         });
-        Button picup = (Button)findViewById(R.id.UploadthepicW);
+        Button picup = (Button)findViewById(R.id.UploadthepicWorker);
 
         picup.setOnClickListener(new View.OnClickListener() {
 

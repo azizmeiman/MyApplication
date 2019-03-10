@@ -34,7 +34,7 @@ public class WorkerPosterMain extends AppCompatActivity {
         ViewWorkerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ViewWorkerIntent = new Intent(WorkerPosterMain.this, viewworkers.class );
+                Intent ViewWorkerIntent = new Intent(WorkerPosterMain.this, ViewWorkesActivity.class );
                 startActivity(ViewWorkerIntent);
             }
         });

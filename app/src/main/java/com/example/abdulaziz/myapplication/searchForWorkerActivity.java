@@ -1,8 +1,11 @@
 package com.example.abdulaziz.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -17,6 +20,8 @@ public class searchForWorkerActivity extends AppCompatActivity {
 
 
        final Spinner cityID =  (Spinner) findViewById(R.id.citySpinner);
+        final Button listAll = (Button) findViewById(R.id.listAllWorkers);
+        final Button search = (Button) findViewById(R.id.Search);
 
         List<String> cityL = new ArrayList<String>();
         cityL.add("Riyadh");
@@ -29,8 +34,11 @@ public class searchForWorkerActivity extends AppCompatActivity {
 
 
 
+
        final Spinner month =  (Spinner) findViewById(R.id.monthSpinner);
         List<String> monthL = new ArrayList<String>();
+
+     monthL.add("00 Month");
      monthL.add("01 Month");
      monthL.add("02 Months");
      monthL.add("03 Months");
@@ -51,7 +59,8 @@ public class searchForWorkerActivity extends AppCompatActivity {
 
         final Spinner day =  (Spinner) findViewById(R.id.daySpinner);
         List<String> dayL = new ArrayList<String>();
-     dayL.add("01 day");
+        dayL.add("00 day");
+        dayL.add("01 day");
      dayL.add("02 days");
      dayL.add("03 days");
      dayL.add("04 days");
@@ -90,13 +99,36 @@ public class searchForWorkerActivity extends AppCompatActivity {
         final Spinner skillID =  (Spinner) findViewById(R.id.skillsSpinner);
 
         List<String> skillL = new ArrayList<String>();
-     skillL.add("حراثة");
-     skillL.add("تلقيح النخل");
-     skillL.add("حصاد");
+     skillL.add("مزارع");
+     skillL.add("ميكانيكي الآت");
+     skillL.add("سباك");
 
-        ArrayAdapter<String> skill = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, skillL);
+        final ArrayAdapter<String> skill = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, skillL);
         skillID.setAdapter(skill);
 
 
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String cityS = cityID.getSelectedItem().toString();
+                String monthS = month.getSelectedItem().toString();
+                String dayS = day.getSelectedItem().toString();
+                String skillS = skillID.getSelectedItem().toString();
+
+                //Intent intentWorker = new Intent(searchForWorkerActivity.this, ViewWorkersActivity.class);
+
+
+            }
+        });
+
+
+        listAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentWorker = new Intent(searchForWorkerActivity.this, ViewWorkesActivity.class);
+                startActivity(intentWorker);
+            }
+        });
     }
 }

@@ -8,15 +8,18 @@ public class Worker {
 
     private String name;
     private String WorkerID;
-    private String Workerstatus;
+    private boolean isDeleted;
     private String price;
     private String Skills;
     private String picture;
     private String Nationality;
+    private String City;
     private String Phonenumber;
     private String BirthDate;
     private String PosterID;
-   private String Workerpdf;
+    private String Workerpdf;
+    private int TotalIncome;
+    private String ID;
 
 
 
@@ -25,31 +28,54 @@ public class Worker {
     public Worker(Worker w){
         this.name = w.getName();
         this.WorkerID = w.getWorkerID();
-        this.Workerstatus = "1"; // 1 means avilable
+        this.isDeleted = false;
         this.Skills = w.getSkills();
         this.price = w.getPrice();
         this.picture = w.getPicture();
         this.Nationality = w.getNationality();
+        this.City = w.getCity();
         this.Phonenumber = w.getPhonenumber();
         this.BirthDate = w.getBirthDate();
         this.PosterID = w.getPosterID();
         this.Workerpdf = w.getWorkerpdf();
+        this.TotalIncome = w.getTotalIncome();
+        this.ID = w.getID();
     }
 
-    public Worker(String name, String workerID, String price, String picture, String nationality, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf) {
+    public Worker(String name, String workerID, String price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income) {
         this.name = name;
         this.WorkerID = workerID;
-        this.Workerstatus = "1"; // 1 means avilable
+        this.isDeleted = false; // 1 means avilable
         this.Skills = Skills;
         this.price = price;
         this.picture = picture;
         this.Nationality = nationality;
+        this.City = city;
         this.Phonenumber = phonenumber;
         this.BirthDate = birthDate;
         this.PosterID = PosterID;
         this.Workerpdf = Workerpdf;
+        this.TotalIncome = Income;
         //this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
 
+    }
+
+    public Worker(String name, String workerID, String price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income,String id ) {
+        this.name = name;
+        this.WorkerID = workerID;
+        this.isDeleted = false; // 1 means avilable
+        this.Skills = Skills;
+        this.price = price;
+        this.picture = picture;
+        this.Nationality = nationality;
+        this.City = city;
+        this.Phonenumber = phonenumber;
+        this.BirthDate = birthDate;
+        this.PosterID = PosterID;
+        this.Workerpdf = Workerpdf;
+        this.TotalIncome = Income;
+        //this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
+        this.ID = id;
     }
 
 
@@ -69,14 +95,13 @@ public class Worker {
         WorkerID = workerID;
     }
 
-    public String getWorkerstatus() {
-        return Workerstatus;
+    public boolean isDeleted() {
+        return isDeleted;
     }
 
-    public void setWorkerstatus(String workerstatus) {
-        Workerstatus = workerstatus;
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
-
 
     public String getPrice() {
         return price;
@@ -90,12 +115,28 @@ public class Worker {
         return picture;
     }
 
+    public int getTotalIncome() {
+        return TotalIncome;
+    }
+
+    public void setTotalIncome(int totalIncome) {
+        TotalIncome = TotalIncome+totalIncome;
+    }
+
     public void setPicture(String picture) {
         this.picture = picture;
     }
 
     public String getNationality() {
         return Nationality;
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String city) {
+        City = city;
     }
 
     public void setNationality(String nationality) {
@@ -140,5 +181,13 @@ public class Worker {
 
     public void setWorkerpdf(String workerpdf) {
         Workerpdf = workerpdf;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

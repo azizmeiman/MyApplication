@@ -64,7 +64,15 @@
             android:hint="الجنسية"
             android:inputType="textPersonName" />
 
-        <EditText
+                <EditText
+                    android:id="@+id/WorkerCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="المدينة"
+                    android:inputType="textPersonName" />
+
+                <EditText
             android:id="@+id/WorkerBDateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

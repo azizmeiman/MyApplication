@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -34,6 +36,12 @@ public class addworker extends AppCompatActivity {
     String Workerpic=null;
     String Workerpdf;
     String PosterUID;
+    String WorkerCity;
+    int totalincome;
+
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
 
 
     private ProgressDialog mprogress;
@@ -53,6 +61,7 @@ public class addworker extends AppCompatActivity {
         final EditText WorkerIDEdit = (EditText) findViewById(R.id.WorkerIDText);
         final EditText WorkerMobileEdit = (EditText) findViewById(R.id.WorkerMobileText);
         final EditText WorkerNationalityEdit = (EditText) findViewById(R.id.WorkerNationalityText);
+        final EditText WorkerCityEdit = (EditText) findViewById(R.id.WorkerCity);
         final EditText WorkerBDateEdit = (EditText) findViewById(R.id.WorkerBDateText);
         final EditText WorkerSkillsEdit = (EditText) findViewById(R.id.WorkerSkillsText);
         final EditText WorkerFeesEdit = (EditText) findViewById(R.id.WorkerFeesText);
@@ -114,16 +123,23 @@ public class addworker extends AppCompatActivity {
                  WorkerID = WorkerIDEdit.getText().toString();
                  WorkerMobile = WorkerMobileEdit.getText().toString();
                  WorkerNationality = WorkerNationalityEdit.getText().toString();
+                 WorkerCity = WorkerCityEdit.getText().toString();
                  WorkerBDDate = WorkerBDateEdit.getText().toString();
                  WorkerSkills = WorkerSkillsEdit.getText().toString();
                  WorkerFees = WorkerFeesEdit.getText().toString();
                  PosterUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                 totalincome = 0; // When worker added total income will be 0
 
 
-                 Worker worker = new Worker(WorkerName, WorkerID, WorkerFees, Workerpic, WorkerNationality, WorkerSkills, WorkerMobile, WorkerBDDate, PosterUID, Workerpdf);
-                 DBAccess dba = new DBAccess();
-                 dba.insetWorker(worker);
+
+                 DatabaseReference pushRef = myRef.child("Worker").push();
+                 String key_ID = pushRef.getKey();
+
+                 Worker worker = new Worker(WorkerName, WorkerID, WorkerFees, Workerpic, WorkerNationality, WorkerCity, WorkerSkills, WorkerMobile, WorkerBDDate, PosterUID, Workerpdf, totalincome,key_ID);
+                 pushRef.setValue(worker);
+
                  Toast.makeText(addworker.this, "تمت إضافة العامل", Toast.LENGTH_SHORT).show();
+
                  finish();
 
 

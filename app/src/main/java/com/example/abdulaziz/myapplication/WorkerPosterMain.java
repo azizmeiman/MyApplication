@@ -39,6 +39,14 @@ public class WorkerPosterMain extends AppCompatActivity {
             }
         });
 
+        DeleteWorkerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent DeleteWorkerIntent = new Intent(WorkerPosterMain.this, DeleteWorker.class );
+                startActivity(DeleteWorkerIntent);
+            }
+        });
+
         
 
 

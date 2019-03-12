@@ -28,10 +28,14 @@ public class viewworkerinfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewworkerinfo);
         ImageView imageView = (ImageView) findViewById(R.id.imageView10);
-        TextView workerName = (TextView) findViewById(R.id.Wname);
-        TextView WorkerSkills = (TextView) findViewById(R.id.Wskills);
-        TextView WorkerPrice = (TextView) findViewById(R.id.Wprice);
-        TextView WorkerIncome = (TextView) findViewById(R.id.Wtotalicome);
+        final TextView workerName = (TextView) findViewById(R.id.Wname);
+        final TextView WorkerSkills = (TextView) findViewById(R.id.Wskills);
+        final TextView WorkerPrice = (TextView) findViewById(R.id.Wprice);
+        final TextView WorkerIncome = (TextView) findViewById(R.id.Wtotalicome);
+        final TextView namelabel = (TextView) findViewById(R.id.textView10);
+        final TextView skilllabel = (TextView) findViewById(R.id.textView11);
+        final TextView pricelabel = (TextView) findViewById(R.id.textView12);
+        final TextView incomelabel = (TextView) findViewById(R.id.textView13);
 
         final int i = getIntent().getIntExtra("id",0);
 
@@ -53,21 +57,28 @@ public class viewworkerinfo extends AppCompatActivity {
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
-                    for (DataSnapshot c : dataSnapshot.getChildren()) {
-                        if (userUID.equals(child.child("posterID").getValue().toString())) {
-                            Worker worker = new Worker(child.getValue(Worker.class));
-                            workersList.add(worker);
-                            String a = String.valueOf(workersList.size());
-                            Toast.makeText(viewworkerinfo.this, a,Toast.LENGTH_SHORT).show();
-                            break;
+                    for(DataSnapshot c : dataSnapshot.getChildren()){
+                        if(userUID.equals(child.child("posterID").getValue().toString())){
+                            if(child.child("deleted").getValue().toString().equals("false")) {
+                                Worker worker = new Worker(child.getValue(Worker.class));
+                                workersList.add(worker);
+                                break;
+                            }
+                            else
+                                break;
+                        }else
+                            Toast.makeText(viewworkerinfo.this,"لايوجد لديك عمال", Toast.LENGTH_SHORT).show();
 
-                        } else
-                            Toast.makeText(viewworkerinfo.this, "لم تقم بإضافة عامل", Toast.LENGTH_SHORT).show();
-
-                       }
+                    }
 
 
                   }
+
+                Worker w1 = workersList.get(i);
+                workerName.setText(w1.getName());
+                WorkerSkills.setText(w1.getSkills());
+                WorkerPrice.setText(String.valueOf(w1.getPrice()));
+                WorkerIncome.setText(String.valueOf(w1.getTotalIncome()));
 
 
                  }
@@ -77,6 +88,7 @@ public class viewworkerinfo extends AppCompatActivity {
                 Toast.makeText(viewworkerinfo.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
 
 
 

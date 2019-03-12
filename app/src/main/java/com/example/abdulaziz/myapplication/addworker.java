@@ -31,13 +31,15 @@ public class addworker extends AppCompatActivity {
     String WorkerNationality;
     String WorkerBDDate;
     String WorkerSkills;
-    String WorkerFees;
-    String WorkerDocument;
+    int WorkerFees;
     String Workerpic=null;
     String Workerpdf;
     String PosterUID;
     String WorkerCity;
     int totalincome;
+    boolean isAvailable;
+    boolean deleted;
+
 
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -126,16 +128,20 @@ public class addworker extends AppCompatActivity {
                  WorkerCity = WorkerCityEdit.getText().toString();
                  WorkerBDDate = WorkerBDateEdit.getText().toString();
                  WorkerSkills = WorkerSkillsEdit.getText().toString();
-                 WorkerFees = WorkerFeesEdit.getText().toString();
+                 WorkerFees = Integer.parseInt(WorkerFeesEdit.getText().toString());
                  PosterUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                  totalincome = 0; // When worker added total income will be 0
+                 isAvailable=true;
+                 deleted = false;
 
 
 
                  DatabaseReference pushRef = myRef.child("Worker").push();
                  String key_ID = pushRef.getKey();
 
-                 Worker worker = new Worker(WorkerName, WorkerID, WorkerFees, Workerpic, WorkerNationality, WorkerCity, WorkerSkills, WorkerMobile, WorkerBDDate, PosterUID, Workerpdf, totalincome,key_ID);
+                 Worker worker = new Worker(WorkerName, WorkerID,deleted, WorkerFees, Workerpic, WorkerNationality, WorkerCity, WorkerSkills, WorkerMobile,
+                                              WorkerBDDate, PosterUID, Workerpdf, totalincome,key_ID,isAvailable);
+
                  pushRef.setValue(worker);
 
                  Toast.makeText(addworker.this, "تمت إضافة العامل", Toast.LENGTH_SHORT).show();

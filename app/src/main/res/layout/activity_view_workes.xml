@@ -3,11 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.abdulaziz.myapplication.ViewWorkesActivity">
+    android:orientation="vertical"
+    tools:context="com.example.abdulaziz.myapplication.ViewWorkesActivity"
+
+    >
 
 
     <ListView
         android:id="@+id/WorkersList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
 </LinearLayout>

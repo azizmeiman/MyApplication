@@ -48,8 +48,9 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
         name.setText(currentWorker.getName());
 
         TextView price = (TextView) listItem.findViewById(R.id.textView6);
-        String priceS = currentWorker.getPrice()+wContext.getString(R.string.priceFormat);
-        price.setText(priceS);
+        int priceS = currentWorker.getPrice();
+        price.setText(String.valueOf(priceS));
+
 
         TextView city = (TextView) listItem.findViewById(R.id.textView7);
         String cityS = wContext.getString(R.string.cityIcon)+"Riyadh";  //getCity************

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +41,7 @@ public class ViewWorkesActivity extends AppCompatActivity {
 
 
         listView = (ListView) findViewById(R.id.WorkersList);
+
         workersList = new ArrayList<>();
         final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         final String userUID = currentUser.getUid();
@@ -55,12 +57,15 @@ public class ViewWorkesActivity extends AppCompatActivity {
 
                     for(DataSnapshot c : dataSnapshot.getChildren()){
                         if(userUID.equals(child.child("posterID").getValue().toString())){
-                            Worker worker =  new Worker(child.getValue(Worker.class));
-                            workersList.add(worker);
-                            break;
-
+                                if(child.child("deleted").getValue().toString().equals("false")) {
+                                    Worker worker = new Worker(child.getValue(Worker.class));
+                                    workersList.add(worker);
+                                    break;
+                                }
+                                else
+                                    break;
                         }else
-                            Toast.makeText(ViewWorkesActivity.this,"لم تقم بإضافة عامل", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ViewWorkesActivity.this,"لايوجد لديك عمال", Toast.LENGTH_SHORT).show();
 
                     }
 

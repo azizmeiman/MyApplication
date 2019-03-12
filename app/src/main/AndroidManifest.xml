@@ -29,6 +29,11 @@
         <activity android:name=".searchForWorkerActivity" />
         <activity android:name=".addworker" />
         <activity android:name=".ViewWorkesActivity"/>
+        <activity android:name=".viewworkerinfo"/>
+        <activity android:name=".DeleteWorker"/>
+
+
+
     </application>
 
 </manifest>

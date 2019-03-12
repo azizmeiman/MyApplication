@@ -9,7 +9,7 @@ public class Worker {
     private String name;
     private String WorkerID;
     private boolean isDeleted;
-    private String price;
+    private int price;
     private String Skills;
     private String picture;
     private String Nationality;
@@ -20,6 +20,7 @@ public class Worker {
     private String Workerpdf;
     private int TotalIncome;
     private String ID;
+    private boolean isAvailable;
 
 
 
@@ -40,9 +41,10 @@ public class Worker {
         this.Workerpdf = w.getWorkerpdf();
         this.TotalIncome = w.getTotalIncome();
         this.ID = w.getID();
+        this.isAvailable= w.isAvailable();
     }
 
-    public Worker(String name, String workerID, String price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income) {
+    public Worker(String name, String workerID, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income) {
         this.name = name;
         this.WorkerID = workerID;
         this.isDeleted = false; // 1 means avilable
@@ -60,10 +62,10 @@ public class Worker {
 
     }
 
-    public Worker(String name, String workerID, String price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income,String id ) {
+    public Worker(String name, String workerID, boolean isDeleted, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income,String id , boolean isAvailable) {
         this.name = name;
         this.WorkerID = workerID;
-        this.isDeleted = false; // 1 means avilable
+        this.isDeleted = isDeleted; // 1 means avilable
         this.Skills = Skills;
         this.price = price;
         this.picture = picture;
@@ -76,6 +78,8 @@ public class Worker {
         this.TotalIncome = Income;
         //this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
         this.ID = id;
+        this.isAvailable= isAvailable;
+
     }
 
 
@@ -103,11 +107,11 @@ public class Worker {
         isDeleted = deleted;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -190,4 +194,14 @@ public class Worker {
     public void setID(String ID) {
         this.ID = ID;
     }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+
 }

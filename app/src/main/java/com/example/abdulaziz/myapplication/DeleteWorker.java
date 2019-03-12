@@ -56,9 +56,13 @@ public class DeleteWorker extends AppCompatActivity {
 
                     for (DataSnapshot c : dataSnapshot.getChildren()) {
                         if (userUID.equals(child.child("posterID").getValue().toString())) {
-                            Worker worker = new Worker(child.getValue(Worker.class));
-                            workersList.add(worker);
-                            break;
+                            if(child.child("deleted").getValue().toString().equals("false")) {
+                                Worker worker = new Worker(child.getValue(Worker.class));
+                                workersList.add(worker);
+                                break;
+                            }
+                            else
+                                break;
 
                         } else
                             Toast.makeText(DeleteWorker.this, "لم تقم بإضافة عامل", Toast.LENGTH_SHORT).show();

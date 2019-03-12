@@ -20,28 +20,56 @@
             app:srcCompat="@drawable/profile" />
 
         <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="إسم العامل"
+            android:textSize="16sp" />
+
+        <TextView
             android:id="@+id/Wname"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="40dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="وظيفته"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/Wskills"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="40dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="سعر اليوم"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/Wprice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="40dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="الدخل المكتسب"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/Wtotalicome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="40dp"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -39,16 +39,21 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
 
         ImageView image = (ImageView)listItem.findViewById(R.id.imageView_Worker);
         if(currentWorker.getPicture() == null)
-            Picasso.get().load(R.drawable.profile).into(image);
+            image.setImageResource(R.drawable.profile);
         else
         Picasso.get().load(currentWorker.getPicture()).into(image);
-        //image.setImageResource(currentWorker.getPicture());
+        //image.setImageResource(R.drawable.profile);
 
         TextView name = (TextView) listItem.findViewById(R.id.textView5);
         name.setText(currentWorker.getName());
 
         TextView price = (TextView) listItem.findViewById(R.id.textView6);
-        price.setText(currentWorker.getPrice());
+        String priceS = currentWorker.getPrice()+wContext.getString(R.string.priceFormat);
+        price.setText(priceS);
+
+        TextView city = (TextView) listItem.findViewById(R.id.textView7);
+        String cityS = wContext.getString(R.string.cityIcon)+"Riyadh";  //getCity************
+        city.setText(cityS);
 
         return listItem;
     }

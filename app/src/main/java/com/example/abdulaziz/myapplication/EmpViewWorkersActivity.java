@@ -1,8 +1,11 @@
 package com.example.abdulaziz.myapplication;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -36,7 +39,7 @@ public class EmpViewWorkersActivity extends AppCompatActivity {
           @Override
           public void onDataChange(DataSnapshot dataSnapshot) {
 
-
+              workersList.clear();
               for (DataSnapshot child : dataSnapshot.getChildren()) {
 
 
@@ -56,6 +59,18 @@ public class EmpViewWorkersActivity extends AppCompatActivity {
           @Override
           public void onCancelled(DatabaseError databaseError) {
               Toast.makeText(EmpViewWorkersActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+
+          }
+      });
+
+
+      listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+          @Override
+          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+              Intent intent = new Intent(EmpViewWorkersActivity.this, WorkerProfileActivity.class);
+              intent.putExtra("id",position);
+              //intent.putExtra("month",);
+              startActivity(intent);
 
           }
       });

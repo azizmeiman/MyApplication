@@ -1,10 +1,12 @@
 package com.example.abdulaziz.myapplication;
 
-import android.support.annotation.NonNull;
+
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,37 +19,32 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class viewworkerinfo extends AppCompatActivity {
 
-    String workername;
-    String workerprice;
-    ArrayList<Worker> workersList;
+public class editworkers extends AppCompatActivity {
+
+
+
+    private ListView listView;
+    private WorkerAdapter wAdapter;
+    private ArrayList<Worker> workersList;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewworkerinfo);
-        ImageView imageView = (ImageView) findViewById(R.id.imageView10);
-        final TextView workerName = (TextView) findViewById(R.id.Wname);
-        final TextView WorkerSkills = (TextView) findViewById(R.id.Wskills);
-        final TextView WorkerPrice = (TextView) findViewById(R.id.Wprice);
-        final TextView WorkerIncome = (TextView) findViewById(R.id.Wtotalicome);
-        final TextView namelabel = (TextView) findViewById(R.id.textView10);
-        final TextView skilllabel = (TextView) findViewById(R.id.textView11);
-        final TextView pricelabel = (TextView) findViewById(R.id.textView12);
-        final TextView incomelabel = (TextView) findViewById(R.id.textView13);
-
-        final int i = getIntent().getIntExtra("id",0);
+        setContentView(R.layout.activity_editworker);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
+        mAuth = FirebaseAuth.getInstance();
 
-        final FirebaseAuth  mAuth = FirebaseAuth.getInstance();
+
+        listView = (ListView) findViewById(R.id.editworkers);
 
         workersList = new ArrayList<>();
-
         final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         final String userUID = currentUser.getUid();
+
 
         myRef.child("Worker").addValueEventListener(new ValueEventListener() {
 
@@ -63,28 +60,25 @@ public class viewworkerinfo extends AppCompatActivity {
                                 Worker worker = new Worker(child.getValue(Worker.class));
                                 workersList.add(worker);
                                 break;
-
                             }
                             else
                                 break;
                         }
+
                     }
 
 
-                  }
-
-                Worker w1 = workersList.get(i);
-                workerName.setText(w1.getName());
-                WorkerSkills.setText(w1.getSkills());
-                WorkerPrice.setText(String.valueOf(w1.getPrice()));
-                WorkerIncome.setText(String.valueOf(w1.getTotalIncome()));
+                }
+                wAdapter = new WorkerAdapter(editworkers.this, workersList);
+                listView.setAdapter(wAdapter);
 
 
-                 }
+            }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(viewworkerinfo.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(editworkers.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -93,5 +87,23 @@ public class viewworkerinfo extends AppCompatActivity {
 
 
 
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(editworkers.this, editingworker.class);
+                intent.putExtra("id",position);
+                startActivity(intent);
+
+            }
+        });
+
+
+
     }
+
+
 }
+
+

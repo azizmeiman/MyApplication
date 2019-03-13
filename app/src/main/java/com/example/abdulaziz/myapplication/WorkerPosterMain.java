@@ -23,6 +23,15 @@ public class WorkerPosterMain extends AppCompatActivity {
         final Button ReportsButton = (Button) findViewById(R.id.ReportsBut);
         final Button ChatwithAdminButton = (Button) findViewById(R.id.ChatwithAdminBut);
 
+
+        ViewWorkerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ViewWorkerIntent = new Intent(WorkerPosterMain.this, ViewWorkesActivity.class );
+                startActivity(ViewWorkerIntent);
+            }
+        });
+
         AddWorkerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,11 +40,11 @@ public class WorkerPosterMain extends AppCompatActivity {
             }
         });
 
-        ViewWorkerButton.setOnClickListener(new View.OnClickListener() {
+        EditWorkerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ViewWorkerIntent = new Intent(WorkerPosterMain.this, ViewWorkesActivity.class );
-                startActivity(ViewWorkerIntent);
+                Intent EditWorkerIntent = new Intent(WorkerPosterMain.this, editworkers.class );
+                startActivity(EditWorkerIntent);
             }
         });
 
@@ -46,6 +55,10 @@ public class WorkerPosterMain extends AppCompatActivity {
                 startActivity(DeleteWorkerIntent);
             }
         });
+
+
+
+
 
         
 

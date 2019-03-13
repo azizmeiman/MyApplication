@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".editingworker"></activity>
+        <activity android:name=".editworkers" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Splash">
             <intent-filter>
@@ -28,11 +29,9 @@
         <activity android:name=".EmployerMainActivity" />
         <activity android:name=".searchForWorkerActivity" />
         <activity android:name=".addworker" />
-        <activity android:name=".ViewWorkesActivity"/>
-        <activity android:name=".viewworkerinfo"/>
-        <activity android:name=".DeleteWorker"/>
-
-
+        <activity android:name=".ViewWorkesActivity" />
+        <activity android:name=".viewworkerinfo" />
+        <activity android:name=".DeleteWorker" />
 
     </application>
 

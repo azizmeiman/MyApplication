@@ -64,8 +64,7 @@ public class DeleteWorker extends AppCompatActivity {
                             else
                                 break;
 
-                        } else
-                            Toast.makeText(DeleteWorker.this, "لم تقم بإضافة عامل", Toast.LENGTH_SHORT).show();
+                        }
 
                     }
 

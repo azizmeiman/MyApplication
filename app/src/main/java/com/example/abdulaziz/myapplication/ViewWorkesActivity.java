@@ -64,8 +64,7 @@ public class ViewWorkesActivity extends AppCompatActivity {
                                 }
                                 else
                                     break;
-                        }else
-                            Toast.makeText(ViewWorkesActivity.this,"لايوجد لديك عمال", Toast.LENGTH_SHORT).show();
+                        }
 
                     }
 

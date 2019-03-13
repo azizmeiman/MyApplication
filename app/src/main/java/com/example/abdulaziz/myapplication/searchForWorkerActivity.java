@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,9 +100,10 @@ public class searchForWorkerActivity extends AppCompatActivity {
         final Spinner skillID =  (Spinner) findViewById(R.id.skillsSpinner);
 
         List<String> skillL = new ArrayList<String>();
-     skillL.add("مزارع");
-     skillL.add("ميكانيكي الآت");
-     skillL.add("سباك");
+     skillL.add("Farmer");
+     skillL.add("Driver");
+     skillL.add("Other");
+
 
         final ArrayAdapter<String> skill = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, skillL);
         skillID.setAdapter(skill);
@@ -126,8 +128,42 @@ public class searchForWorkerActivity extends AppCompatActivity {
         listAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentWorker = new Intent(searchForWorkerActivity.this, ViewWorkesActivity.class);
+                Intent intentWorker = new Intent(searchForWorkerActivity.this, EmpViewWorkersActivity.class);
                 startActivity(intentWorker);
+            }
+        });
+
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentSearchResult = new Intent(searchForWorkerActivity.this, EmpViewWorkersActivity.class);
+               int monthI,dayI;
+               monthI=0; dayI=0;
+               String cityI="";
+               String skillI="";
+               // String skillsArr[] = new String[6];
+                String dayString = (String)day.getSelectedItem();
+                String monthString = (String)month.getSelectedItem();
+
+                dayString = dayString.substring(0,2);
+                monthString = monthString.substring(0,2);
+
+                dayI = Integer.parseInt(dayString);
+                monthI = Integer.parseInt(monthString);
+                cityI = (String) cityID.getSelectedItem();
+                skillI = (String) skillID.getSelectedItem();
+
+                Bundle extras = new Bundle();
+                extras.putInt("EXTRA_DAYS",dayI);
+                extras.putInt("EXTRA_MONTHS",monthI);
+                extras.putString("EXTRA_CITY",cityI);
+                extras.putString("EXTRA_SKILL",skillI);
+               // extras.putStringArray("EXTRA_SKILLS",skillsArr);
+
+                intentSearchResult.putExtras(extras);
+
+                startActivity(intentSearchResult);
             }
         });
     }

@@ -30,8 +30,8 @@ public class DBAccess {
 //        FirebaseDatabase.getInstance().getReference("Worker")
 //        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
 //        .setValue(w);
-                FirebaseDatabase.getInstance().getReference("Worker")
-                .push().setValue(w);
+        myRef.child("Worker").push().setValue(w);
+        String key = myRef.getKey();
 
     }
 

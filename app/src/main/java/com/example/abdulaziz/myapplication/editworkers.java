@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class ViewWorkesActivity extends AppCompatActivity {
+public class editworkers extends AppCompatActivity {
 
 
 
@@ -33,14 +32,14 @@ public class ViewWorkesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_workes);
+        setContentView(R.layout.activity_editworker);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
         mAuth = FirebaseAuth.getInstance();
 
 
-        listView = (ListView) findViewById(R.id.WorkersList);
+        listView = (ListView) findViewById(R.id.editworkers);
 
         workersList = new ArrayList<>();
         final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -57,20 +56,20 @@ public class ViewWorkesActivity extends AppCompatActivity {
 
                     for(DataSnapshot c : dataSnapshot.getChildren()){
                         if(userUID.equals(child.child("posterID").getValue().toString())){
-                                if(child.child("deleted").getValue().toString().equals("false")) {
-                                    Worker worker = new Worker(child.getValue(Worker.class));
-                                    workersList.add(worker);
-                                    break;
-                                }
-                                else
-                                    break;
+                            if(child.child("deleted").getValue().toString().equals("false")) {
+                                Worker worker = new Worker(child.getValue(Worker.class));
+                                workersList.add(worker);
+                                break;
+                            }
+                            else
+                                break;
                         }
 
                     }
 
 
                 }
-                wAdapter = new WorkerAdapter(ViewWorkesActivity.this, workersList);
+                wAdapter = new WorkerAdapter(editworkers.this, workersList);
                 listView.setAdapter(wAdapter);
 
 
@@ -78,7 +77,7 @@ public class ViewWorkesActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ViewWorkesActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(editworkers.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });
@@ -93,7 +92,7 @@ public class ViewWorkesActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ViewWorkesActivity.this, viewworkerinfo.class);
+                Intent intent = new Intent(editworkers.this, editingworker.class);
                 intent.putExtra("id",position);
                 startActivity(intent);
 

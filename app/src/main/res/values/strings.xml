@@ -17,4 +17,6 @@
     <string name="CooseCityAr">اختر مدينة:</string>
     <string name="PeriodAr">اختر المدة:</string>
     <string name="selectSkillAr">اختر المهارات اللازمة:</string>
+    <string name="cityIcon">📍</string>
+    <string name="priceFormat">.00SR per H</string>
 </resources>

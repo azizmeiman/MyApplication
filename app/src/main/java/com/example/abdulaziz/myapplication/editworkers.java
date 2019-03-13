@@ -50,15 +50,17 @@ public class editworkers extends AppCompatActivity {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                workersList.clear();
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
                     for(DataSnapshot c : dataSnapshot.getChildren()){
                         if(userUID.equals(child.child("posterID").getValue().toString())){
                             if(child.child("deleted").getValue().toString().equals("false")) {
+
                                 Worker worker = new Worker(child.getValue(Worker.class));
                                 workersList.add(worker);
+
                                 break;
                             }
                             else

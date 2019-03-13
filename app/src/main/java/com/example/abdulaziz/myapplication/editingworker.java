@@ -113,7 +113,8 @@ public class editingworker extends AppCompatActivity {
                         w1.setPrice(workerfee);
                         w1.setTotalIncome(totalIncome);
 
-                        myRef.child("Worker").child(w1.getID()).setValue(w1);
+
+                        myRef.child("Worker").child(w1.getID()).setValue(w1); finish();
                     }
 
 

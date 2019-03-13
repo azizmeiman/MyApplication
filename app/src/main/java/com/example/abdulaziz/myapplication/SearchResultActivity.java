@@ -3,6 +3,8 @@ package com.example.abdulaziz.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,7 +30,7 @@ public class SearchResultActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
 
-        listView = (ListView) findViewById(R.id.WorkersList2);
+        listView = (ListView) findViewById(R.id.searchResultList);
         workersList = new ArrayList<>();
 
 
@@ -44,28 +46,28 @@ public class SearchResultActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+                    workersList.clear();
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
-                    for (DataSnapshot c : child.getChildren()) {
 
-                        if (c.getRef().equals("skills") && skill.equals(c.getValue().toString())) {
+                        if(skill.equals(child.child("skills").getValue().toString())){
 
-                            Worker worker = new Worker(child.getValue(Worker.class));
-                            workersList.add(worker);
-                            break;
+                                Worker worker = new Worker(child.getValue(Worker.class));
+                                workersList.add(worker);
+
+                                break;
+
+
                         }
 
-                    }
 
 
-                }
-                if(workersList.size()!= 0 ) {
-                    wAdapter = new WorkerAdapter(SearchResultActivity.this, workersList);
-                    listView.setAdapter(wAdapter);
-                }else
-                    Toast.makeText(SearchResultActivity.this, "لايوجد عمال يطابقون عملية البحث", Toast.LENGTH_SHORT).show();
+                } String a = String.valueOf(workersList.size());
+                Toast.makeText(SearchResultActivity.this, a, Toast.LENGTH_SHORT).show();
 
+                wAdapter = new WorkerAdapter(SearchResultActivity.this, workersList);
+                listView.setAdapter(wAdapter);
             }
 
             @Override
@@ -77,6 +79,17 @@ public class SearchResultActivity extends AppCompatActivity {
 
 
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                Intent intent = new Intent(SearchResultActivity.this, WorkerProfileActivity.class);
+                intent.putExtra("id",workersList.get(position).getID());
+                intent.putExtra("month",months);
+                intent.putExtra("day",days);
+                startActivity(intent);
+
+            }
+        });
     }
 }

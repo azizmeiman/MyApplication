@@ -64,13 +64,10 @@
             android:hint="الجنسية"
             android:inputType="textPersonName" />
 
-                <EditText
-                    android:id="@+id/WorkerCity"
+                <Spinner
+                    android:id="@+id/spinnerCity"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="المدينة"
-                    android:inputType="textPersonName" />
+                    android:layout_height="wrap_content" />
 
                 <EditText
             android:id="@+id/WorkerBDateText"
@@ -80,15 +77,12 @@
             android:hint="تاريخ الميلاد"
             android:inputType="date" />
 
-        <EditText
-            android:id="@+id/WorkerSkillsText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="المهن"
-            android:inputType="textPersonName" />
+                <Spinner
+                    android:id="@+id/spinnerSkills"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-        <EditText
+                <EditText
             android:id="@+id/WorkerFeesText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

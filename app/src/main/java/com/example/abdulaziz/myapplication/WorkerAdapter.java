@@ -53,7 +53,7 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
 
 
         TextView city = (TextView) listItem.findViewById(R.id.textView7);
-        String cityS = wContext.getString(R.string.cityIcon)+"Riyadh";  //getCity************
+        String cityS = wContext.getString(R.string.cityIcon)+currentWorker.getCity();  //getCity************
         city.setText(cityS);
 
         return listItem;

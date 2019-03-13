@@ -9,8 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,6 +24,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class addworker extends AppCompatActivity {
 
@@ -63,9 +68,9 @@ public class addworker extends AppCompatActivity {
         final EditText WorkerIDEdit = (EditText) findViewById(R.id.WorkerIDText);
         final EditText WorkerMobileEdit = (EditText) findViewById(R.id.WorkerMobileText);
         final EditText WorkerNationalityEdit = (EditText) findViewById(R.id.WorkerNationalityText);
-        final EditText WorkerCityEdit = (EditText) findViewById(R.id.WorkerCity);
+        final Spinner WorkerCityEdit = (Spinner) findViewById(R.id.spinnerCity);
         final EditText WorkerBDateEdit = (EditText) findViewById(R.id.WorkerBDateText);
-        final EditText WorkerSkillsEdit = (EditText) findViewById(R.id.WorkerSkillsText);
+        final Spinner WorkerSkillsEdit = (Spinner) findViewById(R.id.spinnerSkills);
         final EditText WorkerFeesEdit = (EditText) findViewById(R.id.WorkerFeesText);
         final Button AddworkerBut = (Button) findViewById(R.id.addworkerBut);
 
@@ -117,6 +122,25 @@ public class addworker extends AppCompatActivity {
             }
         });
 
+
+        List<String> cityL = new ArrayList<String>();
+        cityL.add("الرياض");
+        cityL.add("الدمام");
+        cityL.add("جده");
+        ArrayAdapter<String> citites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cityL);
+        WorkerCityEdit.setAdapter(citites);
+
+
+        List<String> SkillsL = new ArrayList<String>();
+        SkillsL.add("مزارع");
+        SkillsL.add("راعي");
+        SkillsL.add("سائق حراثه");
+
+        ArrayAdapter<String> Skills = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, SkillsL);
+        WorkerSkillsEdit.setAdapter(Skills);
+
+
+
         AddworkerBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,9 +149,9 @@ public class addworker extends AppCompatActivity {
                  WorkerID = WorkerIDEdit.getText().toString();
                  WorkerMobile = WorkerMobileEdit.getText().toString();
                  WorkerNationality = WorkerNationalityEdit.getText().toString();
-                 WorkerCity = WorkerCityEdit.getText().toString();
+                 WorkerCity = WorkerCityEdit.getSelectedItem().toString();
                  WorkerBDDate = WorkerBDateEdit.getText().toString();
-                 WorkerSkills = WorkerSkillsEdit.getText().toString();
+                 WorkerSkills = WorkerSkillsEdit.getSelectedItem().toString();
                  WorkerFees = Integer.parseInt(WorkerFeesEdit.getText().toString());
                  PosterUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                  totalincome = 0; // When worker added total income will be 0
@@ -145,6 +169,8 @@ public class addworker extends AppCompatActivity {
                  pushRef.setValue(worker);
 
                  Toast.makeText(addworker.this, "تمت إضافة العامل", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(addworker.this, WorkerSkills, Toast.LENGTH_SHORT).show();
 
                  finish();
 

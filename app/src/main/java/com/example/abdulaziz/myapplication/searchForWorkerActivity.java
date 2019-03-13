@@ -110,20 +110,6 @@ public class searchForWorkerActivity extends AppCompatActivity {
 
 
 
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String cityS = cityID.getSelectedItem().toString();
-                String monthS = month.getSelectedItem().toString();
-                String dayS = day.getSelectedItem().toString();
-                String skillS = skillID.getSelectedItem().toString();
-
-                //Intent intentWorker = new Intent(searchForWorkerActivity.this, ViewWorkersActivity.class);
-
-
-            }
-        });
-
 
         listAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +123,7 @@ public class searchForWorkerActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentSearchResult = new Intent(searchForWorkerActivity.this, EmpViewWorkersActivity.class);
+                Intent intentSearchResult = new Intent(searchForWorkerActivity.this, SearchResultActivity.class);
                int monthI,dayI;
                monthI=0; dayI=0;
                String cityI="";
@@ -151,6 +137,7 @@ public class searchForWorkerActivity extends AppCompatActivity {
 
                 dayI = Integer.parseInt(dayString);
                 monthI = Integer.parseInt(monthString);
+
                 cityI = (String) cityID.getSelectedItem();
                 skillI = (String) skillID.getSelectedItem();
 

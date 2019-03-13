@@ -56,8 +56,10 @@ public class ViewWorkesActivity extends AppCompatActivity {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
                     for(DataSnapshot c : dataSnapshot.getChildren()){
+
                         if(userUID.equals(child.child("posterID").getValue().toString())){
                                 if(child.child("deleted").getValue().toString().equals("false")) {
+                                    Toast.makeText(ViewWorkesActivity.this, "Hi 44", Toast.LENGTH_LONG).show();
                                     Worker worker = new Worker(child.getValue(Worker.class));
                                     workersList.add(worker);
                                     break;

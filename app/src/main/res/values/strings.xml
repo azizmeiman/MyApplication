@@ -19,4 +19,7 @@
     <string name="selectSkillAr">اختر المهارات اللازمة:</string>
     <string name="cityIcon">📍</string>
     <string name="priceFormat">.00SR per H</string>
+    <string name="HireAr">وظف</string>
+    <string name="chatAr">تحدث مع العارض</string>
+    <string name="sendReqAr">ارسل طلب</string>
 </resources>

@@ -103,6 +103,16 @@ public class editingworker extends AppCompatActivity {
                         int workerfee = Integer.parseInt(WorkerFeesEdit.getText().toString());
                         int totalIncome = Integer.parseInt(WorkerIncomeEdit.getText().toString());
 
+                        WorkerNameEdit.setText("");
+                        WorkerIDEdit.setText("");
+                        WorkerMobileEdit.setText("");
+                        WorkerNationalityEdit.setText("");
+                        WorkerCityEdit.setText("");
+                        WorkerBDateEdit.setText("");
+                        WorkerSkillsEdit.setText("");
+                        WorkerFeesEdit.setText("");
+                        WorkerIncomeEdit.setText("");
+
                         w1.setName(workerName);
                         w1.setWorkerID(WorkerID);
                         w1.setPhonenumber(workermobile);
@@ -113,7 +123,11 @@ public class editingworker extends AppCompatActivity {
                         w1.setPrice(workerfee);
                         w1.setTotalIncome(totalIncome);
 
+
                         myRef.child("Worker").child(w1.getID()).setValue(w1);
+
+                        finish();
+
                     }
 
 

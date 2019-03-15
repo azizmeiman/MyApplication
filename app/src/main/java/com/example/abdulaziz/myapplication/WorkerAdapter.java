@@ -41,7 +41,7 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
         if(currentWorker.getPicture() == null)
             image.setImageResource(R.drawable.profile);
         else
-        Picasso.get().load(currentWorker.getPicture()).noPlaceholder().centerCrop().fit().into(image);
+        Picasso.get().load(currentWorker.getPicture()).into(image);
        // Glide.with(context).load(currentWorker.getPicture()).into(image);
 
         //image.setImageResource(R.drawable.profile);

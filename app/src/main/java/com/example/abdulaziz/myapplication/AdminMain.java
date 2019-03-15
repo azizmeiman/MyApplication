@@ -13,6 +13,7 @@ public class AdminMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
+
         final Button ViewEmpButton = (Button) findViewById(R.id.ViewEmplyer);
 
         ViewEmpButton.setOnClickListener(new View.OnClickListener() {
@@ -22,5 +23,17 @@ public class AdminMain extends AppCompatActivity {
                 startActivity(ViewEmpIntent);
             }
         });
+
+        final Button ViewposterButton = (Button) findViewById(R.id.ViewWorkerPoster);
+
+        ViewposterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ViewposterIntent = new Intent(AdminMain.this, PosterView.class );
+                startActivity(ViewposterIntent);
+            }
+        });
+
+
     }
 }

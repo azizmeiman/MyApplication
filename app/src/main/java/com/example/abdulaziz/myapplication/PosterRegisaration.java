@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -231,7 +232,7 @@ public class PosterRegisaration extends AppCompatActivity {
         if (mImageUri != null) {
             mprogressP.setMessage("Uploading ... ");
             mprogressP.show();
-            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
+            final StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
                     + "." + getFileExtension(mImageUri));
 
             mUploadTask = fileReference.putFile(mImageUri)
@@ -245,11 +246,31 @@ public class PosterRegisaration extends AppCompatActivity {
                             if(orgPicPoster!=null)
                                 orgDocPoster=System.currentTimeMillis()
                                         + "." + getFileExtension(mImageUri);
-                            else
-                                orgPicPoster=System.currentTimeMillis()
-                                        + "." + getFileExtension(mImageUri);
+                            else {
+                                Task<Uri> urlTask = mUploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                                    @Override
+                                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                        if (!task.isSuccessful()) {
+                                            throw task.getException();
+                                        }
 
+                                        // Continue with the task to get the download URL
 
+                                        return fileReference.getDownloadUrl();
+                                    }
+                                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Uri> task) {
+                                        if (task.isSuccessful()) {
+                                            Uri downloadUri = task.getResult();
+                                            orgPicPoster = downloadUri.toString();
+                                        } else {
+                                            // Handle failures
+                                            // ...
+                                        }
+                                    }
+                                });
+                            }
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

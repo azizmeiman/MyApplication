@@ -20,6 +20,7 @@ public class WorkerPoster {
     public WorkerPoster(){
 
     }
+
     public WorkerPoster(String Email, String RPname, String RPID, String RPphone, String cityID, String orgName, String orgPic, String orgDoc) {
         this.RPname = RPname;
         this.RPID = RPID;
@@ -30,6 +31,18 @@ public class WorkerPoster {
         this.orgDoc = orgDoc;
         this.workers = workers;
 
+    }
+
+    public WorkerPoster(WorkerPoster value) {
+
+        this.Email = value.getEmail();
+        this.RPname = value.getRPname();
+        this.RPID = value.getRPID();
+        this.RPphone = value.getRPphone();
+        this.cityID = value.getCityID();
+        this.orgName = value.getOrgName();
+        this.orgDoc = value.getOrgDoc();
+        this.orgPic = value.getOrgPic();
     }
 
     public String getEmail() {

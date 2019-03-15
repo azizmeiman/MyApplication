@@ -34,25 +34,25 @@ public class EmpAdapter extends ArrayAdapter<Employer> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View listItem = convertView;
-        if(listItem == null)
-            listItem = LayoutInflater.from(EmpContext).inflate(R.layout.list_item,parent,false);
+        View listItemEmp = convertView;
+        if(listItemEmp == null)
+            listItemEmp = LayoutInflater.from(EmpContext).inflate(R.layout.activity_list_item_emp,parent,false);
 
         Employer currentEmp = EmpList.get(position);
 
-        ImageView image = (ImageView)listItem.findViewById(R.id.imageView_emp);
+        ImageView image = (ImageView)listItemEmp.findViewById(R.id.imageView_emp);
         if(currentEmp.getOrgPic() == null)
-            Picasso.get().load(R.drawable.profile).into(image);
+            image.setImageResource(R.drawable.profile);
         else
             Picasso.get().load(currentEmp.getOrgPic()).into(image);
         //image.setImageResource(currentWorker.getPicture());
 
-        TextView name = (TextView) listItem.findViewById(R.id.textViewEmp);
+        TextView name = (TextView) listItemEmp.findViewById(R.id.textViewEmp);
         name.setText(currentEmp.getRPname());
 
-        TextView Orgname = (TextView) listItem.findViewById(R.id.textView6emp);
+        TextView Orgname = (TextView) listItemEmp.findViewById(R.id.textView6emp);
         Orgname.setText(currentEmp.getOrgName());
 
-        return listItem;
+        return listItemEmp;
     }
 }

@@ -16,19 +16,20 @@ import java.util.ArrayList;
 public class EmployerView extends AppCompatActivity {
 
 
-        private ListView listView;
+        private ListView listViewEmp;
         private EmpAdapter eAdapter;
         private ArrayList<Employer> EmpList;
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_view_workes);
+            setContentView(R.layout.activity_employer_view);
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference();
+            final  DatabaseReference myRef = database.getReference();
 
-            listView = (ListView) findViewById(R.id.EmpList);
+            listViewEmp = (ListView) findViewById(R.id.posterList);
             EmpList = new ArrayList<>();
 
 
@@ -47,7 +48,7 @@ public class EmployerView extends AppCompatActivity {
 
                     }
                     eAdapter = new EmpAdapter(EmployerView.this, EmpList);
-                    listView.setAdapter(eAdapter);
+                    listViewEmp.setAdapter(eAdapter);
 
                 }
 

@@ -15,12 +15,12 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="385dp"
-            android:layout_height="109dp">
+            android:layout_height="232dp">
 
             <Button
                 android:id="@+id/ViewEmplyer"
-                android:layout_width="105dp"
-                android:layout_height="61dp"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
                 android:background="@color/colorPrimary"
@@ -28,29 +28,37 @@
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
                 android:textSize="16sp" />
 
-            <Button
-                android:id="@+id/ViewWorkerPoster"
-                android:layout_width="105dp"
-                android:layout_height="61dp"
-                android:layout_marginLeft="120dp"
-                android:layout_marginTop="30dp"
-                android:background="@color/colorPrimary"
-                android:text="عرض ناشرين العمال "
-                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ViewWorkerPoster"
+                    android:layout_width="105dp"
+                    android:layout_height="61dp"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorPrimary"
+                    android:text="عرض ناشرين العمال "
+                    android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="387dp"
-            android:layout_height="151dp"
+            android:layout_height="257dp"
             android:orientation="horizontal"
             tools:layout_editor_absoluteX="1dp"
             tools:layout_editor_absoluteY="120dp">
 
             <Button
                 android:id="@+id/reports"
-                android:layout_width="105dp"
-                android:layout_height="61dp"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
                 android:background="@color/colorPrimary"
@@ -60,18 +68,24 @@
                 tools:layout_editor_absoluteX="256dp"
                 tools:layout_editor_absoluteY="160dp" />
 
-            <Button
-                android:id="@+id/ViewAllContract"
-                android:layout_width="105dp"
-                android:layout_height="61dp"
-                android:layout_marginLeft="120dp"
-                android:layout_marginTop="30dp"
-                android:background="@color/colorPrimary"
-                android:text="عرض جميع العقود"
-                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                android:textSize="16sp"
-                tools:layout_editor_absoluteX="27dp"
-                tools:layout_editor_absoluteY="160dp" />
+            <LinearLayout
+                android:layout_width="273dp"
+                android:layout_height="129dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ViewAllContract"
+                    android:layout_width="105dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorPrimary"
+                    android:text="عرض جميع العقود"
+                    android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                    android:textSize="16sp"
+                    tools:layout_editor_absoluteX="27dp"
+                    tools:layout_editor_absoluteY="160dp" />
+            </LinearLayout>
         </LinearLayout>
 
 

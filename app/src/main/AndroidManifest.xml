@@ -21,22 +21,41 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegExpEmp" />
-        <activity android:name=".PosterRegisaration" />
-        <activity android:name=".Login" />
+        <activity android:name=".RegExpEmp"
+            android:label="Employer Registration"/>
+        <activity android:name=".PosterRegisaration"
+            android:label="Worker Poster Registration"/>
+        <activity android:name=".Login"
+            android:label="Login"/>
         <activity android:name=".ActivityTestForLoginLogout" />
-        <activity android:name=".WorkerPosterMain" />
-        <activity android:name=".EmployerMainActivity" />
-        <activity android:name=".searchForWorkerActivity" />
-        <activity android:name=".addworker" />
-        <activity android:name=".ViewWorkesActivity" />
-        <activity android:name=".viewworkerinfo" />
-        <activity android:name=".DeleteWorker" />
-        <activity android:name=".AdminMain" />
-        <activity android:name=".EmployerView" />
-        <activity android:name=".PosterView" />
-
-
+        <activity android:name=".WorkerPosterMain"
+            android:label="Worker Poster"/>
+        <activity android:name=".EmployerMainActivity"
+            android:label="Employer"/>
+        <activity android:name=".searchForWorkerActivity"
+            android:label="Search for Worker"/>
+        <activity android:name=".addworker"
+            android:label="Add Worker"/>
+        <activity android:name=".ViewWorkesActivity"
+            android:label="Workers"/>
+        <activity android:name=".viewworkerinfo"
+            android:label="Workers"/>
+        <activity android:name=".DeleteWorker"
+            android:label="Delete Worker"/>
+        <activity android:name=".AdminMain"
+            android:label="Admin"/>
+        <activity android:name=".EmployerView"
+            android:label="Employers"/>
+        <activity android:name=".PosterView"
+            android:label="Worker Posters"/>
+        <activity android:name=".EmpViewWorkersActivity"
+            android:label="Workers"/>
+        <activity android:name=".SearchResultActivity"
+            android:label="Search Result"/>
+        <activity android:name=".WorkerProfileActivity"
+            android:label="Worker Profile"/>
+        <activity android:name=".RequestActivity"
+            android:label="Requst"/>
 
 
     </application>

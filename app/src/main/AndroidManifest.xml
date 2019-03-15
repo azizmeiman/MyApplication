@@ -32,6 +32,12 @@
         <activity android:name=".ViewWorkesActivity" />
         <activity android:name=".viewworkerinfo" />
         <activity android:name=".DeleteWorker" />
+        <activity android:name=".AdminMain" />
+        <activity android:name=".EmployerView" />
+        <activity android:name=".PosterView" />
+
+
+
 
     </application>
 

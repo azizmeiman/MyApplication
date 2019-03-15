@@ -19,6 +19,18 @@ public class Employer {
     public Employer(){
 
     }
+
+    public Employer(Employer value) {
+        this.Email = value.getEmail();
+        this.RPname = value.getRPname();
+        this.RPID = value.getRPID();
+        this.RPphoneNum = value.getRPphoneNum();
+        this.cityID = value.getCityID();
+        this.orgName = value.getOrgName();
+        this.orgDoc = value.getOrgDoc();
+        this.orgPic = value.getOrgPic();
+    }
+
     public Employer(  String Email, String RPname, String RPID, String RPphoneNum, String cityID, String orgName, String orgDoc, String orgPic) {
         this.Email = Email;
         this.RPname = RPname;
@@ -30,6 +42,7 @@ public class Employer {
         this.orgPic = orgPic;
 
     }
+
 
 
     public void setEmail(String email) {

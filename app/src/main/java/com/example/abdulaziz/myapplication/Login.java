@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity {
 
                             if (userType.equals("Admin")) {
 
-                                Intent intentMain = new Intent(Login.this, ActivityTestForLoginLogout.class);
+                                Intent intentMain = new Intent(Login.this, AdminMain.class);
                                 startActivity(intentMain);
                             } else if (userType.equals("WorkerPoster")) {
                                 Intent intentMain = new Intent(Login.this, WorkerPosterMain.class);

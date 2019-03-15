@@ -239,8 +239,7 @@ public class addworker extends AppCompatActivity {
                                 Workerpdf=System.currentTimeMillis()
                                         + "." + getFileExtension(mImageUri);
                             else
-                                Workerpic=System.currentTimeMillis()
-                                        + "." + getFileExtension(mImageUri);
+                                Workerpic=taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
 
 
 

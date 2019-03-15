@@ -115,6 +115,25 @@ public class searchForWorkerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentWorker = new Intent(searchForWorkerActivity.this, EmpViewWorkersActivity.class);
+                int monthI,dayI;
+                monthI=0; dayI=0;
+                String cityI="";
+                String skillI="";
+                // String skillsArr[] = new String[6];
+                String dayString = (String)day.getSelectedItem();
+                String monthString = (String)month.getSelectedItem();
+
+                dayString = dayString.substring(0,2);
+                monthString = monthString.substring(0,2);
+
+                dayI = Integer.parseInt(dayString);
+                monthI = Integer.parseInt(monthString);
+
+                Bundle extras = new Bundle();
+                extras.putInt("EXTRA_DAYS",dayI);
+                extras.putInt("EXTRA_MONTHS",monthI);
+
+                intentWorker.putExtras(extras);
                 startActivity(intentWorker);
             }
         });

@@ -30,6 +30,11 @@ public class EmpViewWorkersActivity extends AppCompatActivity {
       FirebaseDatabase database = FirebaseDatabase.getInstance();
       DatabaseReference myRef = database.getReference();
 
+      Intent intent = getIntent();
+      Bundle extras = intent.getExtras();
+      final int months = extras.getInt("EXTRA_MONTHS");
+      final int days = extras.getInt("EXTRA_DAYS");
+
       listView = (ListView) findViewById(R.id.WorkersList2);
       workersList = new ArrayList<>();
 
@@ -68,8 +73,11 @@ public class EmpViewWorkersActivity extends AppCompatActivity {
           @Override
           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
               Intent intent = new Intent(EmpViewWorkersActivity.this, WorkerProfileActivity.class);
-              intent.putExtra("id",position);
-              //intent.putExtra("month",);
+
+              intent.putExtra("id",workersList.get(position).getID());
+              intent.putExtra("month",months);
+              intent.putExtra("day",days);
+
               startActivity(intent);
 
           }

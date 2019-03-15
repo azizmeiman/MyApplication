@@ -22,4 +22,8 @@
     <string name="HireAr">وظف</string>
     <string name="chatAr">تحدث مع العارض</string>
     <string name="sendReqAr">ارسل طلب</string>
+    <string name="startDateAr">تاريخ البداية</string>
+    <string name="endDate">تاريخ الناه</string>
+    <string name="endDateAr">تاريخ النهاية</string>
+    <string name="feedbackAr">تقييم المستخدمين</string>
 </resources>

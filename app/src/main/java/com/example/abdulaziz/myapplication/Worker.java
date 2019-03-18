@@ -21,6 +21,7 @@ public class Worker {
     private int TotalIncome;
     private String ID;
     private boolean isAvailable;
+    private int TotalRate;
 
 
 
@@ -42,9 +43,10 @@ public class Worker {
         this.TotalIncome = w.getTotalIncome();
         this.ID = w.getID();
         this.isAvailable= w.isAvailable();
+        this.TotalRate = w.getTotalRate();
     }
 
-    public Worker(String name, String workerID, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income) {
+    public Worker(String name, String workerID, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income, int Rate) {
         this.name = name;
         this.WorkerID = workerID;
         this.isDeleted = false; // 1 means avilable
@@ -58,11 +60,12 @@ public class Worker {
         this.PosterID = PosterID;
         this.Workerpdf = Workerpdf;
         this.TotalIncome = Income;
+        this.TotalRate = Rate;
         //this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
 
     }
 
-    public Worker(String name, String workerID, boolean isDeleted, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income,String id , boolean isAvailable) {
+    public Worker(String name, String workerID, boolean isDeleted, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income,String id , boolean isAvailable, int Rate) {
         this.name = name;
         this.WorkerID = workerID;
         this.isDeleted = isDeleted; // 1 means avilable
@@ -79,9 +82,16 @@ public class Worker {
         //this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
         this.ID = id;
         this.isAvailable= isAvailable;
-
+        this.TotalRate = Rate;
     }
 
+    public int getTotalRate() {
+        return TotalRate;
+    }
+
+    public void setTotalRate(int totalRate) {
+        this.TotalRate = totalRate;
+    }
 
     public String getName() {
         return name;

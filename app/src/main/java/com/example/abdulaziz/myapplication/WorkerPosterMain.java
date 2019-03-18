@@ -57,6 +57,15 @@ public class WorkerPosterMain extends AppCompatActivity {
         });
 
 
+        ReportsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ReportWorkerPosterIntent = new Intent(WorkerPosterMain.this, workerposterreports.class );
+                startActivity(ReportWorkerPosterIntent);
+            }
+        });
+
+
 
 
 

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".workerposterreports">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/workerpostertoprate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="30dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="الأعلى تقييماً"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
+
+            <Button
+                android:id="@+id/workerposterbadrate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="30dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="الأقل تقييماً"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="181dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/workerpostehighesticome"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="30dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="الأعلى دخلاً"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
+
+            <Button
+                android:id="@+id/workerposterlowesticome"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="30dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="الأقل دخلاً"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/systemfees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="مطالبات التطبيق"
+            android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
+
+    </LinearLayout>
+
+</RelativeLayout>

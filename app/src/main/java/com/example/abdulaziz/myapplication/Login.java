@@ -79,7 +79,6 @@ public class Login extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             String userType = dataSnapshot.child("UserType").getValue().toString();
 
-
                             if (userType.equals("Admin")) {
 
                                 Intent intentMain = new Intent(Login.this, AdminMain.class);

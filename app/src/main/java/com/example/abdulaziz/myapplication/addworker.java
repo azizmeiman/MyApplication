@@ -47,6 +47,7 @@ public class addworker extends AppCompatActivity {
     int totalincome;
     boolean isAvailable;
     boolean deleted;
+    int Rate;
 
 
 
@@ -160,6 +161,7 @@ public class addworker extends AppCompatActivity {
                  totalincome = 0; // When worker added total income will be 0
                  isAvailable=true;
                  deleted = false;
+                 Rate = 5;
 
 
 
@@ -167,13 +169,11 @@ public class addworker extends AppCompatActivity {
                  String key_ID = pushRef.getKey();
 
                  Worker worker = new Worker(WorkerName, WorkerID,deleted, WorkerFees, Workerpic, WorkerNationality, WorkerCity, WorkerSkills, WorkerMobile,
-                                              WorkerBDDate, PosterUID, Workerpdf, totalincome,key_ID,isAvailable);
+                                              WorkerBDDate, PosterUID, Workerpdf, totalincome,key_ID,isAvailable,Rate);
 
                  pushRef.setValue(worker);
 
                  Toast.makeText(addworker.this, "تمت إضافة العامل", Toast.LENGTH_SHORT).show();
-
-                Toast.makeText(addworker.this, WorkerSkills, Toast.LENGTH_SHORT).show();
 
                  finish();
 

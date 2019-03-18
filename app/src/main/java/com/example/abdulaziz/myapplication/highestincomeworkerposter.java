@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Switch;
+
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,28 +19,28 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
-public class ViewWorkesActivity extends AppCompatActivity {
 
+public class highestincomeworkerposter extends AppCompatActivity {
 
-
-    private ListView listView;
+    private ListView highestIncomeWorkersList;
     private WorkerAdapter wAdapter;
     private ArrayList<Worker> workersList;
     private FirebaseAuth mAuth;
+    int n = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_workes);
+        setContentView(R.layout.activity_highestincomeworkerposter);
+        highestIncomeWorkersList = (ListView) findViewById(R.id.highestIncomeWorkers);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
         mAuth = FirebaseAuth.getInstance();
-
-
-        listView = (ListView) findViewById(R.id.WorkersList);
 
         workersList = new ArrayList<>();
         final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -58,29 +58,45 @@ public class ViewWorkesActivity extends AppCompatActivity {
                     for(DataSnapshot c : dataSnapshot.getChildren()){
 
                         if(userUID.equals(child.child("posterID").getValue().toString())){
-                                if(child.child("deleted").getValue().toString().equals("false")) {
-                                    Worker worker = new Worker(child.getValue(Worker.class));
-                                    workersList.add(worker);
-                                    break;
-                                }
-                                else
-                                    break;
-                        }
+                            if(child.child("deleted").getValue().toString().equals("false")) {
+                                n++;
+                                Worker worker = new Worker(child.getValue(Worker.class));
+                                workersList.add(worker);
 
+                                Collections.sort(workersList, new Comparator<Worker>() {
+                                    @Override
+                                    public int compare(Worker o1, Worker o2) {
+
+                                        if (o1.getTotalIncome() ==
+                                                o2.getTotalIncome())
+                                        {
+                                            return 0;
+                                        }
+                                        else if (o1.getTotalIncome() >
+                                                o2.getTotalIncome())
+                                        {
+                                            return -1;
+                                        }
+                                        return 1;
+                                    }
+                                });
+
+                            }break;
+                        }
+                        else
+                            break;
                     }
 
-
                 }
-                wAdapter = new WorkerAdapter(ViewWorkesActivity.this, workersList);
-                listView.setAdapter(wAdapter);
 
-
-
+                wAdapter = new WorkerAdapter(highestincomeworkerposter.this, workersList);
+                highestIncomeWorkersList.setAdapter(wAdapter);
             }
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ViewWorkesActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(highestincomeworkerposter.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });
@@ -92,11 +108,11 @@ public class ViewWorkesActivity extends AppCompatActivity {
 
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        highestIncomeWorkersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Worker w = workersList.get(position);
-                Intent intent = new Intent(ViewWorkesActivity.this, viewworkerinfo.class);
+                Intent intent = new Intent(highestincomeworkerposter.this, viewworkerinfo.class);
                 intent.putExtra("workerid",w.getID());
                 startActivity(intent);
 

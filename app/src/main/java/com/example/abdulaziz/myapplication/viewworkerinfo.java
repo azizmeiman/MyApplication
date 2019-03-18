@@ -1,9 +1,11 @@
 package com.example.abdulaziz.myapplication;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -27,7 +30,7 @@ public class viewworkerinfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewworkerinfo);
-        ImageView imageView = (ImageView) findViewById(R.id.imageView10);
+        final ImageView imageView = (ImageView) findViewById(R.id.imageView10);
         final TextView workerName = (TextView) findViewById(R.id.Wname);
         final TextView WorkerSkills = (TextView) findViewById(R.id.Wskills);
         final TextView WorkerPrice = (TextView) findViewById(R.id.Wprice);
@@ -36,58 +39,41 @@ public class viewworkerinfo extends AppCompatActivity {
         final TextView skilllabel = (TextView) findViewById(R.id.textView11);
         final TextView pricelabel = (TextView) findViewById(R.id.textView12);
         final TextView incomelabel = (TextView) findViewById(R.id.textView13);
+        final TextView ratelabel = (TextView) findViewById(R.id.textView17);
+        final RatingBar rate = (RatingBar) findViewById(R.id.ratingBar3);
 
-        final int i = getIntent().getIntExtra("id",0);
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        final String workerid = extras.getString("workerid");
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
 
         final FirebaseAuth  mAuth = FirebaseAuth.getInstance();
+        final String currentWorker = mAuth.getCurrentUser().getUid();
 
         workersList = new ArrayList<>();
-
-        final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        final String userUID = currentUser.getUid();
 
         myRef.child("Worker").addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                Worker w1 = dataSnapshot.child(workerid).getValue(Worker.class);
 
-
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-
-                    for(DataSnapshot c : dataSnapshot.getChildren()){
-                        if(userUID.equals(child.child("posterID").getValue().toString())){
-                            if(child.child("deleted").getValue().toString().equals("false")) {
-                                Worker worker = new Worker(child.getValue(Worker.class));
-                                workersList.add(worker);
-                                break;
-
-                            }
-                            else
-                                break;
-                        }
-                    }
-
-
-                  }
-
-                Worker w1 = workersList.get(i);
                 workerName.setText(w1.getName());
                 WorkerSkills.setText(w1.getSkills());
                 WorkerPrice.setText(String.valueOf(w1.getPrice()));
                 WorkerIncome.setText(String.valueOf(w1.getTotalIncome()));
+                rate.setNumStars(w1.getTotalRate());
+                Picasso.get().load(w1.getPicture()).into(imageView);
+            }
 
-
-                 }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(viewworkerinfo.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
 

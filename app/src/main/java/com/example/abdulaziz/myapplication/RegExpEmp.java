@@ -136,17 +136,7 @@ public class RegExpEmp extends AppCompatActivity  {
 
            }
          });
-        Button picup = (Button)findViewById(R.id.Uploadthepic);
 
-        picup.setOnClickListener(new View.OnClickListener() {
-
-
-
-            public void onClick(View v) {
-                uploadPic();
-
-            }
-        });
 
         Button pdf = (Button)findViewById(R.id.PdfUpload);
 
@@ -159,17 +149,7 @@ public class RegExpEmp extends AppCompatActivity  {
 
             }
         });
-        Button pdfup = (Button)findViewById(R.id.Uploadthepdf);
 
-        pdfup.setOnClickListener(new View.OnClickListener() {
-
-
-
-            public void onClick(View v) {
-                uploadPic();
-
-            }
-        });
 
         Button Reg = (Button)findViewById(R.id.RegE);
 
@@ -267,6 +247,7 @@ public class RegExpEmp extends AppCompatActivity  {
             mImageUri = data.getData();
 
           //  Picasso.with(this).load(mImageUri).into(mImageView);
+            uploadPic();
         }
     }
     private void uploadPic() {

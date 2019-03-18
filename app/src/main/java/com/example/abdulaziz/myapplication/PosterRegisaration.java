@@ -100,17 +100,6 @@ public class PosterRegisaration extends AppCompatActivity {
 
             }
         });
-        Button picup = (Button)findViewById(R.id.UploadthepicP);
-
-        picup.setOnClickListener(new View.OnClickListener() {
-
-
-
-            public void onClick(View v) {
-                uploadFile();
-
-            }
-        });
 
         Button pdf = (Button)findViewById(R.id.PdfUploadP);
 
@@ -123,17 +112,7 @@ public class PosterRegisaration extends AppCompatActivity {
 
             }
         });
-        Button pdfup = (Button)findViewById(R.id.UploadthepdfP);
 
-        pdfup.setOnClickListener(new View.OnClickListener() {
-
-
-
-            public void onClick(View v) {
-                uploadFile();
-
-            }
-        });
         Button Reg = (Button) findViewById(R.id.RegP);
 
 
@@ -229,6 +208,7 @@ public class PosterRegisaration extends AppCompatActivity {
             mImageUri = data.getData();
 
             //  Picasso.with(this).load(mImageUri).into(mImageView);
+            uploadFile();
         }
     }
     private void uploadFile() {

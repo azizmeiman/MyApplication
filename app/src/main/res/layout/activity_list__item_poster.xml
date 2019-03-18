@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_toEndOf="@id/imageView_emp"
+        android:layout_toEndOf="@id/imageView_poster"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -37,24 +37,6 @@
         android:layout_margin="10dp"
         android:layout_toEndOf="@id/imageView_poster"
         android:textSize="20sp" />
-
-    <RatingBar
-
-        android:id="@+id/ratingBar"
-        style="?android:attr/ratingBarStyleIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView6poster"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@id/textView7poster"
-        android:numStars="5"
-        android:scaleX=".5"
-        android:scaleY=".5"
-        android:transformPivotX="0dp"
-        android:transformPivotY="0dp" />
 
 
 </RelativeLayout>

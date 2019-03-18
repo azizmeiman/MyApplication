@@ -92,17 +92,7 @@ public class addworker extends AppCompatActivity {
 
             }
         });
-        Button picup = (Button)findViewById(R.id.UploadthepicWorker);
 
-        picup.setOnClickListener(new View.OnClickListener() {
-
-
-
-            public void onClick(View v) {
-                uploadFile();
-
-            }
-        });
         Button pdf = (Button)findViewById(R.id.PdfUploadW);
 
         pdf.setOnClickListener(new View.OnClickListener() {
@@ -114,17 +104,7 @@ public class addworker extends AppCompatActivity {
 
             }
         });
-        Button pdfup = (Button)findViewById(R.id.UploadthepdfW);
 
-        pdfup.setOnClickListener(new View.OnClickListener() {
-
-
-
-            public void onClick(View v) {
-                uploadFile();
-
-            }
-        });
 
 
         List<String> cityL = new ArrayList<String>();
@@ -216,6 +196,7 @@ public class addworker extends AppCompatActivity {
             mImageUri = data.getData();
 
             //  Picasso.with(this).load(mImageUri).into(mImageView);
+            uploadFile();
         }
     }
     private void uploadFile() {

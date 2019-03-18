@@ -13,17 +13,21 @@ public class WorkerPoster {
     private String orgName;
     private String orgPic;
     private String orgDoc;
-    private double systemfees;
 
     private ArrayList workers;
 
+    private double systemfees;
+
+
+
+    private String FeesRelesPic;
 
     public WorkerPoster(){
 
     }
 
     public WorkerPoster(String Email, String RPname, String RPID, String RPphone, String cityID, String orgName, String orgPic, String orgDoc) {
-        this.Email = Email;
+        this.Email=Email;
         this.RPname = RPname;
         this.RPID = RPID;
         this.RPphone = RPphone;
@@ -32,6 +36,7 @@ public class WorkerPoster {
         this.orgPic = orgPic;
         this.orgDoc = orgDoc;
         this.workers = workers;
+        this.FeesRelesPic=null;
 
     }
 
@@ -45,9 +50,8 @@ public class WorkerPoster {
         this.orgName = value.getOrgName();
         this.orgDoc = value.getOrgDoc();
         this.orgPic = value.getOrgPic();
+        this.FeesRelesPic=value.getFeesRelesPic();
     }
-
-
 
     public String getEmail() {
         return Email;
@@ -128,4 +132,13 @@ public class WorkerPoster {
     public void setSystemfees(double systemfees) {
         this.systemfees = systemfees;
     }
+
+    public String getFeesRelesPic() {
+        return FeesRelesPic;
+    }
+
+    public void setFeesRelesPic(String feesRelesPic) {
+        FeesRelesPic = feesRelesPic;
+    }
 }
+

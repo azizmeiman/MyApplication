@@ -66,6 +66,13 @@ public class WorkerPosterMain extends AppCompatActivity {
         });
 
 
+        ViewRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent viewRequest = new Intent(WorkerPosterMain.this,ViewRequestsActivity.class);
+                startActivity(viewRequest);
+            }
+        });
 
 
 

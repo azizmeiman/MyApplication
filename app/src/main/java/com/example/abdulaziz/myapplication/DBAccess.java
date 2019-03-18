@@ -50,6 +50,11 @@ public class DBAccess {
         myRef.push().setValue(c);
     }
 
+    public void insertRequest(Request r) {
+        myRef = database.getReference("Request");
+        myRef.push().setValue(r);
+    }
+
     public void deleteEmployer(String id) {
         myRef = database.getReference("Employer");
         myRef.child(id);

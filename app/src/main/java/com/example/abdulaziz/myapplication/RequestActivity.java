@@ -1,12 +1,23 @@
 package com.example.abdulaziz.myapplication;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RequestActivity extends AppCompatActivity {
 
@@ -14,12 +25,33 @@ public class RequestActivity extends AppCompatActivity {
     DatePickerDialog sDatePickerDialog;
     EditText eDate;
     DatePickerDialog eDatePickerDialog;
+    String startDate;
+    String endDate;
+    String empName, posterName;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
+
+    Employer emp = new Employer();
+    WorkerPoster wp = new WorkerPoster();
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    String empID = user.getEmail();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
 
+        final Button sendRequst = (Button)findViewById(R.id.sendRequst);
 
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+
+        final String workerID = extras.getString("id");
+        final int period = extras.getInt("period");
+        final int totalPrice = extras.getInt("totalPrice");
+        final String posterID = extras.getString("posterID");
+        final String workerName = extras.getString("wName");
 
 
         // initiate the date picker and a button
@@ -30,9 +62,9 @@ public class RequestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // calender class's instance and get current date , month and year from calender
                 final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR); // current year
-                int mMonth = c.get(Calendar.MONTH); // current month
-                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                int sYear = c.get(Calendar.YEAR); // current year
+                int sMonth = c.get(Calendar.MONTH); // current month
+                int sDay = c.get(Calendar.DAY_OF_MONTH); // current day
                 // date picker dialog
                 sDatePickerDialog = new DatePickerDialog(RequestActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
@@ -41,11 +73,11 @@ public class RequestActivity extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
-                                sDate.setText(dayOfMonth + "/"
-                                        + (monthOfYear + 1) + "/" + year);
+                               startDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                                sDate.setText(startDate);
 
                             }
-                        }, mYear, mMonth, mDay);
+                        }, sYear, sMonth, sDay);
 
                 sDatePickerDialog.show();
             }
@@ -59,9 +91,9 @@ public class RequestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // calender class's instance and get current date , month and year from calender
                 final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR); // current year
-                int mMonth = c.get(Calendar.MONTH); // current month
-                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                int eYear = c.get(Calendar.YEAR); // current year
+                int eMonth = c.get(Calendar.MONTH); // current month
+                int eDay = c.get(Calendar.DAY_OF_MONTH); // current day
                 // date picker dialog
                 eDatePickerDialog = new DatePickerDialog(RequestActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
@@ -70,15 +102,57 @@ public class RequestActivity extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
-                                eDate.setText(dayOfMonth + "/"
-                                        + (monthOfYear + 1) + "/" + year);
+                               endDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                                eDate.setText(endDate);
 
                             }
-                        }, mYear, mMonth, mDay);
+                        }, eYear, eMonth, eDay);
 
                 eDatePickerDialog.show();
             }
         });
+
+        myRef.child("Employer").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+
+                    if (empID.equals(child.child("email").getValue().toString())){
+                        emp = child.getValue(Employer.class);
+                    }
+
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(RequestActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+
+
+        sendRequst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(RequestActivity.this,searchForWorkerActivity.class);
+                Request r = new Request("",workerID,empID,posterID,workerName,emp.getOrgName(),period,startDate,endDate,totalPrice,3);
+                DBAccess d = new DBAccess();
+                d.insertRequest(r);
+                startActivity(back);
+
+
+            }
+        });
+
 
     }
 }

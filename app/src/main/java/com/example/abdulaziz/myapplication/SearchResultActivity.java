@@ -56,9 +56,6 @@ public class SearchResultActivity extends AppCompatActivity {
                                 Worker worker = new Worker(child.getValue(Worker.class));
                                 workersList.add(worker);
 
-                                break;
-
-
                         }
 
 

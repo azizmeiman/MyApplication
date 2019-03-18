@@ -21,6 +21,9 @@ import java.util.ArrayList;
 
 public class WorkerProfileActivity extends AppCompatActivity {
 
+    int totalPrice1;
+    int monthD;
+    Worker worker = new Worker();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +41,11 @@ public class WorkerProfileActivity extends AppCompatActivity {
         final  Button hire = (Button) findViewById(R.id.Hire);
 
 
+
         ArrayList<String> feed = new ArrayList<String>();
-        feed.add("Good ");
-        feed.add("Worst!");
-        feed.add("Very Good");
+        feed.add("جيد ");
+        feed.add("سيء جداً");
+        feed.add("جيد جداً");
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, feed);
         feedback.setAdapter(myAdapter);
@@ -55,7 +59,7 @@ public class WorkerProfileActivity extends AppCompatActivity {
 
 
         myRef.child("Worker").addValueEventListener(new ValueEventListener() {
-            Worker worker = new Worker();
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -66,12 +70,12 @@ public class WorkerProfileActivity extends AppCompatActivity {
 
                     worker = new Worker(child.getValue(Worker.class));
                      name.setText("Worker name: "+worker.getName());
-                     skills.setText("skills: "+worker.getSkills());
-                     price.setText("price perH:"+String.valueOf(worker.getPrice())+"SR");
-                     int monthD = months*30;
+                     skills.setText("Skills: "+worker.getSkills());
+                     price.setText("price perH: "+String.valueOf(worker.getPrice())+".00 SR");
+                     monthD = months*30;
                      monthD=monthD+days;
-                     int totalPrice1 = worker.getPrice()*monthD;
-                     totalPrice.setText("Total price:"+String.valueOf(totalPrice1)+"SR");
+                     totalPrice1 = worker.getPrice()*monthD;
+                     totalPrice.setText("Total price: "+String.valueOf(totalPrice1)+".00 SR");
 
                        break;
                    }
@@ -94,6 +98,11 @@ public class WorkerProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent request = new Intent(WorkerProfileActivity.this,RequestActivity.class);
+                request.putExtra("id",id);
+                request.putExtra("period",monthD);
+                request.putExtra("totalPrice", totalPrice1);
+                request.putExtra("posterID",worker.getPosterID());
+                request.putExtra("wName",worker.getName());
                 startActivity(request);
             }
         });

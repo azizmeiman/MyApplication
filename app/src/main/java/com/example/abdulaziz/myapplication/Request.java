@@ -1,12 +1,16 @@
 package com.example.abdulaziz.myapplication;
 
-public class Contract {
+public class Request {
+
 
 
     private String contractID ;
     private String workerID ;
     private String empID ;
     private String posterID ;
+    private String workerName ;
+    private String empName ;
+
     private int period ;
     private String startDate;
     private String endDate;
@@ -14,21 +18,58 @@ public class Contract {
     private int status ; //1,Approved 2,Rejected 3,neither
 
 
-    public Contract(){
+    public Request(){
 
     }
-    public Contract(String contractID, String workerID, String empID, String posterID, int periodD, String startDate, String endDate, int totalprice, int status) {
 
+    public Request(String contractID, String workerID, String empID, String posterID, String workerName, String empName, int period, String startDate, String endDate, int totalprice, int status) {
         this.contractID = contractID;
         this.workerID = workerID;
         this.empID = empID;
         this.posterID = posterID;
-        this.period = periodD;
+        this.workerName = workerName;
+        this.empName = empName;
+        this.period = period;
         this.startDate = startDate;
         this.endDate = endDate;
         this.totalprice = totalprice;
         this.status = status;
     }
+
+
+
+    public Request(Request r) {
+
+        this.contractID = r.getContractID();
+        this.workerID = r.getWorkerID();
+        this.empID = r.getEmpID();
+        this.posterID = r.getPosterID();
+        this.empName = r.getEmpName();
+        this.workerName = r.getWorkerName();
+        this.period = r.getPeriod();
+        this.startDate = r.getStartDate();
+        this.endDate = r.getEndDate();
+        this.totalprice = r.getTotalprice();
+        this.status = r.getStatus();
+    }
+
+    public void setWorkerName(String workerName) {
+        this.workerName = workerName;
+    }
+
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
+
+
+    public String getWorkerName() {
+        return workerName;
+    }
+
+    public String getEmpName() {
+        return empName;
+    }
+
 
     public int getStatus() {
         return status;
@@ -104,15 +145,18 @@ public class Contract {
 
     @Override
     public String toString() {
-        return "Contract{" +
-                "contractID=" + contractID +
-                ", workerID=" + workerID +
-                ", empID=" + empID +
-                ", posterID=" + posterID +
-                ", period='" + period + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
+        return "Request{" +
+                "contractID='" + contractID + '\'' +
+                ", workerID='" + workerID + '\'' +
+                ", empID='" + empID + '\'' +
+                ", posterID='" + posterID + '\'' +
+                ", workerName='" + workerName + '\'' +
+                ", empName='" + empName + '\'' +
+                ", period=" + period +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 ", totalprice=" + totalprice +
+                ", status=" + status +
                 '}';
     }
 }

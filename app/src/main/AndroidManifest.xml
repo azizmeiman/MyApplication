@@ -11,8 +11,7 @@
         android:roundIcon="@drawable/logop"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewRequestsActivity"
-            android:label="Requests"></activity>
+
         <activity android:name=".editingworker" />
         <activity android:name=".editworkers" />
         <activity android:name=".MainActivity" />
@@ -80,6 +79,9 @@
         <activity
             android:name=".RequestActivity"
             android:label="Requst" />
+
+        <activity android:name=".ViewRequestsActivity"
+            android:label="Requests"/>
 
     </application>
 

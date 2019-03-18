@@ -13,6 +13,7 @@ public class WorkerPoster {
     private String orgName;
     private String orgPic;
     private String orgDoc;
+    private double systemfees;
 
     private ArrayList workers;
 
@@ -22,6 +23,7 @@ public class WorkerPoster {
     }
 
     public WorkerPoster(String Email, String RPname, String RPID, String RPphone, String cityID, String orgName, String orgPic, String orgDoc) {
+        this.Email = Email;
         this.RPname = RPname;
         this.RPID = RPID;
         this.RPphone = RPphone;
@@ -44,6 +46,8 @@ public class WorkerPoster {
         this.orgDoc = value.getOrgDoc();
         this.orgPic = value.getOrgPic();
     }
+
+
 
     public String getEmail() {
         return Email;
@@ -115,5 +119,13 @@ public class WorkerPoster {
 
     public void setWorkers(ArrayList workers) {
         this.workers = workers;
+    }
+
+    public double getSystemfees() {
+        return systemfees;
+    }
+
+    public void setSystemfees(double systemfees) {
+        this.systemfees = systemfees;
     }
 }

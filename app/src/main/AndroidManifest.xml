@@ -11,16 +11,15 @@
         android:roundIcon="@drawable/logop"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".postercontacttheadmin"></activity>
         <activity android:name=".editingworker" />
         <activity android:name=".editworkers" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".workerposterreports"/>
-        <activity android:name=".highestincomeworkerposter"/>
-        <activity android:name=".lowestrateworkerposter"/>
-        <activity android:name=".highestrateworkeposter"/>
-        <activity android:name=".lowestincomeworker"/>
-
+        <activity android:name=".workerposterreports" />
+        <activity android:name=".highestincomeworkerposter" />
+        <activity android:name=".lowestrateworkerposter" />
+        <activity android:name=".highestrateworkeposter" />
+        <activity android:name=".lowestincomeworker" />
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -79,10 +78,10 @@
         <activity
             android:name=".RequestActivity"
             android:label="Requst" />
-
-        <activity android:name=".ViewRequestsActivity"
-            android:label="Requests"/>
-
+        <activity
+            android:name=".ViewRequestsActivity"
+            android:label="Requests" />
+        <activity android:name=".systemfeesworkerposter" />
     </application>
 
 </manifest>

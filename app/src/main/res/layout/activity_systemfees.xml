@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".systemfeesworkerposter">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/systemfeeslabel"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="20dp"
+            android:text="المبالغ المطلوبه"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/systemfeesinput"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="229dp"
+        android:layout_marginTop="350dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/systemfeesupload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:background="@color/colorPrimary"
+            android:text="ارفع صورة الإيصال"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+    </LinearLayout>
+</RelativeLayout>

@@ -49,6 +49,8 @@ public class PosterRegisaration extends AppCompatActivity {
     String orgNamePoster;
     String orgDocPoster;
     String orgPicPoster= null; //the URL of the pic
+    double systemfee;
+
 
     private ProgressDialog mprogressP;
     private Uri mImageUri;
@@ -177,6 +179,7 @@ public class PosterRegisaration extends AppCompatActivity {
                                     if (task.isSuccessful()) {
 
                                         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("UserType").setValue("WorkerPoster");
+                                        FirebaseDatabase.getInstance().getReference("SystemFees").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("systemfees").setValue(0);
                                         Toast.makeText(PosterRegisaration.this,"Done",Toast.LENGTH_LONG).show();
                                         Intent intentLogin = new Intent(PosterRegisaration.this, Login.class);
                                         startActivity(intentLogin);

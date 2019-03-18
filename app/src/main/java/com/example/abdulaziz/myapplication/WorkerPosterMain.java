@@ -74,6 +74,13 @@ public class WorkerPosterMain extends AppCompatActivity {
             }
         });
 
+        ChatwithAdminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendEmail = new Intent(WorkerPosterMain.this,postercontacttheadmin.class);
+                startActivity(sendEmail);
+            }
+        });
 
 
         

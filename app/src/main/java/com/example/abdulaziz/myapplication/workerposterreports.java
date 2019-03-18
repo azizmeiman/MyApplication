@@ -16,6 +16,7 @@ public class workerposterreports extends AppCompatActivity {
         final Button LowestRate = (Button) findViewById(R.id.workerposterbadrate);
         final Button HighestIncome = (Button) findViewById(R.id.workerpostehighesticome);
         final Button LowestIncome = (Button) findViewById(R.id.workerposterlowesticome);
+        final Button systemfees = (Button)findViewById(R.id.systemfees);
 
 
 
@@ -49,6 +50,14 @@ public class workerposterreports extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (workerposterreports.this,lowestincomeworker.class);
+                startActivity(intent);
+            }
+        });
+
+        systemfees.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (workerposterreports.this, systemfeesworkerposter.class);
                 startActivity(intent);
             }
         });

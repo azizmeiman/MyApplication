@@ -51,7 +51,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
 
-                        if(skill.equals(child.child("skills").getValue().toString())){
+                        if(skill.equals(child.child("skills").getValue().toString()) && city.equals(child.child("city").getValue().toString())){
 
                                 Worker worker = new Worker(child.getValue(Worker.class));
                                 workersList.add(worker);

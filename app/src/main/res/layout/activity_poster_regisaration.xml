@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="رقم هوية المعرف"
-                    android:inputType=" " />
+                  />
 
                 <EditText
                     android:id="@+id/RPphoneNumP"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="رقم الجوال"
-                    android:inputType=" " />
+                    />
                 <Spinner
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -86,12 +86,12 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="اسم المنظمة"
-                    android:inputType=" " />
+                     />
 
                 <Button
                     android:id="@+id/PicUploadP"
                     style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
+                    android:layout_width="395dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
@@ -100,7 +100,7 @@
                     android:background="@color/colorPrimary"
                     android:text=" أرفع صورة "
                     android:textAlignment="center"
-                    android:textColor="#000000"
+                    android:textColor="#FFFF"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +111,7 @@
                 <Button
                     android:id="@+id/PdfUploadP"
                     style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
+                    android:layout_width="395dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
@@ -120,7 +120,7 @@
                     android:background="@color/colorPrimary"
                     android:text=" أرفع ملف للوثائق "
                     android:textAlignment="center"
-                    android:textColor="#000000"
+                    android:textColor="#FFFF"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

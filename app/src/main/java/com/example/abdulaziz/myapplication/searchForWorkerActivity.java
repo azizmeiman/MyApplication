@@ -25,9 +25,9 @@ public class searchForWorkerActivity extends AppCompatActivity {
         final Button search = (Button) findViewById(R.id.Search);
 
         List<String> cityL = new ArrayList<String>();
-        cityL.add("Riyadh");
-        cityL.add("Dammam");
-        cityL.add("Jeddah");
+        cityL.add("الرياض");
+        cityL.add("الدمام");
+        cityL.add("جدة");
 
         ArrayAdapter<String> citites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cityL);
         cityID.setAdapter(citites);

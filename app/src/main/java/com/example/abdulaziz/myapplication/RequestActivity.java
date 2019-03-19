@@ -31,6 +31,7 @@ public class RequestActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+    DatabaseReference myRef2 = database.getReference();
 
     Employer emp = new Employer();
     WorkerPoster wp = new WorkerPoster();
@@ -144,9 +145,14 @@ public class RequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent back = new Intent(RequestActivity.this,searchForWorkerActivity.class);
-                Request r = new Request("",workerID,empID,posterID,workerName,emp.getOrgName(),period,startDate,endDate,totalPrice,3);
-                DBAccess d = new DBAccess();
-                d.insertRequest(r);
+
+                DatabaseReference pushRef = myRef2.child("Request").push();
+                String key_ID = pushRef.getKey();
+
+                Request r = new Request(key_ID,workerID,empID,posterID,workerName,emp.getOrgName(),period,startDate,endDate,totalPrice,3);
+
+                pushRef.setValue(r);
+
                 startActivity(back);
 
 

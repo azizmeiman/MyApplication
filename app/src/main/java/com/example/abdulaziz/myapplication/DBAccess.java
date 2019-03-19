@@ -91,5 +91,12 @@ public class DBAccess {
         myRef.setValue(null);
     }
 
+    public void deleteRequest(String id) {
+
+        myRef = database.getReference("Request");
+        myRef.child(id).setValue(null);
+
+    }
+
 
 }

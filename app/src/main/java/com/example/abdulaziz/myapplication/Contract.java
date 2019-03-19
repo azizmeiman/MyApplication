@@ -7,6 +7,8 @@ public class Contract {
     private String workerID ;
     private String empID ;
     private String posterID ;
+    private String workerName;
+    private String empName;
     private int period ;
     private String startDate;
     private String endDate;
@@ -17,18 +19,40 @@ public class Contract {
     public Contract(){
 
     }
-    public Contract(String contractID, String workerID, String empID, String posterID, int periodD, String startDate, String endDate, int totalprice, int status) {
 
+    public Contract(String contractID, String workerID, String empID, String posterID, String workerName, String empName,  int period, String startDate, String endDate, int totalprice, int status) {
         this.contractID = contractID;
         this.workerID = workerID;
         this.empID = empID;
         this.posterID = posterID;
-        this.period = periodD;
+        this.workerName = workerName;
+        this.empName = empName;
+        this.period = period;
         this.startDate = startDate;
         this.endDate = endDate;
         this.totalprice = totalprice;
         this.status = status;
     }
+
+    public void setWorkerName(String workerName) {
+        this.workerName = workerName;
+    }
+
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
+
+
+
+    public String getWorkerName() {
+        return workerName;
+    }
+
+    public String getEmpName() {
+        return empName;
+    }
+
+
 
     public int getStatus() {
         return status;

@@ -34,6 +34,21 @@ public class Contract {
         this.status = status;
     }
 
+    public Contract(Contract value) {
+        this.contractID = value.getContractID();
+        this.workerID = value.getWorkerID();
+        this.empID = value.getEmpID();
+        this.posterID = value.getPosterID();
+        this.workerName = value.getWorkerName();
+        this.empName = value.getEmpName();
+        this.period = value.getPeriod();
+        this.startDate = value.getStartDate();
+        this.endDate = value.getEndDate();
+        this.totalprice = value.getTotalprice();
+        this.status = value.getStatus();
+
+    }
+
     public void setWorkerName(String workerName) {
         this.workerName = workerName;
     }

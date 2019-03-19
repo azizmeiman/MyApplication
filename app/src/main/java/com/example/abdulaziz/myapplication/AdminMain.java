@@ -35,5 +35,16 @@ public class AdminMain extends AppCompatActivity {
         });
 
 
+        final Button ViewConractButton = (Button) findViewById(R.id.ViewAllContract);
+
+        ViewConractButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ViewContractIntent = new Intent(AdminMain.this, ContractView.class );
+                startActivity(ViewContractIntent);
+            }
+        });
+
+
     }
 }

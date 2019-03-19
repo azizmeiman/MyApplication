@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/imageView_cont"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        tools:srcCompat="@drawable/contract2" />
+
+    <TextView
+        android:id="@+id/textViewWorkername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_toEndOf="@id/imageView_cont"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewStartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewWorkername"
+
+        android:layout_margin="05dp"
+        android:layout_toEndOf="@id/imageView_cont"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewStartDate"
+        android:layout_margin="10dp"
+        android:layout_toEndOf="@id/imageView_cont"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewEndDate"
+        android:layout_margin="10dp"
+        android:layout_toEndOf="@id/imageView_cont"
+        android:textSize="20sp" />
+
+
+
+</RelativeLayout>

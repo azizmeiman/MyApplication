@@ -15,12 +15,11 @@
         <activity android:name=".editingworker" />
         <activity android:name=".editworkers" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".workerposterreports"/>
-        <activity android:name=".highestincomeworkerposter"/>
-        <activity android:name=".lowestrateworkerposter"/>
-        <activity android:name=".highestrateworkeposter"/>
-        <activity android:name=".lowestincomeworker"/>
-
+        <activity android:name=".workerposterreports" />
+        <activity android:name=".highestincomeworkerposter" />
+        <activity android:name=".lowestrateworkerposter" />
+        <activity android:name=".highestrateworkeposter" />
+        <activity android:name=".lowestincomeworker" />
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,8 +29,7 @@
         </activity>
         <activity
             android:name=".RegExpEmp"
-            android:label="Employer Registration"
-            />
+            android:label="Employer Registration" />
         <activity
             android:name=".PosterRegisaration"
             android:label="Worker Poster Registration" />
@@ -80,23 +78,24 @@
         <activity
             android:name=".RequestActivity"
             android:label="Requst" />
-
-        <activity android:name=".ViewRequestsActivity"
-            android:label="Requests"/>
-
-        <activity android:name=".systemfeesworkerposter"
-            android:label="Fees"/>
-
-        <activity android:name=".ViewEmpProfileAdmin"
-            android:label="Employers"/>
-
-        <activity android:name=".viewPosterAdmin"
-            android:label="Worker Poster"/>
-
-        <activity android:name=".postercontacttheadmin"
-            android:label="Contact"/>
-
-
+        <activity
+            android:name=".ViewRequestsActivity"
+            android:label="Requests" />
+        <activity
+            android:name=".systemfeesworkerposter"
+            android:label="Fees" />
+        <activity
+            android:name=".ViewEmpProfileAdmin"
+            android:label="Employers" />
+        <activity
+            android:name=".viewPosterAdmin"
+            android:label="Worker Poster" />
+        <activity
+            android:name=".postercontacttheadmin"
+            android:label="Contact" />
+        <activity
+            android:name=".ContractView"
+            android:label="Contracts" />
     </application>
 
 </manifest>

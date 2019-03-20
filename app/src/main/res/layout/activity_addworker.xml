@@ -67,33 +67,33 @@
                 <Spinner
                     android:id="@+id/spinnerCity"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="35dp" />
 
                 <EditText
-            android:id="@+id/WorkerBDateText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="تاريخ الميلاد"
-            android:inputType="date" />
+                    android:id="@+id/WorkerBDateText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="تاريخ الميلاد"
+                    android:inputType="date" />
 
                 <Spinner
                     android:id="@+id/spinnerSkills"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="36dp" />
 
                 <EditText
-            android:id="@+id/WorkerFeesText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="الاجرة باليوم"
-            android:inputType="numberDecimal" />
+                    android:id="@+id/WorkerFeesText"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:hint="الاجرة باليوم"
+                    android:inputType="numberDecimal" />
 
                 <Button
                     android:id="@+id/PicUploadW"
                     style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
+                    android:layout_width="397dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
@@ -102,7 +102,7 @@
                     android:background="@color/colorPrimary"
                     android:text=" أرفع صورة "
                     android:textAlignment="center"
-                    android:textColor="#000000"
+                    android:textColor="#FFFF"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +114,7 @@
                 <Button
                     android:id="@+id/PdfUploadW"
                     style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
+                    android:layout_width="397dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
@@ -123,7 +123,7 @@
                     android:background="@color/colorPrimary"
                     android:text=" أرفع ملف للوثائق"
                     android:textAlignment="center"
-                    android:textColor="#000000"
+                    android:textColor="#FFFF"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

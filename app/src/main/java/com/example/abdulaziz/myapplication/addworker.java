@@ -1,8 +1,10 @@
 package com.example.abdulaziz.myapplication;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -49,6 +52,9 @@ public class addworker extends AppCompatActivity {
     boolean deleted;
     int Rate;
 
+
+    EditText bDate;
+    DatePickerDialog bDatePickerDialog;
 
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -124,6 +130,35 @@ public class addworker extends AppCompatActivity {
         WorkerSkillsEdit.setAdapter(Skills);
 
 
+// initiate the date picker and a button
+        bDate = (EditText) findViewById(R.id.WorkerBDateText);
+        // perform click event on edit text
+        bDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // calender class's instance and get current date , month and year from calender
+                final Calendar c = Calendar.getInstance();
+                int sYear = c.get(Calendar.YEAR); // current year
+                int sMonth = c.get(Calendar.MONTH); // current month
+                int sDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                bDatePickerDialog = new DatePickerDialog(addworker.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // set day of month , month and year value in the edit text
+                                WorkerBDDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                                bDate.setText(WorkerBDDate);
+
+                            }
+                        }, sYear, sMonth, sDay);
+
+                bDatePickerDialog.show();
+            }
+        });
+
 
         AddworkerBut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +169,6 @@ public class addworker extends AppCompatActivity {
                  WorkerMobile = WorkerMobileEdit.getText().toString();
                  WorkerNationality = WorkerNationalityEdit.getText().toString();
                  WorkerCity = WorkerCityEdit.getSelectedItem().toString();
-                 WorkerBDDate = WorkerBDateEdit.getText().toString();
                  WorkerSkills = WorkerSkillsEdit.getSelectedItem().toString();
                  WorkerFees = Integer.parseInt(WorkerFeesEdit.getText().toString());
                  PosterUID = FirebaseAuth.getInstance().getCurrentUser().getUid();

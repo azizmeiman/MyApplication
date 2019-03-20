@@ -14,7 +14,7 @@
         android:id="@+id/textViewEmp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_toEndOf="@id/imageView_emp"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewEmp"
 
-        android:layout_margin="05dp"
+        android:layout_margin="3dp"
         android:layout_toEndOf="@id/imageView_emp"
         android:textSize="20sp" />
 
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView6emp"
-        android:layout_margin="10dp"
+        android:layout_margin="3dp"
         android:layout_toEndOf="@id/imageView_emp"
         android:textSize="20sp" />
 

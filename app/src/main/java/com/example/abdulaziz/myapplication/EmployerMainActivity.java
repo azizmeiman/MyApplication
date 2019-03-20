@@ -14,6 +14,7 @@ public class EmployerMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_employer_main);
 
         ImageButton sw = (ImageButton)findViewById(R.id.searchForWorker);
+        ImageButton vc = (ImageButton)findViewById(R.id.employerContracts);
 
         sw.setOnClickListener(new View.OnClickListener() {
 
@@ -26,6 +27,14 @@ public class EmployerMainActivity extends AppCompatActivity {
             }
 
 
+        });
+
+        vc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentContract = new Intent(EmployerMainActivity.this, EmpContractViewActivity.class);
+                startActivity(intentContract);
+            }
         });
 
     }

@@ -16,7 +16,7 @@
         android:id="@+id/textViewWorkername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_toEndOf="@id/imageView_cont"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -26,8 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewWorkername"
-
-        android:layout_margin="05dp"
+        android:layout_margin="03dp"
         android:layout_toEndOf="@id/imageView_cont"
         android:textSize="20sp" />
 
@@ -36,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewStartDate"
-        android:layout_margin="10dp"
+        android:layout_margin="3dp"
         android:layout_toEndOf="@id/imageView_cont"
         android:textSize="20sp" />
 
@@ -45,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewEndDate"
-        android:layout_margin="10dp"
+        android:layout_margin="3dp"
         android:layout_toEndOf="@id/imageView_cont"
         android:textSize="20sp" />
 

@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/logop"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewProfileContract"></activity>
+        <activity android:name=".EmpContractViewActivity"></activity>
+        <activity android:name=".ViewProfileContract" />
         <activity android:name=".editingworker" />
         <activity android:name=".editworkers" />
         <activity android:name=".MainActivity" />

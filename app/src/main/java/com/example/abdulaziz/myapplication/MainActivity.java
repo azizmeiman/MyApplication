@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Button EmpButton = (Button)findViewById(R.id.EmployerReg);
         Button PosterReg = (Button)findViewById(R.id.PosterReg);
         Button gotoLogin = (Button)findViewById(R.id.gotoLogin);

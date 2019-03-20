@@ -1,7 +1,10 @@
 package com.example.abdulaziz.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -55,6 +58,16 @@ public class ContractView extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(ContractView.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        listViewCotract.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ContractView.this, ViewProfileContract.class);
+                intent.putExtra("contractID",CotractList.get(position).getContractID());
+                startActivity(intent);
 
             }
         });

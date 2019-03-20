@@ -253,9 +253,31 @@ public class addworker extends AppCompatActivity {
                             Toast.makeText(addworker.this, "Upload successful", Toast.LENGTH_LONG).show();
 
 
-                            if(Workerpic!=null)
-                                Workerpdf=System.currentTimeMillis()
-                                        + "." + getFileExtension(mImageUri);
+                            if(Workerpic!=null){
+                                    Task<Uri> urlTask = mUploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                                    @Override
+                                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                        if (!task.isSuccessful()) {
+                                            throw task.getException();
+                                        }
+
+                                        // Continue with the task to get the download URL
+
+                                        return fileReference.getDownloadUrl();
+                                    }
+                                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Uri> task) {
+                                        if (task.isSuccessful()) {
+                                            Uri downloadUri = task.getResult();
+                                            Workerpdf = downloadUri.toString();
+                                        } else {
+                                            // Handle failures
+                                            // ...
+                                        }
+                                    }
+                                });
+                            }
                             else {
                                 Task<Uri> urlTask = mUploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                                     @Override

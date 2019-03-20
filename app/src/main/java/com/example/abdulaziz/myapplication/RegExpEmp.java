@@ -269,9 +269,31 @@ public class RegExpEmp extends AppCompatActivity  {
                             mprogress.dismiss();
                             Toast.makeText(RegExpEmp.this, "Upload successful", Toast.LENGTH_LONG).show();
 
-                            if(orgPicemp!=null)
-                                orgDocemp=System.currentTimeMillis()
-                                    + "." + getFileExtension(mImageUri);
+                            if(orgPicemp!=null){
+                                  Task<Uri> urlTask = mUploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                                @Override
+                                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                    if (!task.isSuccessful()) {
+                                        throw task.getException();
+                                    }
+
+                                    // Continue with the task to get the download URL
+
+                                    return fileReference.getDownloadUrl();
+                                }
+                            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if (task.isSuccessful()) {
+                                        Uri downloadUri = task.getResult();
+                                        orgDocemp = downloadUri.toString();
+                                    } else {
+                                        // Handle failures
+                                        // ...
+                                    }
+                                }
+                            });
+                            }
                             else {
 
                                 Task<Uri> urlTask = mUploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {

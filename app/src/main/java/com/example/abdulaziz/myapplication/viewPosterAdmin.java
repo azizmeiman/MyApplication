@@ -1,8 +1,10 @@
 package com.example.abdulaziz.myapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,7 +68,19 @@ public class viewPosterAdmin extends AppCompatActivity {
                         else
                             Picasso.get().load(WorkerPoster.getOrgDoc()).into(image);
 
+                        final Button pdfposter = (Button) findViewById(R.id.checkp);
+                        pdfposter.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent PdfCheck = new Intent(Intent.ACTION_VIEW);
+                                PdfCheck.setData(Uri.parse(WorkerPoster.getOrgPic()));
+                                startActivity(PdfCheck);
+                            }
+                        });
+
                         break;
+
+
                     }
                 }
 

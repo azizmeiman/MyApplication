@@ -1,8 +1,10 @@
 package com.example.abdulaziz.myapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -36,6 +38,7 @@ public class ViewEmpProfileAdmin extends AppCompatActivity {
 
 
         final Button blockEmp = (Button) findViewById(R.id.Block);
+        final Button checkPdf = (Button) findViewById(R.id.check);
 
 
         Intent intent = getIntent();
@@ -67,6 +70,14 @@ public class ViewEmpProfileAdmin extends AppCompatActivity {
                         else
                             Picasso.get().load(Employer.getOrgPic()).into(image);
 
+                        checkPdf.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent PdfCheck = new Intent(Intent.ACTION_VIEW);
+                                PdfCheck.setData(Uri.parse(Employer.getOrgDoc()));
+                                startActivity(PdfCheck);
+                            }
+                        });
                         break;
                     }
                 }

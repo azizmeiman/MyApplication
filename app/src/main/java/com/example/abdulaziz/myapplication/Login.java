@@ -31,6 +31,10 @@ public class Login extends AppCompatActivity {
 
 
     private DatabaseReference jLoginDatabase;
+    private DatabaseReference blockDatabase;
+    private DatabaseReference blockDatabaseE;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +78,8 @@ public class Login extends AppCompatActivity {
 
                     jLoginDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(RegisteredUserID);
 
+                    blockDatabase =FirebaseDatabase.getInstance().getReference().child("WorkerPoster").child(RegisteredUserID);
+                    blockDatabaseE =FirebaseDatabase.getInstance().getReference().child("Employer").child(RegisteredUserID);
                     jLoginDatabase.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -84,12 +90,58 @@ public class Login extends AppCompatActivity {
                                 Intent intentMain = new Intent(Login.this, AdminMain.class);
                                 startActivity(intentMain);
                             } else if (userType.equals("WorkerPoster")) {
-                                Intent intentMain = new Intent(Login.this, WorkerPosterMain.class);
-                                startActivity(intentMain);
+                                blockDatabase.addValueEventListener(new ValueEventListener() {
+
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        boolean is = (boolean) dataSnapshot.child("blucked").getValue();
+                                        if(is==false){
+                                            Intent intentMain = new Intent(Login.this, WorkerPosterMain.class);
+                                            startActivity(intentMain);}
+                                            else
+                                            Toast.makeText(Login.this,"Sorry you are blocked ", Toast.LENGTH_SHORT).show();
+
+
+                                    }
+
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+
+                                });
+
+
+
+
                             } else if (userType.equals("Employer")) {
+
+                                blockDatabaseE.addValueEventListener(new ValueEventListener() {
+
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        boolean is = (boolean) dataSnapshot.child("blucked").getValue();
+                                        if(is==false){
+
 
                                 Intent intentMain = new Intent(Login.this, EmployerMainActivity.class);
                                 startActivity(intentMain);
+                                        }
+                                        else
+                                            Toast.makeText(Login.this,"Sorry you are blocked ", Toast.LENGTH_SHORT).show();
+
+
+                                    }
+
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+
+                                });
+
                             } else {
                                 Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 return;

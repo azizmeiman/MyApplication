@@ -17,8 +17,8 @@ public class WorkerPoster {
     private ArrayList workers;
 
     private double systemfees;
-
-
+    private String IDP;
+    private boolean isBlucked;
 
     private String FeesRelesPic;
 
@@ -26,7 +26,8 @@ public class WorkerPoster {
 
     }
 
-    public WorkerPoster(String Email, String RPname, String RPID, String RPphone, String cityID, String orgName, String orgPic, String orgDoc) {
+    public WorkerPoster(String idp,String Email, String RPname, String RPID, String RPphone, String cityID, String orgName, String orgPic, String orgDoc) {
+        this.IDP=idp;
         this.Email=Email;
         this.RPname = RPname;
         this.RPID = RPID;
@@ -36,11 +37,14 @@ public class WorkerPoster {
         this.orgPic = orgPic;
         this.orgDoc = orgDoc;
         this.workers = workers;
-        this.FeesRelesPic=null;
+        this.FeesRelesPic="empty";
+        this.isBlucked=false;
 
     }
 
     public WorkerPoster(WorkerPoster value) {
+        this.IDP=value.getIDP();
+
 
         this.Email = value.getEmail();
         this.RPname = value.getRPname();
@@ -51,6 +55,7 @@ public class WorkerPoster {
         this.orgDoc = value.getOrgDoc();
         this.orgPic = value.getOrgPic();
         this.FeesRelesPic=value.getFeesRelesPic();
+        this.isBlucked=value.isBlucked();
     }
 
     public String getEmail() {
@@ -140,5 +145,24 @@ public class WorkerPoster {
     public void setFeesRelesPic(String feesRelesPic) {
         FeesRelesPic = feesRelesPic;
     }
+
+
+    public boolean isBlucked() {
+        return isBlucked;
+    }
+
+    public void setBlucked(boolean blucked) {
+        isBlucked = blucked;
+    }
+
+
+    public String getIDP() {
+        return IDP;
+    }
+
+    public void setIDP(String IDP) {
+        this.IDP = IDP;
+    }
+
 }
 

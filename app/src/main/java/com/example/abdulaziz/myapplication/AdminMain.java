@@ -44,6 +44,15 @@ public class AdminMain extends AppCompatActivity {
                 startActivity(ViewContractIntent);
             }
         });
+        final Button reportsAdmin = (Button) findViewById(R.id.reports);
+
+        reportsAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ViewReportsIntent = new Intent(AdminMain.this, AdminReports.class );
+                startActivity(ViewReportsIntent);
+            }
+        });
 
 
     }

@@ -25,7 +25,7 @@ public class viewPosterAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_view_poster_admin);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference();
+        final DatabaseReference myRef = database.getReference();
 
 
         final TextView Orgname = (TextView) findViewById(R.id.orgNAMEp);
@@ -37,6 +37,9 @@ public class viewPosterAdmin extends AppCompatActivity {
 
 
         final Button blockposter = (Button) findViewById(R.id.Blockp);
+        final Button unblockposter = (Button) findViewById(R.id.unBlockp);
+
+
 
 
         Intent intent = getIntent();
@@ -75,6 +78,34 @@ public class viewPosterAdmin extends AppCompatActivity {
                                 Intent PdfCheck = new Intent(Intent.ACTION_VIEW);
                                 PdfCheck.setData(Uri.parse(WorkerPoster.getOrgPic()));
                                 startActivity(PdfCheck);
+                            }
+                        });
+
+                        final Button checktheresipts = (Button) findViewById(R.id.checkRecipts);
+                        checktheresipts.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent ViewposterIntent = new Intent(viewPosterAdmin.this, ResetThePalanc.class );
+                                ViewposterIntent.putExtra("rpid",WorkerPoster.getRPID());
+                                startActivity(ViewposterIntent);
+                            }
+                        });
+
+                        blockposter.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                myRef.child("WorkerPoster").child(WorkerPoster.getIDP()).child("blucked").setValue(true);
+                                Toast.makeText(viewPosterAdmin.this, " Blocked Done !", Toast.LENGTH_LONG).show();
+
+                            }
+                        });
+
+                        unblockposter.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                myRef.child("WorkerPoster").child(WorkerPoster.getIDP()).child("blucked").setValue(false);
+                                Toast.makeText(viewPosterAdmin.this, " unBlock Done !", Toast.LENGTH_LONG).show();
+
                             }
                         });
 

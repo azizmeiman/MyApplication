@@ -26,7 +26,7 @@ public class ViewEmpProfileAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_view_emp_profile_admin);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference();
+        final DatabaseReference myRef = database.getReference();
 
 
         final TextView Orgname = (TextView) findViewById(R.id.orgNAME);
@@ -38,6 +38,7 @@ public class ViewEmpProfileAdmin extends AppCompatActivity {
 
 
         final Button blockEmp = (Button) findViewById(R.id.Block);
+        final Button unblockEmp = (Button) findViewById(R.id.unBlock);
         final Button checkPdf = (Button) findViewById(R.id.check);
 
 
@@ -76,6 +77,25 @@ public class ViewEmpProfileAdmin extends AppCompatActivity {
                                 Intent PdfCheck = new Intent(Intent.ACTION_VIEW);
                                 PdfCheck.setData(Uri.parse(Employer.getOrgDoc()));
                                 startActivity(PdfCheck);
+                            }
+                        });
+
+                        blockEmp.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                myRef.child("Employer").child(Employer.getIDE()).child("blucked").setValue(true);
+                                Toast.makeText(ViewEmpProfileAdmin.this, " Blocked Done !", Toast.LENGTH_LONG).show();
+
+                            }
+                        });
+
+                        unblockEmp.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                myRef.child("Employer").child(Employer.getIDE()).child("blucked").setValue(false);
+                                Toast.makeText(ViewEmpProfileAdmin.this, " unBlock Done !", Toast.LENGTH_LONG).show();
+
                             }
                         });
                         break;

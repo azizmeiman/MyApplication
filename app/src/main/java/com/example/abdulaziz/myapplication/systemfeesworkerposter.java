@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
@@ -43,7 +45,7 @@ public class systemfeesworkerposter extends AppCompatActivity {
     DatabaseReference myRef = database.getReference();
 
 
-    private ProgressDialog mprogress;
+    private ProgressBar mprogress;
 
     private Uri mImageUri;
 
@@ -52,32 +54,45 @@ public class systemfeesworkerposter extends AppCompatActivity {
     private StorageTask mUploadTask;
 
     private String pic;
+     String posterUID;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_systemfees);
+        mStorageRef = FirebaseStorage.getInstance().getReference("Pictures");
+
         final TextView systemfeelabel = (TextView) findViewById(R.id.systemfeeslabel);
         final TextView systemfeeinput = (TextView) findViewById(R.id.systemfeesinput);
         final Button systemfeeupload = (Button)findViewById(R.id.systemfeesupload);
+        mprogress  = (ProgressBar) findViewById(R.id.progressbar);
+        mprogress.setVisibility(View.INVISIBLE);
 
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        final String posterUID = currentUser.getUid();
+        posterUID = currentUser.getUid();
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
 
 
-        myRef.child("SystemFees").addValueEventListener(new ValueEventListener() {
+        myRef.child("WorkerPoster").addValueEventListener(new ValueEventListener() {
+            WorkerPoster poster1=new  WorkerPoster();
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                WorkerPoster poster1 = dataSnapshot.child(posterUID).getValue(WorkerPoster.class);
+                 poster1 = dataSnapshot.child(posterUID).getValue(WorkerPoster.class);
                 fees = String.valueOf(poster1.getSystemfees());
                 systemfeeinput.setText(fees);
+                systemfeeupload.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        openFileChooser();
+                    }
+                });
 
-                poster1.setFeesRelesPic(pic);
+
 
             }
 
@@ -93,12 +108,7 @@ public class systemfeesworkerposter extends AppCompatActivity {
 
         //upload the pic part is down
 
-        systemfeeupload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFileChooser();
-            }
-        });
+
 
     }
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -130,8 +140,7 @@ public class systemfeesworkerposter extends AppCompatActivity {
 
         if (mImageUri != null) {
 
-            mprogress.setMessage("Uploading ... ");
-            mprogress.show();
+            mprogress.setVisibility(View.VISIBLE);
 
             final StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
                     + "." + getFileExtension(mImageUri));
@@ -142,7 +151,7 @@ public class systemfeesworkerposter extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
 
-                            mprogress.dismiss();
+                            mprogress.setVisibility(View.INVISIBLE);
                             Toast.makeText(systemfeesworkerposter.this, "Upload successful", Toast.LENGTH_LONG).show();
 
 
@@ -164,7 +173,8 @@ public class systemfeesworkerposter extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             Uri downloadUri = task.getResult();
                                             pic=downloadUri.toString();
-                                            ;
+                                            myRef.child("WorkerPoster").child(posterUID).child("feesRelesPic").setValue(pic); finish();
+
                                         } else {
                                             // Handle failures
                                             // ...
@@ -180,7 +190,7 @@ public class systemfeesworkerposter extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            mprogress.dismiss();
+                            mprogress.setVisibility(View.INVISIBLE);
                             Toast.makeText(systemfeesworkerposter.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });

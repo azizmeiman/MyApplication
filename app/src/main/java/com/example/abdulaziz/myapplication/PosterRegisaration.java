@@ -134,9 +134,11 @@ public class PosterRegisaration extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
 
+                       String pid  =   FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
                             WorkerPoster workerposter1 = new WorkerPoster(
+                                    pid,
                                     Email,
                                     RPnamePoster,
                                     RPIDPoster,

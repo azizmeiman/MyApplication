@@ -29,7 +29,7 @@ public class PosterView extends AppCompatActivity {
         setContentView(R.layout.activity_poster_view);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = database.getReference();
+         DatabaseReference myRef = database.getReference();
 
         listViewposter = (ListView) findViewById(R.id.posterList);
         posterList = new ArrayList<>();

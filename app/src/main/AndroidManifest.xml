@@ -11,7 +11,10 @@
         android:roundIcon="@drawable/logop"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminReports"></activity>
+        <activity android:name=".highestBalancePoster"></activity>
+        <activity android:name=".highestContractEmp" />
+        <activity android:name=".highestContractPoster" />
+        <activity android:name=".AdminReports" />
         <activity android:name=".ResetThePalanc" />
         <activity android:name=".EmpContractViewActivity" />
         <activity android:name=".ViewProfileContract" />

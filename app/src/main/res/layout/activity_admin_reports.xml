@@ -7,7 +7,7 @@
     tools:context=".AdminReports">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/highestContP"
         android:layout_width="147dp"
         android:layout_height="104dp"
         android:layout_marginStart="8dp"
@@ -27,7 +27,7 @@
         app:layout_constraintVertical_bias="0.229" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/highestContE"
         android:layout_width="147dp"
         android:layout_height="104dp"
         android:layout_marginStart="8dp"
@@ -47,7 +47,7 @@
         app:layout_constraintVertical_bias="0.227" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/highestBalaceP"
         android:layout_width="147dp"
         android:layout_height="104dp"
         android:layout_marginStart="8dp"

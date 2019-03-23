@@ -14,6 +14,8 @@ public class Employer {
     private String orgPic ; //the URL of the pic
 
 
+    private int ContractNomE;
+
     private boolean isBlucked;
 
 
@@ -38,6 +40,7 @@ public class Employer {
         this.orgDoc = value.getOrgDoc();
         this.orgPic = value.getOrgPic();
         this.isBlucked=value.isBlucked();
+        this.ContractNomE=value.getContractNomE();
 
     }
 
@@ -52,6 +55,7 @@ public class Employer {
         this.orgDoc = orgDoc;
         this.orgPic = orgPic;
         this.isBlucked=false;
+        this.ContractNomE=0;
 
     }
 
@@ -148,5 +152,13 @@ public class Employer {
         this.IDE = IDE;
     }
 
+
+    public int getContractNomE() {
+        return ContractNomE;
+    }
+
+    public void setContractNomE(int contractNomE) {
+        ContractNomE = contractNomE;
+    }
 
 }

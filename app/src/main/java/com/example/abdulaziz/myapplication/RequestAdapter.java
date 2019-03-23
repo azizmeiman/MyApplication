@@ -12,6 +12,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +29,8 @@ public class RequestAdapter extends ArrayAdapter<Request>{
 
     private Context cContext;
     private List<Request> requestsList = new ArrayList<>();
-
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference myRef = database.getReference();
 
     public RequestAdapter(@NonNull Context context, @SuppressLint("SupportAnnotationUsage") @LayoutRes ArrayList<Request> list) {
         super(context, 0 , list);
@@ -62,6 +70,8 @@ public class RequestAdapter extends ArrayAdapter<Request>{
             @Override
             public void onClick(View v) {
                 Contract c = new Contract(currentRequest.getContractID(),currentRequest.getWorkerID(),currentRequest.getEmpID(),currentRequest.getPosterID(),currentRequest.getWorkerName(),currentRequest.getEmpName(),currentRequest.getPeriod(),currentRequest.getStartDate(),currentRequest.getEndDate(),currentRequest.getTotalprice(),1);
+                incresstheContractPoster(currentRequest.getPosterID());
+                incresstheContractEmp(currentRequest.getEmpID());
                 DBA.insertContract(c);
                 DBA.deleteRequest(currentRequest.getContractID());
                 cContext.startActivity(back);
@@ -82,6 +92,54 @@ public class RequestAdapter extends ArrayAdapter<Request>{
     }
 
 
+
+    public void incresstheContractPoster(final String id){
+
+
+        myRef.child("WorkerPoster").addListenerForSingleValueEvent(new ValueEventListener() {
+            WorkerPoster WorkerPoster = new WorkerPoster();
+
+            @Override
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                WorkerPoster = dataSnapshot.child(id).getValue(WorkerPoster.class);
+                int cpo=1;
+               final int   cp = WorkerPoster.getContractNumber()+cpo;
+
+                    myRef.child("WorkerPoster").child(id).child("contractNumber").setValue(cp);}
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+    }
+
+    public void incresstheContractEmp(final String id){
+
+
+        myRef.child("Employer").addListenerForSingleValueEvent(new ValueEventListener() {
+            Employer Employer = new Employer();
+
+            @Override
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Employer = dataSnapshot.child(id).getValue(Employer.class);
+                int cpo=1;
+                final int   cp = Employer.getContractNomE()+cpo;
+
+                myRef.child("Employer").child(id).child("contractNumber").setValue(cp);}
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+    }
 
 
 }

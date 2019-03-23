@@ -20,6 +20,9 @@ public class WorkerPoster {
     private String IDP;
     private boolean isBlucked;
 
+
+
+    private int ContractNumber;
     private String FeesRelesPic;
 
     public WorkerPoster(){
@@ -39,6 +42,7 @@ public class WorkerPoster {
         this.workers = workers;
         this.FeesRelesPic="empty";
         this.isBlucked=false;
+        this.ContractNumber=0;
 
     }
 
@@ -56,6 +60,7 @@ public class WorkerPoster {
         this.orgPic = value.getOrgPic();
         this.FeesRelesPic=value.getFeesRelesPic();
         this.isBlucked=value.isBlucked();
+        this.ContractNumber=value.getContractNumber();
     }
 
     public String getEmail() {
@@ -163,6 +168,15 @@ public class WorkerPoster {
     public void setIDP(String IDP) {
         this.IDP = IDP;
     }
+
+    public int getContractNumber() {
+        return ContractNumber;
+    }
+
+    public void setContractNumber(int contractNumber) {
+        ContractNumber = contractNumber;
+    }
+
 
 }
 

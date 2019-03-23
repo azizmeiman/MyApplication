@@ -38,7 +38,7 @@ public class RequestActivity extends AppCompatActivity {
     WorkerPoster wp = new WorkerPoster();
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String empID = user.getEmail();
+    String empID = user.getUid();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,7 +122,7 @@ public class RequestActivity extends AppCompatActivity {
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
-                    if (empID.equals(child.child("email").getValue().toString())){
+                    if (empID.equals(child.child("ide").getValue().toString())){
                         emp = child.getValue(Employer.class);
                     }
 

@@ -3,11 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.abdulaziz.myapplication.EmpViewWorkersActivity">
+    tools:context="com.example.abdulaziz.myapplication.EmpViewWorkersActivity"
+    android:orientation="vertical">
 
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="العمال المتاحين فقط" />
 
     <ListView
         android:id="@+id/WorkersList2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 </LinearLayout>

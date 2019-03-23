@@ -5,7 +5,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="#E6E6E6"
     tools:context=".searchForWorkerActivity">
 
 
@@ -54,7 +54,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-
+        android:background="#68FFFFFF"
         android:dropDownWidth="wrap_content"
         android:spinnerMode="dropdown"
         android:textSize="27sp"
@@ -74,7 +74,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-
+        android:background="#68FFFFFF"
         android:dropDownWidth="wrap_content"
         android:spinnerMode="dropdown"
         android:textSize="27sp"
@@ -93,7 +93,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-
+        android:background="#68FFFFFF"
         android:dropDownWidth="wrap_content"
         android:spinnerMode="dropdown"
         android:textSize="27sp"
@@ -106,13 +106,13 @@
 
     <Button
         android:id="@+id/listAllWorkers"
-        android:layout_width="408dp"
+        android:layout_width="404dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/btnshapecolor"
         android:text="@string/ListAllWorkersAr"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -125,22 +125,22 @@
 
     <Button
         android:id="@+id/Search"
-        android:layout_width="410dp"
-        android:layout_height="43dp"
+        android:layout_width="404dp"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/btnshapecolor"
         android:text="@string/searchAr"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639" />
+        app:layout_constraintVertical_bias="0.666" />
 
     <Spinner
         android:id="@+id/citySpinner"
@@ -150,7 +150,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-
+        android:background="#68FFFFFF"
         android:dropDownWidth="wrap_content"
         android:spinnerMode="dropdown"
         android:textSize="27sp"

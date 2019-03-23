@@ -37,6 +37,17 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
 
         Worker currentWorker = workersList.get(position);
 
+        TextView Available = (TextView) listItem.findViewById(R.id.textViewAv);
+        String isAvailable = currentWorker.isAvailableMethod();
+
+
+        if(isAvailable.equals("")){
+            Available.setText("متاح");
+        }else {
+            String s = "غير متاح حتى "+isAvailable;
+            Available.setText(s);
+        }
+
         ImageView image = (ImageView)listItem.findViewById(R.id.imageView_Worker);
         if(currentWorker.getPicture() == null)
             image.setImageResource(R.drawable.profile);
@@ -57,6 +68,11 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
         TextView city = (TextView) listItem.findViewById(R.id.textView7);
         String cityS = wContext.getString(R.string.cityIcon)+currentWorker.getCity();  //getCity************
         city.setText(cityS);
+
+
+
+
+
 
         return listItem;
     }

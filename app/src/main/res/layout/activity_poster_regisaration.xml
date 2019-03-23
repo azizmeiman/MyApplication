@@ -28,7 +28,7 @@
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="370dp"
+                    android:layout_width="match_parent"
                     android:layout_height="79dp"
                     app:srcCompat="@drawable/logop" />
 
@@ -97,7 +97,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@drawable/btnshapecolor"
                     android:text=" أرفع صورة "
                     android:textAlignment="center"
                     android:textColor="#FFFF"
@@ -117,7 +117,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@drawable/btnshapecolor"
                     android:text=" أرفع ملف للوثائق "
                     android:textAlignment="center"
                     android:textColor="#FFFF"
@@ -144,8 +144,8 @@
         android:layout_marginStart="0dp"
         android:layout_marginBottom="0dp"
         android:background="@color/colorPrimary"
-        android:text="Register"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+        android:text="@string/RegisterAr"
+        android:textColor="#FFFF" />
 
 
     <LinearLayout

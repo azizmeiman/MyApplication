@@ -120,7 +120,7 @@
                 android:id="@+id/ReportsBut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/btnshapecolor"
                 android:text="التقارير"
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
                 android:textSize="16sp" />
@@ -130,7 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/btnshapecolor"
                 android:text="تحدث إلينا"
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
                 android:textSize="16sp" />

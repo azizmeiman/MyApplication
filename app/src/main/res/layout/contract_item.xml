@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
   <LinearLayout
@@ -54,16 +55,17 @@
     <Button
         android:id="@+id/Accept"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:layout_height="36dp"
+        android:background="@drawable/btnshapecolor"
         android:text="Accept"
         android:textColor="#FFF" />
 
     <Button
         android:id="@+id/Reject"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#B30E0E"
+        android:layout_height="36dp"
+        android:background="@drawable/btn2"
+        android:layout_marginTop="04dp"
         android:text="Reject"
         android:textColor="#FFF" />
   </LinearLayout>

@@ -97,12 +97,12 @@
     <Button
         android:id="@+id/Block"
         android:layout_width="387dp"
-        android:layout_height="72dp"
+        android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/btnshapecolor"
         android:text="@string/Block"
         android:textColor="#FFF"
         android:textSize="20sp"
@@ -112,17 +112,17 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.438" />
+        app:layout_constraintVertical_bias="0.465" />
 
     <Button
         android:id="@+id/unBlock"
         android:layout_width="387dp"
-        android:layout_height="72dp"
+        android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/btnshapecolor"
         android:text="أزل الحضر"
         android:textColor="#FFF"
         android:textSize="20sp"
@@ -138,12 +138,12 @@
     <Button
         android:id="@+id/check"
         android:layout_width="387dp"
-        android:layout_height="72dp"
+        android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/btnshapecolor"
         android:text="@string/check"
         android:textColor="#FFFF"
         android:textSize="20sp"
@@ -153,7 +153,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.745" />
+        app:layout_constraintVertical_bias="0.719" />
 
     <TextView
         android:id="@+id/orgNAME"

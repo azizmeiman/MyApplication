@@ -27,7 +27,7 @@ public class ResetThePalanc extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_the_palanc);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
 
         final TextView balance = (TextView) findViewById(R.id.amount);
@@ -38,7 +38,7 @@ public class ResetThePalanc extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        final String email = extras.getString("rpid");
+        final String idp = extras.getString("idp");
 
         myRef.child("WorkerPoster").addValueEventListener(new ValueEventListener() {
             WorkerPoster WorkerPoster = new WorkerPoster();
@@ -48,11 +48,11 @@ public class ResetThePalanc extends AppCompatActivity {
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
-                    if(child.child("rpid").getValue().toString().equals(email)) {
+                    if(child.child("idp").getValue().toString().equals(idp)) {
 
 
 
-                        WorkerPoster = new WorkerPoster(child.getValue(WorkerPoster.class));
+                        WorkerPoster =  dataSnapshot.child(idp).getValue(WorkerPoster.class);
 
                        fees = String.valueOf(WorkerPoster.getSystemfees());
                         balance.setText(fees);
@@ -75,7 +75,8 @@ public class ResetThePalanc extends AppCompatActivity {
 
                                 String newP
                                         = reset.getText().toString();
-                                double fse= Double.parseDouble(newP);
+                                double fse= WorkerPoster.getSystemfees()- Double.parseDouble(newP);
+
                                 myRef.child("WorkerPoster").child(WorkerPoster.getIDP()).child("systemfees").setValue(fse);
                                 finish();
                             }

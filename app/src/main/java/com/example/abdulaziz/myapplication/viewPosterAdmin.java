@@ -86,7 +86,7 @@ public class viewPosterAdmin extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 Intent ViewposterIntent = new Intent(viewPosterAdmin.this, ResetThePalanc.class );
-                                ViewposterIntent.putExtra("rpid",WorkerPoster.getRPID());
+                                ViewposterIntent.putExtra("idp",WorkerPoster.getIDP());
                                 startActivity(ViewposterIntent);
                             }
                         });

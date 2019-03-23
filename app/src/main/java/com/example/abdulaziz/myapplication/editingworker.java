@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +38,7 @@ public class editingworker extends AppCompatActivity {
         final EditText WorkerSkillsEdit = (EditText) findViewById(R.id.WorkerSkillsedit);
         final EditText WorkerFeesEdit = (EditText) findViewById(R.id.WorkerFeesedit);
         final EditText WorkerIncomeEdit = (EditText) findViewById(R.id.WorkerIncomeedit);
+        final Switch availableworker = (Switch)findViewById(R.id.EditWorkerSwitch);
 
 
         final Button edit = (Button) findViewById(R.id.editworkerBut);
@@ -102,6 +104,14 @@ public class editingworker extends AppCompatActivity {
                         String workerskills = WorkerSkillsEdit.getText().toString();
                         int workerfee = Integer.parseInt(WorkerFeesEdit.getText().toString());
                         int totalIncome = Integer.parseInt(WorkerIncomeEdit.getText().toString());
+
+                        if(availableworker.isChecked())
+                            w1.setAvailable(true);
+                         else
+                            w1.setAvailable(false);
+
+
+
 
                         w1.setName(workerName);
                         w1.setWorkerID(WorkerID);

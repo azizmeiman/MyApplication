@@ -84,6 +84,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
             android:theme="@style/RatingBar"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"
             android:numStars="5"
             android:stepSize="1"
             android:scaleX=".5"
@@ -94,3 +96,8 @@
     </LinearLayout>
 
 </RelativeLayout>
+
+
+
+
+

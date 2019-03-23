@@ -153,7 +153,7 @@ public class RequestActivity extends AppCompatActivity {
                 Request r = new Request(key_ID,workerID,empID,posterID,workerName,emp.getOrgName(),period,startDate,endDate,totalPrice,3);
 
                 pushRef.setValue(r);
-
+                Toast.makeText(RequestActivity.this,"تم إرسال الطلب",Toast.LENGTH_SHORT).show();
                 startActivity(back);
 
 

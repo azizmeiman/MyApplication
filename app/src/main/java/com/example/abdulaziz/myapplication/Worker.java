@@ -32,7 +32,8 @@ public class Worker {
     private int TotalIncome;
     private String ID;
     private boolean isAvailable;
-    private int TotalRate;
+    private float TotalRate;
+    private int nRate;//counter
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
@@ -57,9 +58,10 @@ public class Worker {
         this.ID = w.getID();
         this.isAvailable= w.isAvailable();
         this.TotalRate = w.getTotalRate();
+        this.nRate = w.getnRate();
     }
 
-    public Worker(String name, String workerID, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income, int Rate) {
+    public Worker(String name, String workerID, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income, float Rate, int nRate) {
         this.name = name;
         this.WorkerID = workerID;
         this.isDeleted = false; // 1 means avilable
@@ -74,14 +76,13 @@ public class Worker {
         this.Workerpdf = Workerpdf;
         this.TotalIncome = Income;
         this.TotalRate = Rate;
-        //this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
-
+        this.nRate = nRate;
     }
 
-    public Worker(String name, String workerID, boolean isDeleted, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income,String id , boolean isAvailable, int Rate) {
+    public Worker(String name, String workerID, boolean isDeleted, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income,String id , boolean isAvailable, float Rate, int nRate) {
         this.name = name;
         this.WorkerID = workerID;
-        this.isDeleted = isDeleted; // 1 means avilable
+        this.isDeleted = isDeleted;
         this.Skills = Skills;
         this.price = price;
         this.picture = picture;
@@ -92,17 +93,26 @@ public class Worker {
         this.PosterID = PosterID;
         this.Workerpdf = Workerpdf;
         this.TotalIncome = Income;
-        //this.BirthDate  = DateFormat.getDateTimeInstance().format(new Date()) ;;
         this.ID = id;
         this.isAvailable= isAvailable;
         this.TotalRate = Rate;
+        this.nRate = nRate;
     }
 
-    public int getTotalRate() {
+
+    public int getnRate() {
+        return nRate;
+    }
+
+    public void setnRate(int nRate) {
+        this.nRate = nRate;
+    }
+
+    public float getTotalRate() {
         return TotalRate;
     }
 
-    public void setTotalRate(int totalRate) {
+    public void setTotalRate(float totalRate) {
         this.TotalRate = totalRate;
     }
 

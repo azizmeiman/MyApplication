@@ -89,7 +89,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorPrimary"
-                android:text="عرض العقود"
+                android:text="عرض العقود القائمة"
                 android:textColor="@color/common_google_signin_btn_text_dark_pressed"
                 android:textSize="16sp"
                 tools:layout_editor_absoluteX="27dp"

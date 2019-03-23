@@ -50,7 +50,8 @@ public class addworker extends AppCompatActivity {
     int totalincome;
     boolean isAvailable;
     boolean deleted;
-    int Rate;
+    float Rate;
+    int nRate;
 
 
     EditText bDate;
@@ -176,6 +177,7 @@ public class addworker extends AppCompatActivity {
                  isAvailable=true;
                  deleted = false;
                  Rate = 5;
+                 nRate = 0;
 
 
 
@@ -183,7 +185,7 @@ public class addworker extends AppCompatActivity {
                  String key_ID = pushRef.getKey();
 
                  Worker worker = new Worker(WorkerName, WorkerID,deleted, WorkerFees, Workerpic, WorkerNationality, WorkerCity, WorkerSkills, WorkerMobile,
-                                              WorkerBDDate, PosterUID, Workerpdf, totalincome,key_ID,isAvailable,Rate);
+                                              WorkerBDDate, PosterUID, Workerpdf, totalincome,key_ID,isAvailable,Rate,nRate);
 
                  pushRef.setValue(worker);
 

@@ -64,7 +64,7 @@ public class viewworkerinfo extends AppCompatActivity {
                 WorkerSkills.setText(w1.getSkills());
                 WorkerPrice.setText(String.valueOf(w1.getPrice()));
                 WorkerIncome.setText(String.valueOf(w1.getTotalIncome()));
-                rate.setNumStars(w1.getTotalRate());
+                rate.setRating(w1.getTotalRate()/w1.getnRate());
                 Picasso.get().load(w1.getPicture()).into(imageView);
             }
 

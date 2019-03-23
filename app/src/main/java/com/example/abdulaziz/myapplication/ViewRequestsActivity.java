@@ -43,6 +43,8 @@ public class ViewRequestsActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.requestsList);
         RequestsList = new ArrayList<>();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String PosterEmail = user.getEmail();
 
         myRef.child("Request").addValueEventListener(new ValueEventListener() {
 

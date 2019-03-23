@@ -24,7 +24,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="497dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,6 +103,13 @@
                     android:ems="10"
                     android:hint="مجموع الدخل"
                     android:inputType="textPersonName" />
+
+                <Switch
+                    android:id="@+id/EditWorkerSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="      العامل متوفر حالياً    " />
 
 
             </LinearLayout>

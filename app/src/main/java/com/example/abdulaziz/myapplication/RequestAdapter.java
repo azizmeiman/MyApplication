@@ -130,7 +130,7 @@ public class RequestAdapter extends ArrayAdapter<Request>{
                 int cpo=1;
                 final int   cp = Employer.getContractNomE()+cpo;
 
-                myRef.child("Employer").child(id).child("contractNumber").setValue(cp);}
+                myRef.child("Employer").child(id).child("contractNomE").setValue(cp);}
 
 
 

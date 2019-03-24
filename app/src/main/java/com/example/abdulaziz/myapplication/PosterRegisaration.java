@@ -53,6 +53,8 @@ public class PosterRegisaration extends AppCompatActivity {
 
 
     private ProgressDialog mprogressP;
+    private ProgressBar mprogressE;
+
     private Uri mImageUri;
 
     private StorageReference mStorageRef;
@@ -78,6 +80,8 @@ public class PosterRegisaration extends AppCompatActivity {
        // final EditText orgDocP = (EditText) findViewById(R.id.orgDocP);
      //   final EditText orgPicP = (EditText) findViewById(R.id.orgPicP);
         mprogressP = new ProgressDialog(this);
+        mprogressE  = (ProgressBar) findViewById(R.id.progressbar);
+        mprogressE.setVisibility(View.INVISIBLE);
 
         List<String> cityL = new ArrayList<String>();
         cityL.add("Riyadh");
@@ -119,7 +123,7 @@ public class PosterRegisaration extends AppCompatActivity {
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mprogressE.setVisibility(View.VISIBLE);
                 Email = EmailP.getText().toString();
                 password = PasswordP.getText().toString();
                 RPnamePoster = namep.getText().toString();
@@ -163,15 +167,19 @@ public class PosterRegisaration extends AppCompatActivity {
                                         FirebaseDatabase.getInstance().getReference("SystemFees").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("systemfees").setValue(0);
                                         Toast.makeText(PosterRegisaration.this,"Done",Toast.LENGTH_LONG).show();
                                         Intent intentLogin = new Intent(PosterRegisaration.this, Login.class);
+                                        intentLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        mprogressE.setVisibility(View.INVISIBLE);
                                         startActivity(intentLogin);
                                     }
                                     else {
+                                        mprogressE.setVisibility(View.INVISIBLE);
                                         Toast.makeText(PosterRegisaration.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
 
                         } else {
+                            mprogressE.setVisibility(View.INVISIBLE);
                             Toast.makeText(PosterRegisaration.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }

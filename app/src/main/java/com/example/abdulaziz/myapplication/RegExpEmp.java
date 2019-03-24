@@ -61,6 +61,7 @@ public class RegExpEmp extends AppCompatActivity  {
     private ProgressDialog mprogress;
 
     private Uri mImageUri;
+    private ProgressBar mprogressE;
 
    private StorageReference mStorageRef;
 
@@ -90,6 +91,8 @@ public class RegExpEmp extends AppCompatActivity  {
        // final EditText orgPic = (EditText) findViewById(R.id.orgPic);
 
         mprogress = new ProgressDialog(this);
+        mprogressE  = (ProgressBar) findViewById(R.id.progressbar);
+        mprogressE.setVisibility(View.INVISIBLE);
 
 //        final List<Object> CityList = new ArrayList<>();
 //        myRef.child("City").addValueEventListener(new ValueEventListener() {
@@ -156,6 +159,7 @@ public class RegExpEmp extends AppCompatActivity  {
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mprogressE.setVisibility(View.VISIBLE);
                 Email = EmailE.getText().toString();
                 password = PasswordE.getText().toString();
                 RPname = nameemp.getText().toString();
@@ -203,15 +207,19 @@ public class RegExpEmp extends AppCompatActivity  {
                                         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("UserType").setValue("Employer");
                                         Toast.makeText(RegExpEmp.this,"Done",Toast.LENGTH_LONG).show();
                                         Intent intentLogin = new Intent(RegExpEmp.this, Login.class);
+                                        intentLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        mprogressE.setVisibility(View.INVISIBLE);
                                         startActivity(intentLogin);
                                  }
                                         else {
+                                        mprogressE.setVisibility(View.INVISIBLE);
                                         Toast.makeText(RegExpEmp.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
 
                         } else {
+                            mprogressE.setVisibility(View.INVISIBLE);
                             Toast.makeText(RegExpEmp.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }

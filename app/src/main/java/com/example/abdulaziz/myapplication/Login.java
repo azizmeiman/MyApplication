@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,7 @@ public class Login extends AppCompatActivity {
     String Email;
     String password;
     private FirebaseAuth mAuth;
+    private ProgressBar mprogress;
 
 
     private DatabaseReference jLoginDatabase;
@@ -42,11 +44,14 @@ public class Login extends AppCompatActivity {
 
 
         Button LoginButtun = (Button) findViewById(R.id.LoginButtun);
+        mprogress  = (ProgressBar) findViewById(R.id.progressbar);
+        mprogress.setVisibility(View.INVISIBLE);
 
         LoginButtun.setOnClickListener(new View.OnClickListener() {
 
 
             public void onClick(View v) {
+                mprogress.setVisibility(View.VISIBLE);
                 signIn();
             }
 
@@ -88,6 +93,8 @@ public class Login extends AppCompatActivity {
                             if (userType.equals("Admin")) {
 
                                 Intent intentMain = new Intent(Login.this, AdminMain.class);
+                                intentMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                mprogress.setVisibility(View.INVISIBLE);
                                 startActivity(intentMain);
                             } else if (userType.equals("WorkerPoster")) {
                                 blockDatabase.addValueEventListener(new ValueEventListener() {
@@ -97,9 +104,12 @@ public class Login extends AppCompatActivity {
                                         boolean is = (boolean) dataSnapshot.child("blucked").getValue();
                                         if(is==false){
                                             Intent intentMain = new Intent(Login.this, WorkerPosterMain.class);
+                                            intentMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            mprogress.setVisibility(View.INVISIBLE);
                                             startActivity(intentMain);}
                                             else
-                                            Toast.makeText(Login.this,"Sorry you are blocked ", Toast.LENGTH_SHORT).show();
+                                            mprogress.setVisibility(View.INVISIBLE);
+                                        Toast.makeText(Login.this,"Sorry you are blocked ", Toast.LENGTH_SHORT).show();
 
 
                                     }
@@ -126,10 +136,13 @@ public class Login extends AppCompatActivity {
 
 
                                 Intent intentMain = new Intent(Login.this, EmployerMainActivity.class);
-                                startActivity(intentMain);
+                                            intentMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            mprogress.setVisibility(View.INVISIBLE);
+                                            startActivity(intentMain);
                                         }
                                         else
-                                            Toast.makeText(Login.this,"Sorry you are blocked ", Toast.LENGTH_SHORT).show();
+                                            mprogress.setVisibility(View.INVISIBLE);
+                                        Toast.makeText(Login.this,"Sorry you are blocked ", Toast.LENGTH_SHORT).show();
 
 
                                     }
@@ -143,6 +156,7 @@ public class Login extends AppCompatActivity {
                                 });
 
                             } else {
+                                mprogress.setVisibility(View.INVISIBLE);
                                 Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 return;
                             }

@@ -117,6 +117,7 @@ public class Login extends AppCompatActivity {
 
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        databaseError.getMessage();
 
                                     }
 
@@ -135,7 +136,7 @@ public class Login extends AppCompatActivity {
                                         if(is==false){
 
 
-                                Intent intentMain = new Intent(Login.this, EmployerMainActivity.class);
+                                            Intent intentMain = new Intent(Login.this, EmployerMainActivity.class);
                                             intentMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             mprogress.setVisibility(View.INVISIBLE);
                                             startActivity(intentMain);
@@ -164,7 +165,7 @@ public class Login extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            databaseError.getMessage();
                         }
 
                     });

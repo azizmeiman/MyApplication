@@ -103,7 +103,7 @@ public class RequestAdapter extends ArrayAdapter<Request>{
 
             public void onDataChange(DataSnapshot dataSnapshot) {
                 WorkerPoster = dataSnapshot.child(id).getValue(WorkerPoster.class);
-                int cpo=1;
+               int cpo=1;
                final int   cp = WorkerPoster.getContractNumber()+cpo;
 
                     myRef.child("WorkerPoster").child(id).child("contractNumber").setValue(cp);}

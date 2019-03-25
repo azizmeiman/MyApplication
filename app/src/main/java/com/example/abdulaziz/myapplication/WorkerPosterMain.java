@@ -23,6 +23,7 @@ public class WorkerPosterMain extends AppCompatActivity {
         final Button DeleteWorkerButton = (Button) findViewById(R.id.DeleteWorkerBut);
         final Button ReportsButton = (Button) findViewById(R.id.ReportsBut);
         final Button ChatwithAdminButton = (Button) findViewById(R.id.ChatwithAdminBut);
+        //final Button ViewPastContractButton = (Button)findViewById(R.id.)
 
 
         ViewWorkerButton.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +85,13 @@ public class WorkerPosterMain extends AppCompatActivity {
             }
         });
 
-
+        ViewContractButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent CurContract = new Intent(WorkerPosterMain.this, poster_contract_view.class);
+                startActivity(CurContract);
+            }
+        });
 
 
 

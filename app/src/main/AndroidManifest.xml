@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/logop"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".highestBalancePoster"></activity>
+
+        <activity android:name=".highestBalancePoster" />
         <activity android:name=".highestContractEmp" />
         <activity android:name=".highestContractPoster" />
         <activity android:name=".AdminReports" />
@@ -102,6 +103,13 @@
         <activity
             android:name=".ContractView"
             android:label="Contracts" />
+        <activity
+            android:name=".pastcontractsposter"
+            android:label="Past Contracts" />
+
+        <activity
+            android:name=".poster_contract_view"
+            android:label="Current Contracts"/>
     </application>
 
 </manifest>

@@ -32,6 +32,8 @@ public class Login extends AppCompatActivity {
     String password;
     private FirebaseAuth mAuth;
     private ProgressBar mprogress;
+    private FirebaseAuth mmAuth;
+
 
 
     private DatabaseReference jLoginDatabase;
@@ -44,6 +46,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mmAuth = FirebaseAuth.getInstance();
 
         Button LoginButtun = (Button) findViewById(R.id.LoginButtun);
         mprogress  = (ProgressBar) findViewById(R.id.progressbar);
@@ -55,6 +58,27 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 mprogress.setVisibility(View.VISIBLE);
                 signIn();
+            }
+
+        });
+        Button RestoreButtun = (Button) findViewById(R.id.forgetpass);
+
+        RestoreButtun.setOnClickListener(new View.OnClickListener() {
+
+
+
+            public void onClick(View v) {
+                final EditText EmailLogin = (EditText) findViewById(R.id.EmailLogin);
+                Email = EmailLogin.getText().toString();
+
+                if(!TextUtils.isEmpty(Email)) {
+                    mmAuth.sendPasswordResetEmail(Email);
+                    Toast.makeText(Login.this, "تم ارسال الرقم الى الايميل ", Toast.LENGTH_SHORT).show();
+
+                }
+                else
+                    Toast.makeText(Login.this, "الرجاء كتابة الايميل ", Toast.LENGTH_SHORT).show();
+
             }
 
         });
@@ -124,6 +148,7 @@ public class Login extends AppCompatActivity {
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError databaseError) {
                                         databaseError.getMessage();
+                                        mprogress.setVisibility(View.INVISIBLE);
 
                                     }
 
@@ -157,6 +182,7 @@ public class Login extends AppCompatActivity {
 
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        mprogress.setVisibility(View.INVISIBLE);
 
                                     }
 
@@ -190,7 +216,7 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     mprogress.setVisibility(View.INVISIBLE);
-                    String error = e.getMessage().toString();
+                    String error = e.getLocalizedMessage();
                     Toast.makeText(Login.this, "Wrong Email or Password: " + error, Toast.LENGTH_SHORT).show();
 
                 }

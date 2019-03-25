@@ -13,6 +13,7 @@ public class Contract {
     private String startDate;
     private String endDate;
     private int totalprice ;
+    private String EmployerMobile;
     private int status ; //1,Approved 2,Rejected 3,neither
 
 
@@ -20,11 +21,12 @@ public class Contract {
 
     }
 
-    public Contract(String contractID, String workerID, String empID, String posterID, String workerName, String empName,  int period, String startDate, String endDate, int totalprice, int status) {
+    public Contract(String contractID, String workerID, String empID, String posterID,String EmpMobile, String workerName, String empName,  int period, String startDate, String endDate, int totalprice, int status) {
         this.contractID = contractID;
         this.workerID = workerID;
         this.empID = empID;
         this.posterID = posterID;
+        this.EmployerMobile = EmpMobile;
         this.workerName = workerName;
         this.empName = empName;
         this.period = period;
@@ -39,6 +41,7 @@ public class Contract {
         this.workerID = value.getWorkerID();
         this.empID = value.getEmpID();
         this.posterID = value.getPosterID();
+        this.EmployerMobile = value.getEmployerMobile();
         this.workerName = value.getWorkerName();
         this.empName = value.getEmpName();
         this.period = value.getPeriod();
@@ -67,7 +70,14 @@ public class Contract {
         return empName;
     }
 
+    public String getEmployerMobile() {
+        return EmployerMobile;
+    }
 
+
+    public void setEmployerMobile(String employerMobile) {
+        EmployerMobile = employerMobile;
+    }
 
     public int getStatus() {
         return status;

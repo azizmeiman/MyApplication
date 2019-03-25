@@ -3,6 +3,7 @@ package com.example.abdulaziz.myapplication;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.icu.util.Calendar;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +30,7 @@ public class RequestActivity extends AppCompatActivity {
     String startDate;
     String endDate;
     String empName, posterName;
+    static Employer e= new Employer();
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
@@ -39,8 +41,6 @@ public class RequestActivity extends AppCompatActivity {
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String empID = user.getUid();
-
-    private int startYear, startMonth, startDay, endYear, endMonth, endDay, startInDay, endInDay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +56,8 @@ public class RequestActivity extends AppCompatActivity {
         final int totalPrice = extras.getInt("totalPrice");
         final String posterID = extras.getString("posterID");
         final String workerName = extras.getString("wName");
-        final int workerPrice = extras.getInt("price");
 
+        final String mobile;
         // initiate the date picker and a button
         sDate = (EditText) findViewById(R.id.startDate);
         // perform click event on edit text
@@ -77,10 +77,6 @@ public class RequestActivity extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
-                                startYear = year*12;
-                                startMonth = (monthOfYear+1)*30;
-                                startDay = dayOfMonth;
-                                startInDay = startYear+startMonth+startDay;
                                startDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                                 sDate.setText(startDate);
 
@@ -110,16 +106,11 @@ public class RequestActivity extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
-                                endYear = year*12;
-                                endMonth = (monthOfYear+1)*30;
-                                endDay = dayOfMonth;
-                                endInDay = endYear+endMonth+endDay;
-                                endDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                               endDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                                 eDate.setText(endDate);
 
                             }
                         }, eYear, eMonth, eDay);
-
 
                 eDatePickerDialog.show();
             }
@@ -135,6 +126,7 @@ public class RequestActivity extends AppCompatActivity {
 
                     if (empID.equals(child.child("ide").getValue().toString())){
                         emp = child.getValue(Employer.class);
+                        e = emp;
                     }
 
                 }
@@ -159,15 +151,11 @@ public class RequestActivity extends AppCompatActivity {
                 Intent back = new Intent(RequestActivity.this,searchForWorkerActivity.class);
 
                 DatabaseReference pushRef = myRef2.child("Request").push();
+                String Empmobile = e.getRPphoneNum();
                 String key_ID = pushRef.getKey();
-              Request r;
-              int p,t;
-                if(period >1) {
-                     r = new Request(key_ID, workerID, empID, posterID, workerName, emp.getOrgName(), period, startDate, endDate, totalPrice, 3);
-                }else{
-                    p = endInDay-startInDay;
-                    t = p*workerPrice;
-                    r = new Request(key_ID, workerID, empID, posterID, workerName, emp.getOrgName(), p, startDate, endDate, t, 3);}
+
+                Request r = new Request(key_ID,workerID,empID,posterID,Empmobile,workerName,emp.getOrgName(),period,startDate,endDate,totalPrice,3);
+
                 pushRef.setValue(r);
                 Toast.makeText(RequestActivity.this,"تم إرسال الطلب",Toast.LENGTH_SHORT).show();
                 startActivity(back);

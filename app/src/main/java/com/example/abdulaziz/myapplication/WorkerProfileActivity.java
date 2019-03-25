@@ -1,6 +1,7 @@
 package com.example.abdulaziz.myapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +27,8 @@ public class WorkerProfileActivity extends AppCompatActivity {
     int totalPrice1;
     int monthD;
     Worker worker = new Worker();
+    WorkerPoster wposter = new WorkerPoster();
+    static WorkerPoster poster = new WorkerPoster();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,8 @@ public class WorkerProfileActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
+        DatabaseReference myRef2 = database.getReference();
+
 
         final TextView name = (TextView) findViewById(R.id.workerName);
         final TextView skills = (TextView) findViewById(R.id.skills);
@@ -58,6 +65,7 @@ public class WorkerProfileActivity extends AppCompatActivity {
 
 
 
+
         myRef.child("Worker").addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -68,7 +76,7 @@ public class WorkerProfileActivity extends AppCompatActivity {
 
                    if(child.child("id").getValue().toString().equals(id)) {
 
-                    worker = new Worker(child.getValue(Worker.class));
+                     worker = new Worker(child.getValue(Worker.class));
                      name.setText("Worker name: "+worker.getName());
                      skills.setText("Skills: "+worker.getSkills());
                      price.setText("price perH: "+String.valueOf(worker.getPrice())+".00 SR");
@@ -76,6 +84,7 @@ public class WorkerProfileActivity extends AppCompatActivity {
                      monthD=monthD+days;
                      totalPrice1 = worker.getPrice()*monthD;
                      totalPrice.setText("Total price: "+String.valueOf(totalPrice1)+".00 SR");
+
 
                        break;
                    }
@@ -94,6 +103,28 @@ public class WorkerProfileActivity extends AppCompatActivity {
 
         });
 
+        myRef2.child("WorkerPoster").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+
+                        if ((child.child("idp").getValue().toString().equals(worker.getPosterID()))) {
+                            wposter = new WorkerPoster(child.getValue(WorkerPoster.class));
+                            poster = wposter;
+                            break;
+                        }
+
+                    }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
         hire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,8 +138,18 @@ public class WorkerProfileActivity extends AppCompatActivity {
                 startActivity(request);
             }
         });
-
-
-
+        final String mobile = poster.getRPphone();
+        Button chat = (Button)findViewById(R.id.button2);
+Toast.makeText(WorkerProfileActivity.this,poster.getIDP(),Toast.LENGTH_SHORT).show();
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String mobileNum =  mobile;
+                String url = "https://api.whatsapp.com/send?phone="+"966"+mobileNum;
+                Intent whatsappinent = new Intent(Intent.ACTION_VIEW);
+                whatsappinent.setData(Uri.parse(url));
+                startActivity(whatsappinent);
+            }
+        });
     }
 }

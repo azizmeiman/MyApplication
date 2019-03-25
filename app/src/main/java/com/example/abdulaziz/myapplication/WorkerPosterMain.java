@@ -8,6 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.Date;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -29,6 +32,8 @@ public class WorkerPosterMain extends AppCompatActivity {
         final Button ChatwithAdminButton = (Button) findViewById(R.id.ChatwithAdminBut);
         //final Button ViewPastContractButton = (Button)findViewById(R.id.)
 
+        Date current = new Date();
+        Toast.makeText(WorkerPosterMain.this, String.valueOf(current),Toast.LENGTH_LONG).show();
 
         ViewWorkerButton.setOnClickListener(new View.OnClickListener() {
             @Override

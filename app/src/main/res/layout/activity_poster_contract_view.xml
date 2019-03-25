@@ -13,12 +13,12 @@
         android:orientation="vertical">
 
         <Switch
-            android:id="@+id/oldcontracts"
+            android:id="@+id/currcontracts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:layout_weight="1"
-            android:text="أظهر العقود المنتهية فقط"
+            android:text="أظهر العقود الحالية"
             android:textSize="18sp" />
 
         <ListView

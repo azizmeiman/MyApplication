@@ -46,7 +46,7 @@ public class ViewWorkesActivity extends AppCompatActivity {
 
 
         listView = (ListView) findViewById(R.id.WorkersList);
-        availableSwitch = (Switch) findViewById(R.id.availableswitch);
+        availableSwitch = findViewById(R.id.avilableworkerSwitch);
 
 
         workersList = new ArrayList<>();

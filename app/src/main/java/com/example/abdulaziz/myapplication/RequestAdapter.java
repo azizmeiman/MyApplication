@@ -3,6 +3,7 @@ package com.example.abdulaziz.myapplication;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,7 +71,7 @@ public class RequestAdapter extends ArrayAdapter<Request>{
         Accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Contract c = new Contract(currentRequest.getContractID(),currentRequest.getWorkerID(),currentRequest.getEmpID(),currentRequest.getPosterID(),currentRequest.getWorkerName(),currentRequest.getEmpName(),currentRequest.getPeriod(),currentRequest.getStartDate(),currentRequest.getEndDate(),currentRequest.getTotalprice(),1);
+                Contract c = new Contract(currentRequest.getContractID(),currentRequest.getWorkerID(),currentRequest.getEmpID(),currentRequest.getPosterID(),currentRequest.getEmpMobile(),currentRequest.getWorkerName(),currentRequest.getEmpName(),currentRequest.getPeriod(),currentRequest.getStartDate(),currentRequest.getEndDate(),currentRequest.getTotalprice(),1);
                 incresstheContractPoster(currentRequest.getPosterID());
                 incresstheContractEmp(currentRequest.getEmpID());
                 DBA.insertContract(c);
@@ -88,9 +90,49 @@ public class RequestAdapter extends ArrayAdapter<Request>{
             }
         });
 
+
+
+        final String id = currentRequest.getEmpID();
+
+
+        ImageButton chat = (ImageButton) listItem.findViewById(R.id.imageButton);
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               String mobileNum =  currentRequest.getEmpMobile();
+               String url = "https://api.whatsapp.com/send?phone="+"966"+mobileNum;
+               Intent whatsappinent = new Intent(Intent.ACTION_VIEW);
+               whatsappinent.setData(Uri.parse(url));
+               cContext.startActivity(whatsappinent);
+            }
+        });
+
         return listItem;
     }
 
+
+//        public String empNumber(String empID) {
+//        final String EmpID = empID;
+//
+//
+//        myRef.child("Employer").addListenerForSingleValueEvent(new ValueEventListener() {
+//        @Override
+//        public void onDataChange(DataSnapshot dataSnapshot) {
+//            final String[] mobilephone = {""};
+//            Employer emp = dataSnapshot.child(EmpID).getValue(Employer.class);
+//            mobilephone[0] = emp.getRPphoneNum();
+//
+//        }
+//
+//
+//        @Override
+//        public void onCancelled(DatabaseError databaseError) {
+//        }
+//
+//    });
+//
+//    return mobilephone[0];
+//  }
 
 
     public void incresstheContractPoster(final String id){

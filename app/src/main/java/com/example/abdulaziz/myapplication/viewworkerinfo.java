@@ -39,7 +39,7 @@ public class viewworkerinfo extends AppCompatActivity {
         final TextView skilllabel = (TextView) findViewById(R.id.textView11);
         final TextView pricelabel = (TextView) findViewById(R.id.textView12);
         final TextView incomelabel = (TextView) findViewById(R.id.textView13);
-        final TextView ratelabel = (TextView) findViewById(R.id.textView17);
+        final TextView ratelabel = (TextView) findViewById(R.id.textView117);
         final RatingBar rate = (RatingBar) findViewById(R.id.ratingBar3);
 
         Intent intent = getIntent();

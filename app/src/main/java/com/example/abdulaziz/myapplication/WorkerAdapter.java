@@ -37,7 +37,7 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
 
         Worker currentWorker = workersList.get(position);
 
-        TextView Available = (TextView) listItem.findViewById(R.id.textViewAv);
+        TextView Available = (TextView) listItem.findViewById(R.id.textViewAva);
         String isAvailable = currentWorker.isAvailableMethod();
 
 

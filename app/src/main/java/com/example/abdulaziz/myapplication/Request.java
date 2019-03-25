@@ -10,6 +10,7 @@ public class Request {
     private String posterID ;
     private String workerName ;
     private String empName ;
+    private String EmpMobile;
 
     private int period ;
     private String startDate;
@@ -22,11 +23,13 @@ public class Request {
 
     }
 
-    public Request(String contractID, String workerID, String empID, String posterID, String workerName, String empName, int period, String startDate, String endDate, int totalprice, int status) {
+    public Request(String contractID, String workerID, String empID, String mobilenum,String postermobile, String workerName, String empName, int period, String startDate, String endDate, int totalprice, int status) {
         this.contractID = contractID;
         this.workerID = workerID;
         this.empID = empID;
         this.posterID = posterID;
+        this.EmpMobile = mobilenum;
+
         this.workerName = workerName;
         this.empName = empName;
         this.period = period;
@@ -44,6 +47,7 @@ public class Request {
         this.workerID = r.getWorkerID();
         this.empID = r.getEmpID();
         this.posterID = r.getPosterID();
+        this.EmpMobile = r.getEmpMobile();
         this.empName = r.getEmpName();
         this.workerName = r.getWorkerName();
         this.period = r.getPeriod();
@@ -61,6 +65,13 @@ public class Request {
         this.empName = empName;
     }
 
+    public String getEmpMobile() {
+        return EmpMobile;
+    }
+
+    public void setEmpMobile(String empMobile) {
+        EmpMobile = empMobile;
+    }
 
     public String getWorkerName() {
         return workerName;
@@ -69,7 +80,6 @@ public class Request {
     public String getEmpName() {
         return empName;
     }
-
 
     public int getStatus() {
         return status;

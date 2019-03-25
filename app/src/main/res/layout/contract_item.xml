@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
   <LinearLayout
       android:id="@+id/linear4"
       android:layout_width="wrap_content"
@@ -14,28 +16,28 @@
         android:id="@+id/contractID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textColor="#000000"  />
 
     <TextView
         android:id="@+id/empID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textColor="#000000" />
 
     <TextView
         android:id="@+id/workerID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textColor="#000000" />
 
     <TextView
         android:id="@+id/Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textColor="#000000" />
   </LinearLayout>
 
@@ -49,7 +51,7 @@
         android:id="@+id/totalP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textColor="#000000" />
 
     <Button
@@ -69,6 +71,16 @@
         android:text="Reject"
         android:textColor="#FFF" />
   </LinearLayout>
+
+  <ImageButton
+      android:id="@+id/imageButton"
+      android:layout_width="66dp"
+      android:layout_height="69dp"
+      android:layout_marginStart="104dp"
+      android:layout_toEndOf="@+id/linear4"
+      android:background="#00FFFFFF"
+      android:scaleType="fitCenter"
+      app:srcCompat="@drawable/greenchat" />
 
 
 </RelativeLayout>

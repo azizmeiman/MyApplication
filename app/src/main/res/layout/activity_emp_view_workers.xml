@@ -7,12 +7,26 @@
     android:orientation="vertical">
 
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="العمال المتاحين فقط" />
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/sortSpinner"
+            android:layout_width="308dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="العمال المتاحين فقط" />
+
+</LinearLayout>
 
     <ListView
         android:id="@+id/WorkersList2"

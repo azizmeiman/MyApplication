@@ -295,8 +295,12 @@ public class Worker {
         });
 
         if(busy){
+            this.setAvailable(false);
+
             return endDate;
         }else{
+            this.setAvailable(true);
+
             return "";
         }
 

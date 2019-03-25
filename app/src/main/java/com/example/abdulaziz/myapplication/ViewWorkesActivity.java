@@ -68,6 +68,7 @@ public class ViewWorkesActivity extends AppCompatActivity {
                       if (userUID.equals(child.child("posterID").getValue().toString())) {
                          if ((child.child("deleted").getValue().toString().equals("false"))) {
                              Worker worker = new Worker(child.getValue(Worker.class));
+
                              if(worker.isAvailable()) {
                                  AvailableList.add(worker);
                                  workersList.add(worker);

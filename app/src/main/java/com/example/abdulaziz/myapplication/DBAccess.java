@@ -14,6 +14,7 @@ public class DBAccess {
 
     }
 
+
     public void insertEmployer(Employer e) {
         myRef = database.getReference("Employer");
         myRef.push().setValue(e);
@@ -48,6 +49,11 @@ public class DBAccess {
     public void insertContract(Contract c) {
         myRef = database.getReference("Contract");
         myRef.push().setValue(c);
+    }
+
+    public void insertFeedback(Feedback f){
+        myRef = database.getReference("Feedback");
+        myRef.push().setValue(f);
     }
 
     public void insertRequest(Request r) {

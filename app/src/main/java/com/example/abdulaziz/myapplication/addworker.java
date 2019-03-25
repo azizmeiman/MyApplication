@@ -74,6 +74,7 @@ public class addworker extends AppCompatActivity {
     private StorageTask mUploadTask;
 
     private ArrayAdapter citites;
+    private ArrayAdapter skill;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +86,7 @@ public class addworker extends AppCompatActivity {
         final EditText WorkerNationalityEdit = (EditText) findViewById(R.id.WorkerNationalityText);
 
 
-        final Spinner WorkerSkillsEdit = (Spinner) findViewById(R.id.spinnerSkills);
+
         final EditText WorkerFeesEdit = (EditText) findViewById(R.id.WorkerFeesText);
         final Button AddworkerBut = (Button) findViewById(R.id.addworkerBut);
 
@@ -140,13 +141,25 @@ public class addworker extends AppCompatActivity {
 
 
 
-        List<String> SkillsL = new ArrayList<String>();
-        SkillsL.add("مزارع");
-        SkillsL.add("راعي");
-        SkillsL.add("سائق حراثه");
 
-        ArrayAdapter<String> Skills = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, SkillsL);
-        WorkerSkillsEdit.setAdapter(Skills);
+        final Spinner skillID =  (Spinner) findViewById(R.id.spinnerSkills);
+        final List<String> skillL = new ArrayList<String>();
+
+        myRef.child("Skills").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    skillL.add(child.getValue(String.class));
+                }
+                skill = new ArrayAdapter<String>(addworker.this, android.R.layout.simple_list_item_1, skillL);
+                skillID.setAdapter(skill);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
 // initiate the date picker and a button
@@ -188,7 +201,7 @@ public class addworker extends AppCompatActivity {
                  WorkerMobile = WorkerMobileEdit.getText().toString();
                  WorkerNationality = WorkerNationalityEdit.getText().toString();
                  WorkerCity = cityID.getSelectedItem().toString();
-                 WorkerSkills = WorkerSkillsEdit.getSelectedItem().toString();
+                 WorkerSkills = skillID.getSelectedItem().toString();
                  WorkerFees = Integer.parseInt(WorkerFeesEdit.getText().toString());
                  PosterUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                  totalincome = 0; // When worker added total income will be 0

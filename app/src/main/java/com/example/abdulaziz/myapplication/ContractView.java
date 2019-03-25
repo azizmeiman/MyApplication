@@ -1,6 +1,7 @@
 package com.example.abdulaziz.myapplication;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +25,7 @@ public class ContractView extends AppCompatActivity {
     private ListView listViewCotract;
     private ContractAdapter CAdapter;
     private ArrayList<Contract> CotractList;
-
+    private  String userType ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,10 @@ public class ContractView extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String UserID = user.getUid();
+
 
         listViewCotract = (ListView) findViewById(R.id.ContractrList);
         CotractList = new ArrayList<>();
@@ -62,10 +69,23 @@ public class ContractView extends AppCompatActivity {
             }
         });
 
+        myRef.child("Users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               userType = dataSnapshot.child(UserID).getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
         listViewCotract.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ContractView.this, ViewProfileContract.class);
+               Intent intent = new Intent(ContractView.this, ViewProfileContract.class);
                 intent.putExtra("contractID",CotractList.get(position).getContractID());
                 startActivity(intent);
 

@@ -72,7 +72,7 @@ public class EmpContractViewActivity extends AppCompatActivity {
         listViewCotract.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(EmpContractViewActivity.this, ViewProfileContract.class);
+                Intent intent = new Intent(EmpContractViewActivity.this, empViewContractProfileActivity.class);
                 intent.putExtra("contractID",CotractList.get(position).getContractID());
                 startActivity(intent);
 

@@ -24,8 +24,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -70,6 +73,7 @@ public class addworker extends AppCompatActivity {
 
     private StorageTask mUploadTask;
 
+    private ArrayAdapter citites;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,8 +83,8 @@ public class addworker extends AppCompatActivity {
         final EditText WorkerIDEdit = (EditText) findViewById(R.id.WorkerIDText);
         final EditText WorkerMobileEdit = (EditText) findViewById(R.id.WorkerMobileText);
         final EditText WorkerNationalityEdit = (EditText) findViewById(R.id.WorkerNationalityText);
-        final Spinner WorkerCityEdit = (Spinner) findViewById(R.id.spinnerCity);
-        final EditText WorkerBDateEdit = (EditText) findViewById(R.id.WorkerBDateText);
+
+
         final Spinner WorkerSkillsEdit = (Spinner) findViewById(R.id.spinnerSkills);
         final EditText WorkerFeesEdit = (EditText) findViewById(R.id.WorkerFeesText);
         final Button AddworkerBut = (Button) findViewById(R.id.addworkerBut);
@@ -114,12 +118,26 @@ public class addworker extends AppCompatActivity {
 
 
 
-        List<String> cityL = new ArrayList<String>();
-        cityL.add("الرياض");
-        cityL.add("الدمام");
-        cityL.add("جده");
-        ArrayAdapter<String> citites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cityL);
-        WorkerCityEdit.setAdapter(citites);
+        final Spinner cityID =  (Spinner) findViewById(R.id.spinnerCity);
+        final List<String> cityL = new ArrayList<String>();
+
+        myRef.child("City").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    cityL.add(child.getValue(String.class));
+                }
+                citites = new ArrayAdapter<String>(addworker.this, android.R.layout.simple_list_item_1, cityL);
+                cityID.setAdapter(citites);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
 
 
         List<String> SkillsL = new ArrayList<String>();
@@ -169,7 +187,7 @@ public class addworker extends AppCompatActivity {
                  WorkerID = WorkerIDEdit.getText().toString();
                  WorkerMobile = WorkerMobileEdit.getText().toString();
                  WorkerNationality = WorkerNationalityEdit.getText().toString();
-                 WorkerCity = WorkerCityEdit.getSelectedItem().toString();
+                 WorkerCity = cityID.getSelectedItem().toString();
                  WorkerSkills = WorkerSkillsEdit.getSelectedItem().toString();
                  WorkerFees = Integer.parseInt(WorkerFeesEdit.getText().toString());
                  PosterUID = FirebaseAuth.getInstance().getCurrentUser().getUid();

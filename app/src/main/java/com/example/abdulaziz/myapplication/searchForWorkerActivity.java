@@ -1,6 +1,7 @@
 package com.example.abdulaziz.myapplication;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,29 +9,54 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class searchForWorkerActivity extends AppCompatActivity {
 
+    private ArrayAdapter citites;
+    private ArrayAdapter skill;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_for_worker);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
 
 
-       final Spinner cityID =  (Spinner) findViewById(R.id.citySpinner);
         final Button listAll = (Button) findViewById(R.id.listAllWorkers);
         final Button search = (Button) findViewById(R.id.Search);
 
-        List<String> cityL = new ArrayList<String>();
-        cityL.add("الرياض");
-        cityL.add("الدمام");
-        cityL.add("جدة");
+        final Spinner cityID =  (Spinner) findViewById(R.id.citySpinner);
+        final List<String> cityL = new ArrayList<String>();
 
-        ArrayAdapter<String> citites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cityL);
-        cityID.setAdapter(citites);
+        myRef.child("City").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    cityL.add(child.getValue(String.class));
+                }
+                citites = new ArrayAdapter<String>(searchForWorkerActivity.this, android.R.layout.simple_list_item_1, cityL);
+                cityID.setAdapter(citites);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
 
 
 
@@ -97,16 +123,34 @@ public class searchForWorkerActivity extends AppCompatActivity {
 
 
 
+
+
+
+
+
+
+
+
+
+
         final Spinner skillID =  (Spinner) findViewById(R.id.skillsSpinner);
+        final List<String> skillL = new ArrayList<String>();
 
-        List<String> skillL = new ArrayList<String>();
-     skillL.add("Farmer");
-     skillL.add("Driver");
-     skillL.add("Other");
+        myRef.child("Skills").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    skillL.add(child.getValue(String.class));
+                }
+                skill = new ArrayAdapter<String>(searchForWorkerActivity.this, android.R.layout.simple_list_item_1, skillL);
+                skillID.setAdapter(skill);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        final ArrayAdapter<String> skill = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, skillL);
-        skillID.setAdapter(skill);
+            }
+        });
 
 
 

@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
@@ -171,7 +172,11 @@ public class RegExpEmp extends AppCompatActivity  {
 
 
 
-
+                if (TextUtils.isEmpty(Email) || TextUtils.isEmpty(password)  || TextUtils.isEmpty(RPname) || TextUtils.isEmpty(RPIDemp) || TextUtils.isEmpty(RPphoneNumemp) || TextUtils.isEmpty(orgNameemp) ) {
+                    Toast.makeText(RegExpEmp.this, "املئ جميع الحقول. . .", Toast.LENGTH_LONG).show();
+                    mprogressE.setVisibility(View.INVISIBLE);
+                }
+                else{
                 mAuth.createUserWithEmailAndPassword(Email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -223,7 +228,7 @@ public class RegExpEmp extends AppCompatActivity  {
                             Toast.makeText(RegExpEmp.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
-                });
+                });}
 
             }
 

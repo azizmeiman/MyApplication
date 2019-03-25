@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
@@ -132,6 +133,12 @@ public class PosterRegisaration extends AppCompatActivity {
                 cityIDposter = Cityposter.getSelectedItem().toString();
                 orgNamePoster = orgNameP.getText().toString();
 
+
+                if (TextUtils.isEmpty(Email) || TextUtils.isEmpty(password)  || TextUtils.isEmpty(RPnamePoster) || TextUtils.isEmpty(RPIDPoster) || TextUtils.isEmpty(RPphoneNumPoster) || TextUtils.isEmpty(orgNamePoster) ) {
+                    Toast.makeText(PosterRegisaration.this, "املئ جميع الحقول. . .", Toast.LENGTH_LONG).show();
+                    mprogressE.setVisibility(View.INVISIBLE);
+                }
+                else{
                 mAuth.createUserWithEmailAndPassword(Email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -183,7 +190,7 @@ public class PosterRegisaration extends AppCompatActivity {
                             Toast.makeText(PosterRegisaration.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
-                });
+                });}
             }
 
 

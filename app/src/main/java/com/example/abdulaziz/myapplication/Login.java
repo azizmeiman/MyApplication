@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -73,6 +75,10 @@ public class Login extends AppCompatActivity {
         password = PasswordLogin.getText().toString();
 
 
+        if (TextUtils.isEmpty(Email) || TextUtils.isEmpty(password)) {
+            mprogress.setVisibility(View.INVISIBLE);
+            Toast.makeText(this, "Enter user Name / password first . . .", Toast.LENGTH_SHORT).show();}
+            else{
         mAuth.signInWithEmailAndPassword(Email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
             public void onComplete(final Task<AuthResult> task) {
@@ -107,10 +113,10 @@ public class Login extends AppCompatActivity {
                                             intentMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             mprogress.setVisibility(View.INVISIBLE);
                                             startActivity(intentMain);}
-                                            else
+                                            else {
                                             mprogress.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(Login.this,"Sorry you are blocked ", Toast.LENGTH_SHORT).show();
-
+                                            Toast.makeText(Login.this, "Sorry you are blocked ", Toast.LENGTH_SHORT).show();
+                                        }
 
                                     }
 
@@ -141,10 +147,10 @@ public class Login extends AppCompatActivity {
                                             mprogress.setVisibility(View.INVISIBLE);
                                             startActivity(intentMain);
                                         }
-                                        else
+                                        else {
                                             mprogress.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(Login.this,"Sorry you are blocked ", Toast.LENGTH_SHORT).show();
-
+                                            Toast.makeText(Login.this, "Sorry you are blocked ", Toast.LENGTH_SHORT).show();
+                                        }
 
                                     }
 
@@ -156,19 +162,23 @@ public class Login extends AppCompatActivity {
 
                                 });
 
-                            } else {
-                                mprogress.setVisibility(View.INVISIBLE);
-                                Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                return;
                             }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-                            databaseError.getMessage();
+                            mprogress.setVisibility(View.INVISIBLE);
+                            Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            return;
+                   //         databaseError.getMessage();
                         }
 
                     });
+
+                }else{
+                    mprogress.setVisibility(View.INVISIBLE);
+                    String error = task.getException().toString();
+                    Toast.makeText(Login.this, "Wrong Email or Password: " + error, Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -176,6 +186,16 @@ public class Login extends AppCompatActivity {
 
 
 
-      });
+      }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    mprogress.setVisibility(View.INVISIBLE);
+                    String error = e.getMessage().toString();
+                    Toast.makeText(Login.this, "Wrong Email or Password: " + error, Toast.LENGTH_SHORT).show();
+
+                }
+            });
    }
+}
+
 }

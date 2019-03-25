@@ -68,6 +68,7 @@ public class RegExpEmp extends AppCompatActivity  {
 
     private StorageTask mUploadTask;
 
+    private ArrayAdapter citites;
 
 
     @Override
@@ -86,7 +87,7 @@ public class RegExpEmp extends AppCompatActivity  {
         final EditText nameemp = (EditText) findViewById(R.id.nameemp);
         final EditText RPID = (EditText) findViewById(R.id.RPID);
         final EditText RPphoneNum = (EditText) findViewById(R.id.RPphoneNum);
-        final Spinner cityID = (Spinner) findViewById(R.id.cityID);
+
         final EditText orgName = (EditText) findViewById(R.id.orgName);
         //final EditText orgDoc = (EditText) findViewById(R.id.orgDoc);
        // final EditText orgPic = (EditText) findViewById(R.id.orgPic);
@@ -120,14 +121,31 @@ public class RegExpEmp extends AppCompatActivity  {
 //           ArrayAdapter<Object> cityAdapter = new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1, CityList);
 //           cityID.setAdapter(cityAdapter);
 
-        List<String> cityL = new ArrayList<String>();
-        cityL.add("Riyadh");
-        cityL.add("Dammam");
-        cityL.add("Jeddah");
 
 
-        ArrayAdapter<String> citites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cityL);
-        cityID.setAdapter(citites);
+
+
+
+
+
+        final Spinner cityID = (Spinner) findViewById(R.id.cityID);
+        final List<String> cityL = new ArrayList<String>();
+
+        myRef.child("City").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    cityL.add(child.getValue(String.class));
+                }
+                citites = new ArrayAdapter<String>(RegExpEmp.this, android.R.layout.simple_list_item_1, cityL);
+                cityID.setAdapter(citites);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
      Button pic = (Button)findViewById(R.id.PicUpload);
 

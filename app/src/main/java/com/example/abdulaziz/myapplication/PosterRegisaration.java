@@ -25,8 +25,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -62,12 +65,17 @@ public class PosterRegisaration extends AppCompatActivity {
 
     private StorageTask mUploadTask;
 
+    private ArrayAdapter citites;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poster_regisaration);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+
         mStorageRef = FirebaseStorage.getInstance().getReference("Pictures");
 
         mAuth = FirebaseAuth.getInstance();
@@ -76,7 +84,7 @@ public class PosterRegisaration extends AppCompatActivity {
         final EditText namep = (EditText) findViewById(R.id.namep);
         final EditText RPIDP = (EditText) findViewById(R.id.RPIDP);
         final EditText RPphoneNumP = (EditText) findViewById(R.id.RPphoneNumP);
-        final Spinner Cityposter = (Spinner) findViewById(R.id.cityPoster);
+
         final EditText orgNameP = (EditText) findViewById(R.id.orgNameP);
        // final EditText orgDocP = (EditText) findViewById(R.id.orgDocP);
      //   final EditText orgPicP = (EditText) findViewById(R.id.orgPicP);
@@ -84,14 +92,28 @@ public class PosterRegisaration extends AppCompatActivity {
         mprogressE  = (ProgressBar) findViewById(R.id.progressbar);
         mprogressE.setVisibility(View.INVISIBLE);
 
-        List<String> cityL = new ArrayList<String>();
-        cityL.add("Riyadh");
-        cityL.add("Dammam");
-        cityL.add("Jeddah");
 
 
-        ArrayAdapter<String> citites = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cityL);
-        Cityposter.setAdapter(citites);
+
+        final Spinner Cityposter = (Spinner) findViewById(R.id.cityPoster);
+        final List<String> cityL = new ArrayList<String>();
+
+        myRef.child("City").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    cityL.add(child.getValue(String.class));
+                }
+                citites = new ArrayAdapter<String>(PosterRegisaration.this, android.R.layout.simple_list_item_1, cityL);
+                Cityposter.setAdapter(citites);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         Button pic = (Button)findViewById(R.id.PicUploadP);
 

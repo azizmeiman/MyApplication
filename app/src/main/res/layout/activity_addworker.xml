@@ -73,13 +73,10 @@
                         android:maxLength="9" />
                 </LinearLayout>
 
-        <EditText
-            android:id="@+id/WorkerNationalityText"
+        <Spinner
+            android:id="@+id/WorkerNationality"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="الجنسية"
-            android:inputType="textPersonName" />
+            android:layout_height="35dp" />
 
                 <Spinner
                     android:id="@+id/spinnerCity"

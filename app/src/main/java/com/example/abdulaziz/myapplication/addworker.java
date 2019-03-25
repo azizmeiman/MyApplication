@@ -75,6 +75,7 @@ public class addworker extends AppCompatActivity {
 
     private ArrayAdapter citites;
     private ArrayAdapter skill;
+    private ArrayAdapter nationality;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,10 +84,6 @@ public class addworker extends AppCompatActivity {
         final EditText WorkerNameEdit = (EditText) findViewById(R.id.WorkerNameText);
         final EditText WorkerIDEdit = (EditText) findViewById(R.id.WorkerIDText);
         final EditText WorkerMobileEdit = (EditText) findViewById(R.id.WorkerMobileText);
-        final EditText WorkerNationalityEdit = (EditText) findViewById(R.id.WorkerNationalityText);
-
-
-
         final EditText WorkerFeesEdit = (EditText) findViewById(R.id.WorkerFeesText);
         final Button AddworkerBut = (Button) findViewById(R.id.addworkerBut);
 
@@ -162,6 +159,28 @@ public class addworker extends AppCompatActivity {
         });
 
 
+
+
+        final Spinner WorkerNationalityEdit = (Spinner) findViewById(R.id.WorkerNationality);
+        final List<String> NationalityL = new ArrayList<String>();
+
+        myRef.child("Nationality").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    NationalityL.add(child.getValue(String.class));
+                }
+                nationality = new ArrayAdapter<String>(addworker.this, android.R.layout.simple_list_item_1, NationalityL);
+                WorkerNationalityEdit.setAdapter(nationality);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
 // initiate the date picker and a button
         bDate = (EditText) findViewById(R.id.WorkerBDateText);
         // perform click event on edit text
@@ -199,7 +218,7 @@ public class addworker extends AppCompatActivity {
                  WorkerName = WorkerNameEdit.getText().toString();
                  WorkerID = WorkerIDEdit.getText().toString();
                  WorkerMobile = WorkerMobileEdit.getText().toString();
-                 WorkerNationality = WorkerNationalityEdit.getText().toString();
+                 WorkerNationality = WorkerNationalityEdit.getSelectedItem().toString();
                  WorkerCity = cityID.getSelectedItem().toString();
                  WorkerSkills = skillID.getSelectedItem().toString();
                  WorkerFees = Integer.parseInt(WorkerFeesEdit.getText().toString());

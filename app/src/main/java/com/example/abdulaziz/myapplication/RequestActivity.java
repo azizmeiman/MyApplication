@@ -39,6 +39,8 @@ public class RequestActivity extends AppCompatActivity {
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String empID = user.getUid();
+
+    private int startYear, startMonth, startDay, endYear, endMonth, endDay, startInDay, endInDay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,7 @@ public class RequestActivity extends AppCompatActivity {
         final int totalPrice = extras.getInt("totalPrice");
         final String posterID = extras.getString("posterID");
         final String workerName = extras.getString("wName");
-
+        final int workerPrice = extras.getInt("price");
 
         // initiate the date picker and a button
         sDate = (EditText) findViewById(R.id.startDate);
@@ -75,6 +77,10 @@ public class RequestActivity extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
+                                startYear = year*12;
+                                startMonth = (monthOfYear+1)*30;
+                                startDay = dayOfMonth;
+                                startInDay = startYear+startMonth+startDay;
                                startDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                                 sDate.setText(startDate);
 
@@ -104,11 +110,16 @@ public class RequestActivity extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
-                               endDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                                endYear = year*12;
+                                endMonth = (monthOfYear+1)*30;
+                                endDay = dayOfMonth;
+                                endInDay = endYear+endMonth+endDay;
+                                endDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                                 eDate.setText(endDate);
 
                             }
                         }, eYear, eMonth, eDay);
+
 
                 eDatePickerDialog.show();
             }
@@ -149,9 +160,14 @@ public class RequestActivity extends AppCompatActivity {
 
                 DatabaseReference pushRef = myRef2.child("Request").push();
                 String key_ID = pushRef.getKey();
-
-                Request r = new Request(key_ID,workerID,empID,posterID,workerName,emp.getOrgName(),period,startDate,endDate,totalPrice,3);
-
+              Request r;
+              int p,t;
+                if(period >1) {
+                     r = new Request(key_ID, workerID, empID, posterID, workerName, emp.getOrgName(), period, startDate, endDate, totalPrice, 3);
+                }else{
+                    p = endInDay-startInDay;
+                    t = p*workerPrice;
+                    r = new Request(key_ID, workerID, empID, posterID, workerName, emp.getOrgName(), p, startDate, endDate, t, 3);}
                 pushRef.setValue(r);
                 Toast.makeText(RequestActivity.this,"تم إرسال الطلب",Toast.LENGTH_SHORT).show();
                 startActivity(back);

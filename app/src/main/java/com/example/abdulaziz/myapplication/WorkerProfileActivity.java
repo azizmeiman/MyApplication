@@ -103,6 +103,7 @@ public class WorkerProfileActivity extends AppCompatActivity {
                 request.putExtra("totalPrice", totalPrice1);
                 request.putExtra("posterID",worker.getPosterID());
                 request.putExtra("wName",worker.getName());
+                request.putExtra("price",worker.getPrice());
                 startActivity(request);
             }
         });

@@ -30,10 +30,6 @@ public class WorkerPosterMain extends AppCompatActivity {
         final Button DeleteWorkerButton = (Button) findViewById(R.id.DeleteWorkerBut);
         final Button ReportsButton = (Button) findViewById(R.id.ReportsBut);
         final Button ChatwithAdminButton = (Button) findViewById(R.id.ChatwithAdminBut);
-        //final Button ViewPastContractButton = (Button)findViewById(R.id.)
-
-        Date current = new Date();
-        Toast.makeText(WorkerPosterMain.this, String.valueOf(current),Toast.LENGTH_LONG).show();
 
         ViewWorkerButton.setOnClickListener(new View.OnClickListener() {
             @Override

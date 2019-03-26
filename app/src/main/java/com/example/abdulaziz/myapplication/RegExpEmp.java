@@ -47,7 +47,7 @@ public class RegExpEmp extends AppCompatActivity  {
     private DatabaseReference myRef;
     private FirebaseDatabase database;
     private FirebaseAuth mAuth;
-    FirebaseUser currentUser;
+   static FirebaseUser currentUser;
     FirebaseUser updateUI;
     String Email;
     String password;
@@ -201,8 +201,8 @@ public class RegExpEmp extends AppCompatActivity  {
 
                         if (task.isSuccessful()) {
 
-
-                            String pie  =   FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                            String pie  =   currentUser.getUid();
 
 
 
@@ -232,6 +232,7 @@ public class RegExpEmp extends AppCompatActivity  {
                                         Intent intentLogin = new Intent(RegExpEmp.this, Login.class);
                                         intentLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         mprogressE.setVisibility(View.INVISIBLE);
+                                        sendVerficationEmail();
                                         startActivity(intentLogin);
                                  }
                                         else {
@@ -254,6 +255,20 @@ public class RegExpEmp extends AppCompatActivity  {
         });
 
 }
+
+
+        public void sendVerficationEmail(){
+            currentUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                }
+
+            });
+
+
+        }
+
     private static final int PICK_IMAGE_REQUEST = 1;
 
     private void openFileChooser() {

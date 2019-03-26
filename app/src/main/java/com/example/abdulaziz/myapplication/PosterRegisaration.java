@@ -42,7 +42,7 @@ public class PosterRegisaration extends AppCompatActivity {
 
 
     private FirebaseAuth mAuth;
-//    FirebaseUser currentUser;
+  static FirebaseUser currentUser;
 //    FirebaseUser updateUI;
     String Email;
     String password;
@@ -166,8 +166,8 @@ public class PosterRegisaration extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
-
-                       String pid  =   FirebaseAuth.getInstance().getCurrentUser().getUid();
+                       currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                       String pid  =   currentUser.getUid();
 
 
                             WorkerPoster workerposter1 = new WorkerPoster(
@@ -219,6 +219,19 @@ public class PosterRegisaration extends AppCompatActivity {
         });
 
     }
+
+    public void sendVerficationEmail(){
+        currentUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+
+        });
+
+
+    }
+
     private static final int PICK_IMAGE_REQUEST = 2;
 
     private void openFileChooser() {

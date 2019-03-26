@@ -67,15 +67,6 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/pastContractsPoster"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:background="@color/colorPrimary"
-            android:text="عرض العقود المنتهية"
-            android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
-
-        <Button
             android:id="@+id/systemfees"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

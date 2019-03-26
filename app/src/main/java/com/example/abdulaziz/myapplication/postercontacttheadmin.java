@@ -31,7 +31,7 @@ public class postercontacttheadmin extends AppCompatActivity {
         }
 
         private void sendMail () {
-            String recipientList = "info@aazer.epizy.com";
+            String recipientList = "seasonalemploymentsystem@gmail.com";
 
             String [] recipients = recipientList.split(",");
 

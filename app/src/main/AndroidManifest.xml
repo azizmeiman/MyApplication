@@ -11,23 +11,40 @@
         android:roundIcon="@drawable/logop"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FeedbackActivity"></activity>
-        <activity android:name=".empViewContractProfileActivity" />
-        <activity android:name=".highestBalancePoster" />
-        <activity android:name=".highestContractEmp" />
-        <activity android:name=".highestContractPoster" />
-        <activity android:name=".AdminReports" />
-        <activity android:name=".ResetThePalanc" />
-        <activity android:name=".EmpContractViewActivity" />
-        <activity android:name=".ViewProfileContract" />
-        <activity android:name=".editingworker" />
-        <activity android:name=".editworkers" />
+        <activity android:name=".FeedbackActivity"
+            android:label="ردود الفعل" />
+        <activity android:name=".empViewContractProfileActivity"
+            android:label="عقد" />
+        <activity android:name=".highestBalancePoster"
+            android:label="انشاء حساب" />
+        <activity android:name=".highestContractEmp"
+            android:label="انشاء حساب" />
+        <activity android:name=".highestContractPoster"
+            android:label="انشاء حساب" />
+        <activity android:name=".AdminReports"
+            android:label="انشاء حساب" />
+        <activity android:name=".ResetThePalanc"
+            android:label="انشاء حساب" />
+        <activity android:name=".EmpContractViewActivity"
+            android:label="العقود" />
+        <activity android:name=".ViewProfileContract"
+            android:label="عقد" />
+        <activity android:name=".editingworker"
+            android:label="تعديل معلونات عامل" />
+        <activity android:name=".editworkers"
+            android:label="تعديل معلومات العمال" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".workerposterreports" />
-        <activity android:name=".highestincomeworkerposter" />
-        <activity android:name=".lowestrateworkerposter" />
-        <activity android:name=".highestrateworkeposter" />
-        <activity android:name=".lowestincomeworker" />
+        <activity android:name=".workerposterreports"
+            android:label="انشاء حساب" />
+        <activity android:name=".highestincomeworkerposter"
+            android:label="انشاء حساب" />
+        <activity android:name=".lowestrateworkerposter"
+            android:label="انشاء حساب" />
+        <activity android:name=".highestrateworkeposter"
+            android:label="انشاء حساب" />
+        <activity android:name=".lowestincomeworker"
+            android:label="انشاء حساب" />
+
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,81 +52,83 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".RegExpEmp"
-            android:label="Employer Registration" />
+            android:label="انشاء حساب" />
+
         <activity
             android:name=".PosterRegisaration"
-            android:label="Worker Poster Registration" />
+            android:label="انشاء حساب" />
         <activity
             android:name=".Login"
-            android:label="Login" />
+            android:label="تسجيل الدخول" />
         <activity
             android:name=".WorkerPosterMain"
-            android:label="Worker Poster" />
+            android:label="الرئيسية - عارض العمال" />
         <activity
             android:name=".EmployerMainActivity"
-            android:label="Employer" />
+            android:label="الرئيسية - باحث عن عمال" />
         <activity
             android:name=".searchForWorkerActivity"
-            android:label="Search for Worker" />
+            android:label="البحث عن عامل" />
         <activity
             android:name=".addworker"
-            android:label="Add Worker" />
+            android:label="اضافة عامل" />
         <activity
             android:name=".ViewWorkesActivity"
-            android:label="Workers" />
+            android:label="العمال" />
         <activity
             android:name=".viewworkerinfo"
-            android:label="Workers" />
+            android:label="العمال" />
         <activity
             android:name=".DeleteWorker"
-            android:label="Delete Worker" />
+            android:label="حذف عامل" />
         <activity
             android:name=".AdminMain"
-            android:label="Admin" />
+            android:label="الرئيسية - المشرف" />
         <activity
             android:name=".EmployerView"
-            android:label="Employers" />
+            android:label="الباحثين عن عمال" />
         <activity
             android:name=".PosterView"
-            android:label="Worker Posters" />
+            android:label="عارضين العمال" />
         <activity
             android:name=".EmpViewWorkersActivity"
-            android:label="Workers" />
+            android:label="العمال" />
         <activity
             android:name=".SearchResultActivity"
-            android:label="Search Result" />
+            android:label="نتيجة البحث" />
         <activity
             android:name=".WorkerProfileActivity"
-            android:label="Worker Profile" />
+            android:label="الملف الشخصي للعامل" />
         <activity
             android:name=".RequestActivity"
-            android:label="Requst" />
+            android:label="طلب توظيف" />
         <activity
             android:name=".ViewRequestsActivity"
-            android:label="Requests" />
+            android:label="طلبات التوظيف" />
         <activity
             android:name=".systemfeesworkerposter"
-            android:label="Fees" />
+            android:label="الرسوم" />
         <activity
             android:name=".ViewEmpProfileAdmin"
-            android:label="Employers" />
+            android:label="الملف الشخصي لباحث عن عامل" />
         <activity
             android:name=".viewPosterAdmin"
-            android:label="Worker Poster" />
+            android:label="الملف الشخصي لعارض العمال" />
         <activity
             android:name=".postercontacttheadmin"
             android:label="Contact" />
         <activity
             android:name=".ContractView"
-            android:label="Contracts" />
+            android:label="العقود" />
         <activity
             android:name=".pastcontractsposter"
-            android:label="Past Contracts" />
+            android:label="العقود السابقة" />
         <activity
             android:name=".poster_contract_view"
-            android:label="Current Contracts" />
+            android:label="العقود الحالية" />
     </application>
 
 </manifest>

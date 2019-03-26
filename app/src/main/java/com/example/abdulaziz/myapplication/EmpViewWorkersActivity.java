@@ -53,8 +53,8 @@ public class EmpViewWorkersActivity extends AppCompatActivity {
       listView = (ListView) findViewById(R.id.WorkersList2);
       sortS = (Spinner) findViewById(R.id.sortSpinner);
       final List<String> sort = new ArrayList<String>();
-      sort.add("sort by: Price");
-      sort.add("sort by: Rating");
+      sort.add("ترتيب حسب: السعر");
+      sort.add("ترتيب حسب: التقييم");
       ArrayAdapter<String> sortA = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sort);
 
       sortS.setAdapter(sortA);
@@ -69,6 +69,7 @@ public class EmpViewWorkersActivity extends AppCompatActivity {
           public void onDataChange(DataSnapshot dataSnapshot) {
 
               workersList.clear();
+
               for (DataSnapshot child : dataSnapshot.getChildren()) {
 
 
@@ -189,7 +190,7 @@ sortS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 
   }
-    public ArrayList sortByPrice(ArrayList a){
+    public ArrayList<Worker> sortByPrice(ArrayList<Worker> a){
 
         Collections.sort(a, new Comparator<Worker>() {
             @Override
@@ -211,7 +212,7 @@ sortS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
   return a;}
 
-    public ArrayList sortByRating(ArrayList a){
+    public ArrayList<Worker> sortByRating(ArrayList<Worker> a){
 
         Collections.sort(a, new Comparator<Worker>() {
             @Override

@@ -37,7 +37,7 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.List;
 
-public class addworker extends AppCompatActivity {
+public class addworker extends AppCompatActivity  {
 
     String WorkerName;
     String WorkerID;
@@ -226,7 +226,7 @@ public class addworker extends AppCompatActivity {
                  totalincome = 0; // When worker added total income will be 0
                  isAvailable=true;
                  deleted = false;
-                 Rate = 5;
+                 Rate = 0;
                  nRate = 0;
 
 

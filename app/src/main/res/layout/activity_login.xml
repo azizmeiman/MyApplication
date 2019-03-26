@@ -80,7 +80,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="103dp"
+        android:layout_marginBottom="243dp"
         android:background="@drawable/btnshapecolor"
         android:text="Log in"
         android:textColor="@color/common_google_signin_btn_text_dark_default"

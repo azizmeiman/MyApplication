@@ -145,8 +145,9 @@ public class WorkerProfileActivity extends AppCompatActivity {
         final String mobile = poster.getRPphone();
 
 
-Toast.makeText(WorkerProfileActivity.this,poster.getIDP(),Toast.LENGTH_SHORT).show();
+
         chat.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 String mobileNum =  mobile;

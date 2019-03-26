@@ -11,7 +11,6 @@ public class Request {
     private String workerName ;
     private String empName ;
     private String EmpMobile;
-
     private int period ;
     private String startDate;
     private String endDate;
@@ -23,13 +22,13 @@ public class Request {
 
     }
 
-    public Request(String contractID, String workerID, String empID, String mobilenum,String postermobile, String workerName, String empName, int period, String startDate, String endDate, int totalprice, int status) {
+    public Request(String contractID, String workerID, String empID, String posterID,String mobilenum, String workerName, String empName, int period, String startDate, String endDate, int totalprice, int status) {
+
         this.contractID = contractID;
         this.workerID = workerID;
         this.empID = empID;
         this.posterID = posterID;
         this.EmpMobile = mobilenum;
-
         this.workerName = workerName;
         this.empName = empName;
         this.period = period;

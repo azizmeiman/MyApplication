@@ -9,13 +9,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date ;
 import java.text.DateFormat ;
 
-public class Worker {
+public class Worker implements Serializable {
 
     private String name;
     private String WorkerID;
@@ -35,8 +36,6 @@ public class Worker {
     private float TotalRate;
     private int nRate;//counter
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference();
 
 
     public Worker(){
@@ -236,74 +235,8 @@ public class Worker {
         isAvailable = available;
     }
 
-    String endDate ;
-    boolean busy = false;
-
-    public String isAvailableMethod(){
 
 
 
-        myRef.child("Contract").addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                Date current = new Date();
-
-                for (DataSnapshot child : dataSnapshot.getChildren()){
-                    Date  start = new Date(), end = new Date();
-
-                    String sStart = child.child("startDate").getValue().toString();
-                    String sEnd = child.child("endDate").getValue().toString();
-
-
-                    @SuppressLint("SimpleDateFormat") SimpleDateFormat formatterS = new SimpleDateFormat("dd/MM/yyyy");
-
-                    try {
-
-                       start = formatterS.parse(sStart);
-
-
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                    @SuppressLint("SimpleDateFormat") SimpleDateFormat formatterE = new SimpleDateFormat("dd/MM/yyyy");
-
-                    try {
-
-                        end = formatterE.parse(sEnd);
-
-
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                    if(ID.equals(child.child("workerID").getValue().toString()) && end.after(current) && start.before(current)){
-
-                        endDate = sEnd ;
-                        busy = true;
-                        break;
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        if(busy){
-            this.setAvailable(false);
-
-            return endDate;
-        }else{
-            this.setAvailable(true);
-
-            return "";
-        }
-
-    }
 
 }

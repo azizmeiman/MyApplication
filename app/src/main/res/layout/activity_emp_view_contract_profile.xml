@@ -110,19 +110,24 @@
         android:orientation="vertical"
         android:layout_below="@id/linear55">
 
-        <RatingBar
-            android:id="@+id/ratingBar2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"/>
-
         <Button
-            android:id="@+id/addFeedback"
+            android:id="@+id/addfeedback"
             android:layout_width="390dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/btnshapecolor"
-            android:text="Add Feedback"
+            android:text="اضف تعليق"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+        <Button
+            android:id="@+id/addrate"
+            android:layout_width="390dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/btnshapecolor"
+            android:text="اضف تقييم"
             android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
     </LinearLayout>

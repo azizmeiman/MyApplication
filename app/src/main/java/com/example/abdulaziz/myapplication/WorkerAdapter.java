@@ -11,9 +11,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -38,7 +46,7 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
         Worker currentWorker = workersList.get(position);
 
         TextView Available = (TextView) listItem.findViewById(R.id.textViewAva);
-        String isAvailable = currentWorker.isAvailableMethod();
+        String isAvailable = isAvailableMethod(currentWorker);
 
 
         if(isAvailable.equals("")){
@@ -75,5 +83,86 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
 
 
         return listItem;
+    }
+
+
+
+    String endDate ;
+    boolean busy = false;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
+
+    public String isAvailableMethod(final Worker worker){
+
+
+
+
+        myRef.child("Contract").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Date current = new Date();
+
+                for (DataSnapshot child : dataSnapshot.getChildren()){
+                    Date  start = new Date(), end = new Date();
+
+                    String sStart = child.child("startDate").getValue().toString();
+                    String sEnd = child.child("endDate").getValue().toString();
+
+
+                    @SuppressLint("SimpleDateFormat") SimpleDateFormat formatterS = new SimpleDateFormat("dd/MM/yyyy");
+
+                    try {
+
+                        start = formatterS.parse(sStart);
+
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    @SuppressLint("SimpleDateFormat") SimpleDateFormat formatterE = new SimpleDateFormat("dd/MM/yyyy");
+
+                    try {
+
+                        end = formatterE.parse(sEnd);
+
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    if(worker.getID().equals(child.child("workerID").getValue().toString()) && end.after(current) && start.before(current)){
+
+                        endDate = sEnd ;
+                        busy = true;
+
+                        break;
+                    }
+
+                }
+                if(busy){
+                    myRef.child("Worker").child(worker.getID()).child("available").setValue(false);
+                }else {
+                    myRef.child("Worker").child(worker.getID()).child("available").setValue(true);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        if(busy){
+            worker.setAvailable(false);
+            return endDate;
+        }else{
+            worker.setAvailable(true);
+            return "";
+        }
+
     }
 }

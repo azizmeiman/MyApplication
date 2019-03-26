@@ -25,7 +25,7 @@ public class EmpContractViewActivity extends AppCompatActivity {
     private ArrayList<Contract> CotractList;
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String currentID = user.getEmail();
+    String currentID = user.getUid();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

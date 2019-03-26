@@ -37,8 +37,8 @@ public class empViewContractProfileActivity extends AppCompatActivity {
         final TextView empid = (TextView) findViewById(R.id.empidd);
         final TextView posterid = (TextView) findViewById(R.id.posteridd);
 
-        final Button addFeedback = (Button) findViewById(R.id.addFeedback);
-
+        final Button addFeedback = (Button) findViewById(R.id.addfeedback);
+        final Button addRate = (Button) findViewById(R.id.addrate);
 
 
         final TextView Conditions = (TextView) findViewById(R.id.textView211);
@@ -119,5 +119,16 @@ public class empViewContractProfileActivity extends AppCompatActivity {
 
             }
         });
+
+        addRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 =new Intent(empViewContractProfileActivity.this,addRateActivity.class);
+                intent1.putExtra("workerID", Contract.getWorkerID());
+                startActivity(intent1);
+
+            }
+        });
+
     }
 }

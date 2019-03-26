@@ -63,6 +63,7 @@ public class addworker extends AppCompatActivity  {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+    DatabaseReference myRef2 = database.getReference();
 
 
     private ProgressDialog mprogress;
@@ -231,11 +232,16 @@ public class addworker extends AppCompatActivity  {
 
 
 
-                 DatabaseReference pushRef = myRef.child("Worker").push();
+
+
+
+                 DatabaseReference pushRef = myRef2.child("Worker").push();
                  String key_ID = pushRef.getKey();
+
 
                  Worker worker = new Worker(WorkerName, WorkerID,deleted, WorkerFees, Workerpic, WorkerNationality, WorkerCity, WorkerSkills, WorkerMobile,
                                               WorkerBDDate, PosterUID, Workerpdf, totalincome,key_ID,isAvailable,Rate,nRate);
+
 
                  pushRef.setValue(worker);
 

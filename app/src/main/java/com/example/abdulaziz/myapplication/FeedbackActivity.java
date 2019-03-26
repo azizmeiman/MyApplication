@@ -27,14 +27,13 @@ public class FeedbackActivity extends AppCompatActivity {
         addFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FeedbackActivity.this, EmpContractViewActivity.class);
+
                 DBAccess dbAccess = new DBAccess();
                 String Feedback1 = Feed1.getText().toString();
                 Feedback f = new Feedback(workerID,Feedback1);
 
                 dbAccess.insertFeedback(f);
-
-                startActivity(intent);
+                finish();
             }
         });
     }

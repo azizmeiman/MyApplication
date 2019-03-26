@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,8 +46,9 @@ public class WorkerProfileActivity extends AppCompatActivity {
         final TextView price = (TextView) findViewById(R.id.price);
         final TextView totalPrice = (TextView) findViewById(R.id.totalPrice);
         final ListView feedback = (ListView) findViewById(R.id.feedback);
+        final RatingBar rate = (RatingBar) findViewById(R.id.workerRate);
         final  Button hire = (Button) findViewById(R.id.Hire);
-
+        final Button chat = (Button)findViewById(R.id.button2);
 
 
         ArrayList<String> feed = new ArrayList<String>();
@@ -82,6 +84,8 @@ public class WorkerProfileActivity extends AppCompatActivity {
                      price.setText("price perH: "+String.valueOf(worker.getPrice())+".00 SR");
                      monthD = months*30;
                      monthD=monthD+days;
+                     float r =  worker.getTotalRate()/worker.getnRate();
+                     rate.setRating(r);
                      totalPrice1 = worker.getPrice()*monthD;
                      totalPrice.setText("Total price: "+String.valueOf(totalPrice1)+".00 SR");
 
@@ -139,7 +143,8 @@ public class WorkerProfileActivity extends AppCompatActivity {
             }
         });
         final String mobile = poster.getRPphone();
-        Button chat = (Button)findViewById(R.id.button2);
+
+
 Toast.makeText(WorkerProfileActivity.this,poster.getIDP(),Toast.LENGTH_SHORT).show();
         chat.setOnClickListener(new View.OnClickListener() {
             @Override

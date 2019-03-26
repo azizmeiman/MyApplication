@@ -11,40 +11,58 @@
         android:roundIcon="@drawable/logop"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FeedbackActivity"
+        <activity android:name=".addRateActivity"
+          android:theme="@style/AppTheme.popup"  >
+        </activity>
+        <activity
+            android:name=".FeedbackActivity"
             android:label="ردود الفعل" />
-        <activity android:name=".empViewContractProfileActivity"
+        <activity
+            android:name=".empViewContractProfileActivity"
             android:label="عقد" />
-        <activity android:name=".highestBalancePoster"
+        <activity
+            android:name=".highestBalancePoster"
             android:label="انشاء حساب" />
-        <activity android:name=".highestContractEmp"
+        <activity
+            android:name=".highestContractEmp"
             android:label="انشاء حساب" />
-        <activity android:name=".highestContractPoster"
+        <activity
+            android:name=".highestContractPoster"
             android:label="انشاء حساب" />
-        <activity android:name=".AdminReports"
+        <activity
+            android:name=".AdminReports"
             android:label="انشاء حساب" />
-        <activity android:name=".ResetThePalanc"
+        <activity
+            android:name=".ResetThePalanc"
             android:label="انشاء حساب" />
-        <activity android:name=".EmpContractViewActivity"
+        <activity
+            android:name=".EmpContractViewActivity"
             android:label="العقود" />
-        <activity android:name=".ViewProfileContract"
+        <activity
+            android:name=".ViewProfileContract"
             android:label="عقد" />
-        <activity android:name=".editingworker"
+        <activity
+            android:name=".editingworker"
             android:label="تعديل معلونات عامل" />
-        <activity android:name=".editworkers"
+        <activity
+            android:name=".editworkers"
             android:label="تعديل معلومات العمال" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".workerposterreports"
+        <activity
+            android:name=".workerposterreports"
             android:label="انشاء حساب" />
-        <activity android:name=".highestincomeworkerposter"
+        <activity
+            android:name=".highestincomeworkerposter"
             android:label="انشاء حساب" />
-        <activity android:name=".lowestrateworkerposter"
+        <activity
+            android:name=".lowestrateworkerposter"
             android:label="انشاء حساب" />
-        <activity android:name=".highestrateworkeposter"
+        <activity
+            android:name=".highestrateworkeposter"
             android:label="انشاء حساب" />
-        <activity android:name=".lowestincomeworker"
+        <activity
+            android:name=".lowestincomeworker"
             android:label="انشاء حساب" />
-
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,11 +70,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".RegExpEmp"
             android:label="انشاء حساب" />
-
         <activity
             android:name=".PosterRegisaration"
             android:label="انشاء حساب" />

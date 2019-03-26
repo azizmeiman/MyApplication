@@ -54,7 +54,7 @@ public class ViewRequestsActivity extends AppCompatActivity {
                 RequestsList.clear();
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
-                    if(currentID.equals(child.child("posterID").getValue().toString()) && "3".equals(child.child("status").getValue().toString()) ) {
+                    if(currentID.equals(child.child("posterID").getValue()) && "3".equals(child.child("status").getValue().toString()) ) {
                         Request request = new Request(child.getValue(Request.class));
                         RequestsList.add(request);
                     }

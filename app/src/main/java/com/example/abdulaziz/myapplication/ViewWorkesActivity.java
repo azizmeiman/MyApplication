@@ -108,13 +108,11 @@ public class ViewWorkesActivity extends AppCompatActivity {
                @Override
                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                    if (isChecked) {
-                               Toast.makeText(ViewWorkesActivity.this, "removedList", Toast.LENGTH_SHORT).show();
                                wAdapter = new WorkerAdapter(ViewWorkesActivity.this, AvailableList);
                                listView.setAdapter(wAdapter);
 
                            }
                            else{
-                       Toast.makeText(ViewWorkesActivity.this, "WorkerList", Toast.LENGTH_SHORT).show();
                        wAdapter = new WorkerAdapter(ViewWorkesActivity.this, workersList);
                        listView.setAdapter(wAdapter);
 

@@ -11,9 +11,10 @@
         android:roundIcon="@drawable/logop"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addRateActivity"
-          android:theme="@style/AppTheme.popup"  >
-        </activity>
+        <activity android:name=".employer_contact_admin"></activity>
+        <activity
+            android:name=".addRateActivity"
+            android:theme="@style/AppTheme.popup"></activity>
         <activity
             android:name=".FeedbackActivity"
             android:label="ردود الفعل" />

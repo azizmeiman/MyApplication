@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,7 +20,7 @@ public class EmployerMainActivity extends AppCompatActivity {
 
         ImageButton sw = (ImageButton)findViewById(R.id.searchForWorker);
         ImageButton vc = (ImageButton)findViewById(R.id.employerContracts);
-
+        Button contactAdminBut = (Button) findViewById(R.id.button);
         sw.setOnClickListener(new View.OnClickListener() {
 
 
@@ -38,6 +39,14 @@ public class EmployerMainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentContract = new Intent(EmployerMainActivity.this, EmpContractViewActivity.class);
                 startActivity(intentContract);
+            }
+        });
+
+        contactAdminBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent AdminContact = new Intent(EmployerMainActivity.this, employer_contact_admin.class);
+                startActivity(AdminContact);
             }
         });
 

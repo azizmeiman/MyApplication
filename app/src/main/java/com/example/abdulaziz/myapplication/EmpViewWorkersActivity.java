@@ -2,6 +2,7 @@ package com.example.abdulaziz.myapplication;
 
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,90 +40,91 @@ public class EmpViewWorkersActivity extends AppCompatActivity {
     private ArrayList<Worker> currentList;
 
 
-
-  @Override
-   protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_emp_view_workers);
-
-      FirebaseDatabase database = FirebaseDatabase.getInstance();
-      DatabaseReference myRef = database.getReference();
-
-      Intent intent = getIntent();
-      Bundle extras = intent.getExtras();
-      final int months = extras.getInt("EXTRA_MONTHS");
-      final int days = extras.getInt("EXTRA_DAYS");
-
-
-      aSwitch = (Switch) findViewById(R.id.switch1);
-      listView = (ListView) findViewById(R.id.WorkersList2);
-      sortS = (Spinner) findViewById(R.id.sortSpinner);
-      final List<String> sort = new ArrayList<String>();
-      sort.add("ترتيب حسب: السعر");
-      sort.add("ترتيب حسب: التقييم");
-      ArrayAdapter<String> sortA = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sort);
-
-      sortS.setAdapter(sortA);
-      workersList      = new ArrayList<>();
-      AvailabilWorkers = new ArrayList<>();
-      PriceWorkers     = new ArrayList<>();
-      RatingWorkers    = new ArrayList<>();
-      currentList      = new ArrayList<>();
-
-      myRef.child("Worker").addValueEventListener(new ValueEventListener() {
-
-          @Override
-          public void onDataChange(DataSnapshot dataSnapshot) {
-
-
-              for (DataSnapshot child : dataSnapshot.getChildren()) {
-
-
-                  Worker worker =  new Worker(child.getValue(Worker.class));
-
-                  workersList.add(worker);
-
-              }
-              currentList = sortByPrice(workersList);
-              listView.setAdapter(new WorkerAdapter(EmpViewWorkersActivity.this, currentList));
-
-          }
-
-          @Override
-          public void onCancelled(DatabaseError databaseError) {
-              Toast.makeText(EmpViewWorkersActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
-
-          }
-
-      });
-
-
-
-
-aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
     @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_emp_view_workers);
 
-            for(Worker w : currentList){
-                if(w.isAvailable()){
-                    AvailabilWorkers.add(w);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        final int months = extras.getInt("EXTRA_MONTHS");
+        final int days = extras.getInt("EXTRA_DAYS");
+
+
+        aSwitch = (Switch) findViewById(R.id.switch1);
+        listView = (ListView) findViewById(R.id.WorkersList2);
+        sortS = (Spinner) findViewById(R.id.sortSpinner);
+        final List<String> sort = new ArrayList<String>();
+        sort.add("ترتيب حسب: السعر");
+        sort.add("ترتيب حسب: التقييم");
+        ArrayAdapter<String> sortA = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sort);
+
+        sortS.setAdapter(sortA);
+        workersList = new ArrayList<>();
+        AvailabilWorkers = new ArrayList<>();
+        PriceWorkers = new ArrayList<>();
+        RatingWorkers = new ArrayList<>();
+        currentList = new ArrayList<>();
+
+        myRef.child("Worker").addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Worker worker = new Worker(child.getValue(Worker.class));
+                    workersList.add(worker); // كلهم
+
+
+
+
+
+
+
+
                 }
+
+                currentList = sortByPrice(workersList); // متاح
+                currentList = workersList;
+                listView.setAdapter(new WorkerAdapter(EmpViewWorkersActivity.this, currentList));
             }
-            currentList = AvailabilWorkers;
-            listView.setAdapter(new WorkerAdapter(EmpViewWorkersActivity.this, currentList));
 
-        }
-        else if(!isChecked){
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(EmpViewWorkersActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
 
-          currentList = workersList;
-          listView.setAdapter(new WorkerAdapter(EmpViewWorkersActivity.this, currentList));
-        }
+            }
 
-    }
+        });
+
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+
+                    for (Worker w : workersList) {
+                        if (w.isAvailable()) {
+                            AvailabilWorkers.clear();
+                            AvailabilWorkers.add(w);
+                        }
+                    }
+//            currentList = AvailabilWorkers;
+                    listView.setAdapter(new WorkerAdapter(EmpViewWorkersActivity.this, AvailabilWorkers));
+
+                } else if (!isChecked) {
+
+//          currentList = workersList;
+                    listView.setAdapter(new WorkerAdapter(EmpViewWorkersActivity.this, workersList));
+                }
+
+            }
 
 
-});
+        });
 
 
 sortS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -174,7 +176,7 @@ sortS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 
 
-  }
+        }
     public ArrayList<Worker> sortByPrice(ArrayList<Worker> a){
 
         Collections.sort(a, new Comparator<Worker>() {

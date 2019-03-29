@@ -96,8 +96,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
 
 
-                } String a = String.valueOf(workersList.size());
-                Toast.makeText(SearchResultActivity.this, a, Toast.LENGTH_SHORT).show();
+                }
 
                 wAdapter = new WorkerAdapter(SearchResultActivity.this, workersList);
                 listView.setAdapter(wAdapter);

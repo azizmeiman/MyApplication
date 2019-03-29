@@ -73,7 +73,7 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
         city.setText(cityS);
 
 
-        RatingBar rate =(RatingBar) listItem.findViewById(R.id.ratingBar20);
+        RatingBar rate =(RatingBar) listItem.findViewById(R.id.ratingbar20);
         float r = currentWorker.getTotalRate()/currentWorker.getnRate();
         rate.setRating(r);
 

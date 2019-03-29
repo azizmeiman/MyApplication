@@ -47,7 +47,7 @@ public class highestincomeworkerposter extends AppCompatActivity {
         final String userUID = currentUser.getUid();
 
 
-        myRef.child("Worker").addValueEventListener(new ValueEventListener() {
+        myRef.child("Worker").addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -62,32 +62,30 @@ public class highestincomeworkerposter extends AppCompatActivity {
                                 n++;
                                 Worker worker = new Worker(child.getValue(Worker.class));
                                 workersList.add(worker);
-
-                                Collections.sort(workersList, new Comparator<Worker>() {
-                                    @Override
-                                    public int compare(Worker o1, Worker o2) {
-
-                                        if (o1.getTotalIncome() ==
-                                                o2.getTotalIncome())
-                                        {
-                                            return 0;
-                                        }
-                                        else if (o1.getTotalIncome() >
-                                                o2.getTotalIncome())
-                                        {
-                                            return -1;
-                                        }
-                                        return 1;
-                                    }
-                                });
+                            }
 
                             }break;
                         }
-                        else
-                            break;
-                    }
+
 
                 }
+                Collections.sort(workersList, new Comparator<Worker>() {
+                    @Override
+                    public int compare(Worker o1, Worker o2) {
+
+                        if (o1.getTotalIncome() ==
+                                o2.getTotalIncome())
+                        {
+                            return 0;
+                        }
+                        else if (o1.getTotalIncome() >
+                                o2.getTotalIncome())
+                        {
+                            return -1;
+                        }
+                        return 1;
+                    }
+                });
 
                 wAdapter = new WorkerAdapter(highestincomeworkerposter.this, workersList);
                 highestIncomeWorkersList.setAdapter(wAdapter);

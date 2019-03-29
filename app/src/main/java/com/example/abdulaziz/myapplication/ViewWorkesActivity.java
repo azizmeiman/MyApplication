@@ -3,6 +3,7 @@ package com.example.abdulaziz.myapplication;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.FitWindowsViewGroup;
@@ -55,9 +56,9 @@ public class ViewWorkesActivity extends AppCompatActivity {
         final String userUID = currentUser.getUid();
 
 
-        myRef.child("Worker").addValueEventListener(new ValueEventListener() {
+        myRef.child("Worker").addListenerForSingleValueEvent(new ValueEventListener() {
 
-                                                        @Override
+            @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
 
@@ -65,38 +66,37 @@ public class ViewWorkesActivity extends AppCompatActivity {
 
                     for (DataSnapshot c : dataSnapshot.getChildren()) {
 
-                      if (userUID.equals(child.child("posterID").getValue().toString())) {
-                         if ((child.child("deleted").getValue().toString().equals("false"))) {
-                             Worker worker = new Worker(child.getValue(Worker.class));
+                        if (userUID.equals(child.child("posterID").getValue().toString())) {
+                            if ((child.child("deleted").getValue().toString().equals("false"))) {
+                                Worker worker = new Worker(child.getValue(Worker.class));
+                                if (worker.isAvailable()) {
+                                    AvailableList.add(worker);
+                                    workersList.add(worker);
+                                    break;
+                                } else {
+                                    workersList.add(worker);
+                                    break;
+                                }
 
-                             if(worker.isAvailable()) {
-                                 AvailableList.add(worker);
-                                 workersList.add(worker);
-                                 break;
-                             }
-                             else
-                                 workersList.add(worker);
-                                   break;
-                                     } else
-                             Toast.makeText(ViewWorkesActivity.this, "لايوجد لديك عمال", Toast.LENGTH_SHORT).show();
-                                       break;
-                                         }
+                            }else //for the second if
+                            break;
+                        }else // for the first if
+                        break;
+
+                    }
 
 
-                                           }
+                }
 
-                                             }
-
-                wAdapter = new WorkerAdapter(ViewWorkesActivity.this, workersList);
-                listView.setAdapter(wAdapter);
+                    wAdapter = new WorkerAdapter(ViewWorkesActivity.this, workersList);
+                    listView.setAdapter(wAdapter);
 
 
 
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ViewWorkesActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -137,10 +137,5 @@ public class ViewWorkesActivity extends AppCompatActivity {
         });
 
 
-
     }
-
-
 }
-
-

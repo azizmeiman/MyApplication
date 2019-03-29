@@ -100,9 +100,8 @@ public class DeleteWorker extends AppCompatActivity {
                                     Worker w = workersList.get(position);
                                     myRef.child("Worker").child(w.getID()).child("deleted").setValue(true);
                                     Toast.makeText(DeleteWorker.this, w.getName()+" is Deleted", Toast.LENGTH_LONG).show();
-
-
                                     dialog.dismiss();
+
                                 }
 
 

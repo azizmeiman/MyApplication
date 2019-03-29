@@ -34,7 +34,7 @@
             android:name=".AdminReports"
             android:label="انشاء حساب" />
         <activity
-            android:name=".ResetThePalanc"
+            android:name=".ResetTheBalance"
             android:label="انشاء حساب" />
         <activity
             android:name=".EmpContractViewActivity"

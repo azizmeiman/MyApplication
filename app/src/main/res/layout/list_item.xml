@@ -40,7 +40,7 @@
 
     <RatingBar
 
-        android:id="@+id/ratingBar20"
+        android:id="@+id/ratingbar20"
         style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

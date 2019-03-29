@@ -14,7 +14,7 @@ public class Request {
     private int period ;
     private String startDate;
     private String endDate;
-    private int totalprice ;
+    private double totalprice ;
     private int status ; //1,Approved 2,Rejected 3,neither
 
 
@@ -22,7 +22,7 @@ public class Request {
 
     }
 
-    public Request(String contractID, String workerID, String empID, String posterID,String mobilenum, String workerName, String empName, int period, String startDate, String endDate, int totalprice, int status) {
+    public Request(String contractID, String workerID, String empID, String posterID,String mobilenum, String workerName, String empName, int period, String startDate, String endDate, double totalprice, int status) {
 
         this.contractID = contractID;
         this.workerID = workerID;
@@ -120,7 +120,7 @@ public class Request {
         return startDate;
     }
 
-    public int getTotalprice() {
+    public double getTotalprice() {
         return totalprice;
     }
 
@@ -148,7 +148,7 @@ public class Request {
         this.startDate = startDate;
     }
 
-    public void setTotalprice(int totalprice) {
+    public void setTotalprice(double totalprice) {
         this.totalprice = totalprice;
     }
 

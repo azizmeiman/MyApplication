@@ -46,7 +46,7 @@ public class editworkers extends AppCompatActivity {
         final String userUID = currentUser.getUid();
 
 
-        myRef.child("Worker").addValueEventListener(new ValueEventListener() {
+        myRef.child("Worker").addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

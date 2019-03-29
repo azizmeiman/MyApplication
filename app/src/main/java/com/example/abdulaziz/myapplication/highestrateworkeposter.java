@@ -31,9 +31,6 @@ public class highestrateworkeposter extends AppCompatActivity {
     private FirebaseAuth mAuth;
     int n = 0;
 
-
-    // هذا الكلاس وكلاس الباد ريت كلها بسويها لما يخلص ال ريكوست و الكونتراكت لانها المكان الي راح يصير فيه التقييم
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +46,7 @@ public class highestrateworkeposter extends AppCompatActivity {
         final String userUID = currentUser.getUid();
 
 
-        myRef.child("Worker").addValueEventListener(new ValueEventListener() {
+        myRef.child("Worker").addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -65,31 +62,31 @@ public class highestrateworkeposter extends AppCompatActivity {
                                 Worker worker = new Worker(child.getValue(Worker.class));
                                 workersList.add(worker);
 
-                                Collections.sort(workersList, new Comparator<Worker>() {
-                                    @Override
-                                    public int compare(Worker o1, Worker o2) {
-
-                                        if (o1.getTotalRate() ==
-                                                o2.getTotalRate())
-                                        {
-                                            return 0;
-                                        }
-                                        else if (o1.getTotalRate() >
-                                                o2.getTotalRate())
-                                        {
-                                            return -1;
-                                        }
-                                        return 1;
-                                    }
-                                });
-
                                     }break;
                                 }
-                            else
-                                break;
+                           break;
                         }
 
                     }
+                Collections.sort(workersList, new Comparator<Worker>() {
+                    @Override
+                    public int compare(Worker o1, Worker o2) {
+
+                        if (o1.getTotalRate() ==
+                                o2.getTotalRate())
+                        {
+                            return 0;
+                        }
+                        else if (o1.getTotalRate() >
+                                o2.getTotalRate())
+                        {
+                            return -1;
+                        }
+                        return 1;
+                    }
+                });
+
+
 
                 wAdapter = new WorkerAdapter(highestrateworkeposter.this, workersList);
                 highestrateList.setAdapter(wAdapter);

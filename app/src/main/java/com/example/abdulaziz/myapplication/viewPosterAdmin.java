@@ -85,7 +85,7 @@ public class viewPosterAdmin extends AppCompatActivity {
                         checktheresipts.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent ViewposterIntent = new Intent(viewPosterAdmin.this, ResetThePalanc.class );
+                                Intent ViewposterIntent = new Intent(viewPosterAdmin.this, ResetTheBalance.class );
                                 ViewposterIntent.putExtra("idp",WorkerPoster.getIDP());
                                 startActivity(ViewposterIntent);
                             }

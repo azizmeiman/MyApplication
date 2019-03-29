@@ -12,7 +12,7 @@ public class Contract {
     private int period ;
     private String startDate;
     private String endDate;
-    private int totalprice ;
+    private double totalprice ;
     private String EmployerMobile;
     private int status ; //1,Approved 2,Rejected 3,neither
 
@@ -21,7 +21,7 @@ public class Contract {
 
     }
 
-    public Contract(String contractID, String workerID, String empID, String posterID,String EmpMobile, String workerName, String empName,  int period, String startDate, String endDate, int totalprice, int status) {
+    public Contract(String contractID, String workerID, String empID, String posterID,String EmpMobile, String workerName, String empName,  int period, String startDate, String endDate, double totalprice, int status) {
         this.contractID = contractID;
         this.workerID = workerID;
         this.empID = empID;
@@ -119,7 +119,7 @@ public class Contract {
         return startDate;
     }
 
-    public int getTotalprice() {
+    public double getTotalprice() {
         return totalprice;
     }
 
@@ -147,7 +147,7 @@ public class Contract {
         this.startDate = startDate;
     }
 
-    public void setTotalprice(int totalprice) {
+    public void setTotalprice(double totalprice) {
         this.totalprice = totalprice;
     }
 

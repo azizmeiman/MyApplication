@@ -75,10 +75,9 @@ public class RequestAdapter extends ArrayAdapter<Request>{
                 Contract c = new Contract(currentRequest.getContractID(),currentRequest.getWorkerID(),currentRequest.getEmpID(),currentRequest.getPosterID(),currentRequest.getEmpMobile(),currentRequest.getWorkerName(),currentRequest.getEmpName(),currentRequest.getPeriod(),currentRequest.getStartDate(),currentRequest.getEndDate(),currentRequest.getTotalprice(),1);
                 incresstheContractPoster(currentRequest.getPosterID());
                 incresstheContractEmp(currentRequest.getEmpID());
+                DBA.totalFees(currentRequest.getPosterID(),currentRequest.getTotalprice());
                 DBA.insertContract(c);
                 DBA.deleteRequest(currentRequest.getContractID());
-
-                Toast.makeText(cContext, "تم قبول الطلب", Toast.LENGTH_SHORT).show();
 
             }
         });

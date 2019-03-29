@@ -65,7 +65,8 @@ public class RequestAdapter extends ArrayAdapter<Request>{
 
         TextView totalPrice = (TextView) listItem.findViewById(R.id.totalP);
         totalPrice.setText("Total "+String.valueOf(currentRequest.getTotalprice())+"SR");
-        final Intent back = new Intent(cContext,ViewRequestsActivity.class);
+
+
 
         Button Accept = (Button) listItem.findViewById(R.id.Accept);
         Accept.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +77,8 @@ public class RequestAdapter extends ArrayAdapter<Request>{
                 incresstheContractEmp(currentRequest.getEmpID());
                 DBA.insertContract(c);
                 DBA.deleteRequest(currentRequest.getContractID());
-                cContext.startActivity(back);
+
+                Toast.makeText(cContext, "تم قبول الطلب", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -86,7 +88,7 @@ public class RequestAdapter extends ArrayAdapter<Request>{
             @Override
             public void onClick(View v) {
                 DBA.deleteRequest(currentRequest.getContractID());
-                cContext.startActivity(back);
+                Toast.makeText(cContext, "تم رفض الطلب", Toast.LENGTH_SHORT).show();
             }
         });
 

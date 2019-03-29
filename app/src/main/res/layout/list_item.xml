@@ -40,18 +40,21 @@
 
     <RatingBar
 
-        android:id="@+id/ratingBar"
+        android:id="@+id/ratingBar20"
+        style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="?android:attr/ratingBarStyleIndicator"
+        android:layout_below="@id/textView6"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toEndOf="@id/textView7"
+        android:numStars="5"
         android:scaleX=".5"
         android:scaleY=".5"
         android:transformPivotX="0dp"
-        android:transformPivotY="0dp"
-        android:layout_toEndOf="@id/textView7"
-        android:layout_below="@id/textView6"
-        android:layout_margin="5dp"
-        android:numStars = "5" />
+        android:transformPivotY="0dp" />
 
     <TextView
         android:id="@+id/textViewAva"

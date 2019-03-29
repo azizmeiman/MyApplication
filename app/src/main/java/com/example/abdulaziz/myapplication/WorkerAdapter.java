@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -44,17 +45,11 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
             listItem = LayoutInflater.from(wContext).inflate(R.layout.list_item,parent,false);
 
         Worker currentWorker = workersList.get(position);
-
-        TextView Available = (TextView) listItem.findViewById(R.id.textViewAva);
-        String isAvailable = isAvailableMethod(currentWorker);
+        isAvailableMethod(currentWorker);
 
 
-        if(isAvailable.equals("")){
-            Available.setText("متاح");
-        }else {
-            String s = "غير متاح حتى "+isAvailable;
-            Available.setText(s);
-        }
+
+
 
         ImageView image = (ImageView)listItem.findViewById(R.id.imageView_Worker);
         if(currentWorker.getPicture() == null)
@@ -78,8 +73,19 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
         city.setText(cityS);
 
 
+        RatingBar rate =(RatingBar) listItem.findViewById(R.id.ratingBar20);
+        float r = currentWorker.getTotalRate()/currentWorker.getnRate();
+        rate.setRating(r);
 
+        TextView Available = (TextView) listItem.findViewById(R.id.textViewAva);
+        String isAvailable = currentWorker.getUntil();
 
+        if(currentWorker.isAvailable()){
+            Available.setText("متاح");
+        }else {
+            String s = "غير متاح حتى "+isAvailable;
+            Available.setText(s);
+        }
 
 
         return listItem;
@@ -93,7 +99,7 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
-    public String isAvailableMethod(final Worker worker){
+    public void isAvailableMethod(final Worker worker){
 
 
 
@@ -143,26 +149,25 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
                     }
 
                 }
-                if(busy){
-                    myRef.child("Worker").child(worker.getID()).child("available").setValue(false);
-                }else {
-                    myRef.child("Worker").child(worker.getID()).child("available").setValue(true);
-                }
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
-
-        if(busy){
+        });if(busy){
             worker.setAvailable(false);
-            return endDate;
-        }else{
+            worker.setUntil(endDate);
+            myRef.child("Worker").child(worker.getID()).child("available").setValue(false);
+            myRef.child("Worker").child(worker.getID()).child("until").setValue(endDate);
+        }else {
             worker.setAvailable(true);
-            return "";
+            worker.setUntil(endDate);
+            myRef.child("Worker").child(worker.getID()).child("available").setValue(true);
+            myRef.child("Worker").child(worker.getID()).child("until").setValue("");
         }
+
 
     }
 }

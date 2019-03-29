@@ -2,6 +2,7 @@ package com.example.abdulaziz.myapplication;
 
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +36,10 @@ public class EmpViewWorkersActivity extends AppCompatActivity {
     private ArrayList<Worker> AvailabilWorkers;
     private ArrayList<Worker> PriceWorkers;
     private ArrayList<Worker> RatingWorkers;
+    private ArrayList<Worker> currentList;
+
+
+
   @Override
    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,35 +67,24 @@ public class EmpViewWorkersActivity extends AppCompatActivity {
       AvailabilWorkers = new ArrayList<>();
       PriceWorkers     = new ArrayList<>();
       RatingWorkers    = new ArrayList<>();
+      currentList      = new ArrayList<>();
 
       myRef.child("Worker").addValueEventListener(new ValueEventListener() {
 
           @Override
           public void onDataChange(DataSnapshot dataSnapshot) {
 
-              workersList.clear();
 
               for (DataSnapshot child : dataSnapshot.getChildren()) {
 
 
                   Worker worker =  new Worker(child.getValue(Worker.class));
-                  if(worker.isAvailable()){
-                      AvailabilWorkers.add(worker);
-                  }
+
                   workersList.add(worker);
 
-
-
               }
-              workersList = sortByPrice(workersList);
-
-              if(workersList.size()!= 0 ) {
-                  wAdapter = new WorkerAdapter(EmpViewWorkersActivity.this, workersList);
-                  listView.setAdapter(wAdapter);
-              }else{
-                  Toast.makeText(EmpViewWorkersActivity.this, "لايوجد عمال", Toast.LENGTH_SHORT).show();}
-
-
+              currentList = sortByPrice(workersList);
+              listView.setAdapter(new WorkerAdapter(EmpViewWorkersActivity.this, currentList));
 
           }
 
@@ -99,7 +93,10 @@ public class EmpViewWorkersActivity extends AppCompatActivity {
               Toast.makeText(EmpViewWorkersActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
 
           }
+
       });
+
+
 
 
 aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -107,26 +104,19 @@ aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() 
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (isChecked) {
 
-            if(sortS.getSelectedItem().equals(sort.get(0))){
-                AvailabilWorkers = sortByPrice(AvailabilWorkers);
-            }else if(sortS.getSelectedItem().equals(sort.get(1))){
-                AvailabilWorkers = sortByRating(AvailabilWorkers);
-
+            for(Worker w : currentList){
+                if(w.isAvailable()){
+                    AvailabilWorkers.add(w);
+                }
             }
-            wAdapter = new WorkerAdapter(EmpViewWorkersActivity.this, AvailabilWorkers);
-            listView.setAdapter(wAdapter);
+            currentList = AvailabilWorkers;
+            listView.setAdapter(new WorkerAdapter(EmpViewWorkersActivity.this, currentList));
 
         }
-        else{
+        else if(!isChecked){
 
-            if(sortS.getSelectedItem().equals(sort.get(0))){
-                workersList = sortByPrice(workersList);
-            }else if(sortS.getSelectedItem().equals(sort.get(1))){
-                workersList = sortByRating(workersList);
-
-            }
-            wAdapter = new WorkerAdapter(EmpViewWorkersActivity.this, workersList);
-            listView.setAdapter(wAdapter);
+          currentList = workersList;
+          listView.setAdapter(new WorkerAdapter(EmpViewWorkersActivity.this, currentList));
         }
 
     }
@@ -138,21 +128,24 @@ aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() 
 sortS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        if(aSwitch.isChecked()){
+            currentList = AvailabilWorkers;
+        }else if(!aSwitch.isChecked()){
+            currentList = workersList;
+        }
+
         if(sortS.getSelectedItem().equals(sort.get(0)) ){ //Price
 
-            if(aSwitch.isChecked()){
-                PriceWorkers = sortByPrice(AvailabilWorkers);
-            }else PriceWorkers = sortByPrice(workersList);
-            wAdapter = new WorkerAdapter(EmpViewWorkersActivity.this, PriceWorkers);
-            listView.setAdapter(wAdapter);}
+        currentList = sortByPrice(currentList);
+            listView.setAdapter(new WorkerAdapter(EmpViewWorkersActivity.this, currentList));
+        }
 
         else
         if (sortS.getSelectedItem().equals(sort.get(1))){  //Rating
-            if(aSwitch.isChecked()){
-                RatingWorkers = sortByPrice(AvailabilWorkers);
-            }else RatingWorkers = sortByPrice(workersList);
-            wAdapter = new WorkerAdapter(EmpViewWorkersActivity.this, RatingWorkers);
-            listView.setAdapter(wAdapter);
+
+            currentList = sortByRating(currentList);
+            listView.setAdapter(new WorkerAdapter(EmpViewWorkersActivity.this, currentList));
         }
     }
 
@@ -165,20 +158,12 @@ sortS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 
 
-
-
-
-
-
-
-
-
       listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override
           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
               Intent intent = new Intent(EmpViewWorkersActivity.this, WorkerProfileActivity.class);
 
-              intent.putExtra("id",workersList.get(position).getID());
+              intent.putExtra("id",currentList.get(position).getID());
               intent.putExtra("month",months);
               intent.putExtra("day",days);
 
@@ -218,13 +203,14 @@ sortS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public int compare(Worker o1, Worker o2) {
 
-                if (o1.getTotalRate() ==
-                        o2.getTotalRate())
+                float fo1 = o1.getTotalRate()/o1.getnRate();
+                float fo2 = o2.getTotalRate()/o2.getnRate();
+
+                if ( fo1 == fo2)
                 {
                     return 0;
                 }
-                else if (o1.getTotalRate() >
-                        o2.getTotalRate())
+                else if (fo1 > fo2)
                 {
                     return -1;
                 }

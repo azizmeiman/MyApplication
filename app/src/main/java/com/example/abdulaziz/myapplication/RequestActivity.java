@@ -167,13 +167,11 @@ public class RequestActivity extends AppCompatActivity {
 
                 Request r;
                 int p,t;
-                        if(period >1){
-                            r = new Request(key_ID,workerID,empID,posterID,Empmobile,workerName,emp.getOrgName(),period,startDate,endDate,totalPrice,3);
-                        }else {
+
                             p = endInDay-startInDay;
                             t = p*workerPrice;
                             r =  new Request(key_ID,workerID,empID,posterID,Empmobile,workerName,emp.getOrgName(),p,startDate,endDate,t,3);
-                        }
+
 
                 pushRef.setValue(r);
                 Toast.makeText(RequestActivity.this,"تم إرسال الطلب",Toast.LENGTH_SHORT).show();

@@ -240,7 +240,7 @@ public class addworker extends AppCompatActivity  {
 
 
                  Worker worker = new Worker(WorkerName, WorkerID,deleted, WorkerFees, Workerpic, WorkerNationality, WorkerCity, WorkerSkills, WorkerMobile,
-                                              WorkerBDDate, PosterUID, Workerpdf, totalincome,key_ID,isAvailable,Rate,nRate);
+                                              WorkerBDDate, PosterUID, Workerpdf, totalincome,key_ID,isAvailable,Rate,nRate,"");
 
 
                  pushRef.setValue(worker);

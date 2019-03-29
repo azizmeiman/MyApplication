@@ -51,13 +51,7 @@ public class WorkerProfileActivity extends AppCompatActivity {
         final Button chat = (Button)findViewById(R.id.button2);
 
 
-        ArrayList<String> feed = new ArrayList<String>();
-        feed.add("جيد ");
-        feed.add("سيء جداً");
-        feed.add("جيد جداً");
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, feed);
-        feedback.setAdapter(myAdapter);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -106,6 +100,35 @@ public class WorkerProfileActivity extends AppCompatActivity {
 
 
         });
+
+        final ArrayList<String> feed = new ArrayList<String>();
+
+
+        myRef.child("Feedback").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()){
+
+                    Feedback f = child.getValue(Feedback.class);
+                    if(f.getWorkerID().equals(worker.getID())){
+                        feed.add(f.getFeddback());
+                    }
+                }
+
+                ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(WorkerProfileActivity.this, android.R.layout.simple_list_item_1, feed);
+                feedback.setAdapter(myAdapter);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
 
         myRef2.child("WorkerPoster").addValueEventListener(new ValueEventListener() {
             @Override

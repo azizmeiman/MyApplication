@@ -35,6 +35,7 @@ public class Worker implements Serializable {
     private boolean isAvailable;
     private float TotalRate;
     private int nRate;//counter
+    private String until;
 
 
 
@@ -78,7 +79,7 @@ public class Worker implements Serializable {
         this.nRate = nRate;
     }
 
-    public Worker(String name, String workerID, boolean isDeleted, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income,String id , boolean isAvailable, float Rate, int nRate) {
+    public Worker(String name, String workerID, boolean isDeleted, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income,String id , boolean isAvailable, float Rate, int nRate, String until) {
         this.name = name;
         this.WorkerID = workerID;
         this.isDeleted = isDeleted;
@@ -96,8 +97,16 @@ public class Worker implements Serializable {
         this.isAvailable= isAvailable;
         this.TotalRate = Rate;
         this.nRate = nRate;
+        this.until = until;
     }
 
+    public String getUntil() {
+        return until;
+    }
+
+    public void setUntil(String until) {
+        this.until = until;
+    }
 
     public int getnRate() {
         return nRate;

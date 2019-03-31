@@ -18,9 +18,16 @@ public class EmployerMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employer_main);
 
+
         ImageButton sw = (ImageButton)findViewById(R.id.searchForWorker);
         ImageButton vc = (ImageButton)findViewById(R.id.employerContracts);
         Button contactAdminBut = (Button) findViewById(R.id.button);
+
+
+        WorkerC w = new WorkerC();
+        w.getWorkers();
+
+
         sw.setOnClickListener(new View.OnClickListener() {
 
 

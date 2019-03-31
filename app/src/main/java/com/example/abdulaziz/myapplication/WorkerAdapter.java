@@ -45,10 +45,10 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
             listItem = LayoutInflater.from(wContext).inflate(R.layout.list_item,parent,false);
 
         Worker currentWorker = workersList.get(position);
-        isAvailableMethod(currentWorker);
 
 
-
+        TextView Available = (TextView) listItem.findViewById(R.id.textViewAva);
+        Available.setText(currentWorker.getUntil());
 
 
         ImageView image = (ImageView)listItem.findViewById(R.id.imageView_Worker);
@@ -77,97 +77,13 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
         float r = currentWorker.getTotalRate()/currentWorker.getnRate();
         rate.setRating(r);
 
-        TextView Available = (TextView) listItem.findViewById(R.id.textViewAva);
-        String isAvailable = currentWorker.getUntil();
 
-        if(currentWorker.isAvailable()){
-            Available.setText("متاح");
-        }else {
-            String s = "غير متاح حتى "+isAvailable;
-            Available.setText(s);
-        }
+
+
 
 
         return listItem;
     }
 
 
-
-    String endDate ;
-    boolean busy = false;
-
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference();
-
-    public void isAvailableMethod(final Worker worker){
-
-
-
-
-        myRef.child("Contract").addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                Date current = new Date();
-
-                for (DataSnapshot child : dataSnapshot.getChildren()){
-                    Date  start = new Date(), end = new Date();
-
-                    String sStart = child.child("startDate").getValue().toString();
-                    String sEnd = child.child("endDate").getValue().toString();
-
-
-                    @SuppressLint("SimpleDateFormat") SimpleDateFormat formatterS = new SimpleDateFormat("dd/MM/yyyy");
-
-                    try {
-
-                        start = formatterS.parse(sStart);
-
-
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                    @SuppressLint("SimpleDateFormat") SimpleDateFormat formatterE = new SimpleDateFormat("dd/MM/yyyy");
-
-                    try {
-
-                        end = formatterE.parse(sEnd);
-
-
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                    if(worker.getID().equals(child.child("workerID").getValue().toString()) && end.after(current) && start.before(current)){
-
-                        endDate = sEnd ;
-                        busy = true;
-
-                        break;
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });if(busy){
-            worker.setAvailable(false);
-            worker.setUntil(endDate);
-            myRef.child("Worker").child(worker.getID()).child("available").setValue(false);
-            myRef.child("Worker").child(worker.getID()).child("until").setValue(endDate);
-        }else {
-            worker.setAvailable(true);
-            worker.setUntil(endDate);
-            myRef.child("Worker").child(worker.getID()).child("available").setValue(true);
-            myRef.child("Worker").child(worker.getID()).child("until").setValue("");
-        }
-
-
-    }
 }

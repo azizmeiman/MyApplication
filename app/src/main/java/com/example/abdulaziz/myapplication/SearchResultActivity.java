@@ -38,7 +38,7 @@ public class SearchResultActivity extends AppCompatActivity {
     private ArrayList<Worker> AvailabilWorkers;
     private ArrayList<Worker> PriceWorkers;
     private ArrayList<Worker> RatingWorkers;
-
+    private ArrayList<Worker> currentList;
 
 
     @Override
@@ -73,6 +73,7 @@ public class SearchResultActivity extends AppCompatActivity {
         AvailabilWorkers = new ArrayList<>();
         PriceWorkers     = new ArrayList<>();
         RatingWorkers    = new ArrayList<>();
+        currentList      = new ArrayList<>();
 
         myRef.child("Worker").addValueEventListener(new ValueEventListener() {
 
@@ -88,15 +89,17 @@ public class SearchResultActivity extends AppCompatActivity {
 
                                 Worker worker = new Worker(child.getValue(Worker.class));
                                 workersList.add(worker);
-                                if(worker.isAvailable()){
-                                    AvailabilWorkers.add(worker);
-                                }
+
 
                         }
 
 
 
                 }
+                currentList = sortByPrice(workersList);
+
+                String a = String.valueOf(workersList.size());
+                Toast.makeText(SearchResultActivity.this, a, Toast.LENGTH_SHORT).show();
 
                 wAdapter = new WorkerAdapter(SearchResultActivity.this, workersList);
                 listView.setAdapter(wAdapter);
@@ -113,27 +116,26 @@ public class SearchResultActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-
-                    if(sortS.getSelectedItem().equals(sort.get(0))){
-                        AvailabilWorkers = sortByPrice(AvailabilWorkers);
-                    }else if(sortS.getSelectedItem().equals(sort.get(1))){
-                        AvailabilWorkers = sortByRating(AvailabilWorkers);
-
+                    AvailabilWorkers.clear();
+                    for(Worker w : currentList){
+                        if(w.isAvailable()){
+                            AvailabilWorkers.add(w);
+                        }
                     }
-                    wAdapter = new WorkerAdapter(SearchResultActivity.this, AvailabilWorkers);
-                    listView.setAdapter(wAdapter);
+                    currentList = AvailabilWorkers;
+                    if(sortS.getSelectedItem().equals(sort.get(0))){
+                        currentList = sortByPrice(currentList);
+                    }else currentList = sortByRating(currentList);
+                    listView.setAdapter(new WorkerAdapter(SearchResultActivity.this, currentList));
 
                 }
-                else{
-
+                else if(!isChecked){
+                    currentList.clear();
+                    currentList = workersList;
                     if(sortS.getSelectedItem().equals(sort.get(0))){
-                        workersList = sortByPrice(workersList);
-                    }else if(sortS.getSelectedItem().equals(sort.get(1))){
-                        workersList = sortByRating(workersList);
-
-                    }
-                    wAdapter = new WorkerAdapter(SearchResultActivity.this, workersList);
-                    listView.setAdapter(wAdapter);
+                        currentList = sortByPrice(currentList);
+                    }else currentList = sortByRating(currentList);
+                    listView.setAdapter(new WorkerAdapter(SearchResultActivity.this, currentList));
                 }
 
             }
@@ -146,21 +148,23 @@ public class SearchResultActivity extends AppCompatActivity {
         sortS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(aSwitch.isChecked()){
+                    currentList = AvailabilWorkers;
+                }else if(!aSwitch.isChecked()){
+                    currentList = workersList;
+                }
+
                 if(sortS.getSelectedItem().equals(sort.get(0)) ){ //Price
 
-                    if(aSwitch.isChecked()){
-                        PriceWorkers = sortByPrice(AvailabilWorkers);
-                    }else PriceWorkers = sortByPrice(workersList);
-                    wAdapter = new WorkerAdapter(SearchResultActivity.this, PriceWorkers);
-                    listView.setAdapter(wAdapter);}
+                    currentList = sortByPrice(currentList);
+                    listView.setAdapter(new WorkerAdapter(SearchResultActivity.this, currentList));
+                }
 
                 else
                 if (sortS.getSelectedItem().equals(sort.get(1))){  //Rating
-                    if(aSwitch.isChecked()){
-                        RatingWorkers = sortByPrice(AvailabilWorkers);
-                    }else RatingWorkers = sortByPrice(workersList);
-                    wAdapter = new WorkerAdapter(SearchResultActivity.this, RatingWorkers);
-                    listView.setAdapter(wAdapter);
+
+                    currentList = sortByRating(currentList);
+                    listView.setAdapter(new WorkerAdapter(SearchResultActivity.this, currentList));
                 }
             }
 
@@ -207,19 +211,20 @@ public class SearchResultActivity extends AppCompatActivity {
 
         return a;}
 
-    public ArrayList sortByRating(ArrayList a){
+    public ArrayList<Worker> sortByRating(ArrayList<Worker> a){
 
         Collections.sort(a, new Comparator<Worker>() {
             @Override
             public int compare(Worker o1, Worker o2) {
 
-                if (o1.getTotalRate() ==
-                        o2.getTotalRate())
+                float fo1 = o1.getTotalRate()/o1.getnRate();
+                float fo2 = o2.getTotalRate()/o2.getnRate();
+
+                if ( fo1 == fo2)
                 {
                     return 0;
                 }
-                else if (o1.getTotalRate() >
-                        o2.getTotalRate())
+                else if (fo1 > fo2)
                 {
                     return -1;
                 }

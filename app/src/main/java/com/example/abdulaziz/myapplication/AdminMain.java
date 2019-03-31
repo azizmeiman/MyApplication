@@ -20,7 +20,7 @@ public class AdminMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
 
-        final Button ViewEmpButton = (Button) findViewById(R.id.ViewEmplyer);
+        final ImageButton ViewEmpButton = (ImageButton) findViewById(R.id.ViewEmplyer);
 
         ViewEmpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,7 +30,7 @@ public class AdminMain extends AppCompatActivity {
             }
         });
 
-        final Button ViewposterButton = (Button) findViewById(R.id.ViewWorkerPoster);
+        final ImageButton ViewposterButton = (ImageButton) findViewById(R.id.ViewWorkerPoster);
 
         ViewposterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +41,7 @@ public class AdminMain extends AppCompatActivity {
         });
 
 
-        final Button ViewConractButton = (Button) findViewById(R.id.ViewAllContract);
+        final ImageButton ViewConractButton = (ImageButton) findViewById(R.id.ViewAllContract);
 
         ViewConractButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,7 @@ public class AdminMain extends AppCompatActivity {
                 startActivity(ViewContractIntent);
             }
         });
-        final Button reportsAdmin = (Button) findViewById(R.id.reports);
+        final ImageButton reportsAdmin = (ImageButton) findViewById(R.id.reports);
 
         reportsAdmin.setOnClickListener(new View.OnClickListener() {
             @Override

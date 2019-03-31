@@ -59,6 +59,7 @@ public class Worker implements Serializable {
         this.isAvailable= w.isAvailable();
         this.TotalRate = w.getTotalRate();
         this.nRate = w.getnRate();
+        this.until = w.getUntil();
     }
 
     public Worker(String name, String workerID, int price, String picture, String nationality, String city, String Skills, String phonenumber, String birthDate,String PosterID, String Workerpdf, int Income, float Rate, int nRate) {

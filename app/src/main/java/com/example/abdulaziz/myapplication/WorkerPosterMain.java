@@ -22,6 +22,9 @@ public class WorkerPosterMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_poster_main);
 
+        WorkerC w = new WorkerC();
+        w.getWorkers();
+
         final Button ViewWorkerButton = (Button) findViewById(R.id.ViewWorkerBut);
         final Button AddWorkerButton = (Button) findViewById(R.id.AddWorkerBut);
         final Button EditWorkerButton = (Button) findViewById(R.id.EditWorkerBut);

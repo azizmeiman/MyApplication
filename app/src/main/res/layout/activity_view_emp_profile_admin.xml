@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewEmpProfileAdmin">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imageView111"
@@ -22,77 +30,73 @@
         app:layout_constraintVertical_bias="0.112"
         app:srcCompat="@drawable/profile" />
 
-    <TextView
-        android:id="@+id/RPname"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="23dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="TextView"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.682"
+        app:layout_constraintHorizontal_bias="0.855"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.088" />
+        app:layout_constraintVertical_bias="0.109"
+        tools:ignore="MissingConstraints">
+    <TextView
+        android:id="@+id/RPname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/RPphonNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:text="TextView"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.289" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/EmailE"
         android:layout_width="wrap_content"
-        android:layout_height="28dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content"
         android:text="TextView"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+
         android:text="TextView"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
+         />
+
+        <TextView
+            android:id="@+id/orgNAME"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            />
+        <TextView
+            android:id="@+id/RPID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="18sp"
+             />
+    </LinearLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/Block"
@@ -155,37 +159,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.719" />
 
-    <TextView
-        android:id="@+id/orgNAME"
-        android:layout_width="wrap_content"
-        android:layout_height="41dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="592dp"
-        android:text="TextView"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/RPID"
-        android:layout_width="148dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.161" />
-</android.support.constraint.ConstraintLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

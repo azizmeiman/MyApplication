@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#85E6E6E6"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -10,93 +10,54 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:background="#00FFFFFF"
         android:layout_width="203dp"
         android:layout_height="170dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/logop"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/logop" />
 
-    <Button
+    <ImageButton
         android:id="@+id/PosterReg"
-        android:layout_width="93dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#8BC34A"
-        android:text="@string/workerPosAr"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        android:textStyle="bold"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="30dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.633" />
-
-    <Button
-        android:id="@+id/EmployerReg"
-        android:layout_width="100dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#8BC34A"
-        android:text="@string/employerAr"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="91dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.245"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.544"
+        app:layout_constraintVertical_bias="0.539"
         app:srcCompat="@drawable/wp2" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="94dp"
-        android:layout_height="83dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+    <ImageButton
+        android:id="@+id/EmployerReg"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="30dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintHorizontal_bias="0.646"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.544"
-        app:srcCompat="@drawable/emp2" />
+        app:layout_constraintVertical_bias="0.538"
+        app:srcCompat="@drawable/emp2"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -142,6 +103,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
         android:text="@string/loginAr"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -151,6 +113,40 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.863" />
+        app:layout_constraintVertical_bias="0.888" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="90dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="عارض عمال"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.268"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PosterReg"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="90dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="باحث عن عمال"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.688"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmployerReg"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

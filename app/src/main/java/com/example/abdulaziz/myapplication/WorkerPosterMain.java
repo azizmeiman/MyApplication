@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.Date;
@@ -25,12 +26,12 @@ public class WorkerPosterMain extends AppCompatActivity {
         WorkerC w = new WorkerC();
         w.getWorkers();
 
-        final Button ViewWorkerButton = (Button) findViewById(R.id.ViewWorkerBut);
-        final Button AddWorkerButton = (Button) findViewById(R.id.AddWorkerBut);
-        final Button EditWorkerButton = (Button) findViewById(R.id.EditWorkerBut);
-        final Button ViewRequestButton = (Button) findViewById(R.id.ViewRequestBut);
-        final Button ViewContractButton = (Button) findViewById(R.id.ViewContractBut);
-        final Button DeleteWorkerButton = (Button) findViewById(R.id.DeleteWorkerBut);
+        final ImageButton ViewWorkerButton = (ImageButton) findViewById(R.id.ViewWorkerBut);
+        final ImageButton AddWorkerButton = (ImageButton) findViewById(R.id.AddWorkerBut);
+        final ImageButton EditWorkerButton = (ImageButton) findViewById(R.id.EditWorkerBut);
+        final ImageButton ViewRequestButton = (ImageButton) findViewById(R.id.ViewRequestBut);
+        final ImageButton ViewContractButton = (ImageButton) findViewById(R.id.ViewContractBut);
+        final ImageButton DeleteWorkerButton = (ImageButton) findViewById(R.id.DeleteWorkerBut);
         final Button ReportsButton = (Button) findViewById(R.id.ReportsBut);
         final Button ChatwithAdminButton = (Button) findViewById(R.id.ChatwithAdminBut);
 

@@ -52,19 +52,23 @@ public class RequestAdapter extends ArrayAdapter<Request>{
         final Request currentRequest = requestsList.get(position);
 
         TextView contract = (TextView) listItem.findViewById(R.id.contractID);
-       contract.setText(currentRequest.getContractID());
+       contract.setText("رقم العقد: "+currentRequest.getContractID());
 
         TextView empId = (TextView) listItem.findViewById(R.id.empID);
-        empId.setText("Employer Name: "+currentRequest.getEmpName());
+        //empId.setText("Employer Name: "+currentRequest.getEmpName());
+        empId.setText("اسم الباحث: "+currentRequest.getEmpName());
+
 
         TextView workerID = (TextView) listItem.findViewById(R.id.workerID);
-        workerID.setText("Worker Name: "+currentRequest.getWorkerName());
+        //workerID.setText("Worker Name: "+currentRequest.getWorkerName());
+        workerID.setText("اسم العامل: "+currentRequest.getWorkerName());
 
         TextView Date = (TextView) listItem.findViewById(R.id.Date);
-        Date.setText("From "+currentRequest.getStartDate()+" To "+currentRequest.getEndDate());
+       // Date.setText(currentRequest.getEndDate()+" حتى"+currentRequest.getStartDate()+"من");
+        Date.setText("من" + currentRequest.getStartDate()+" حتى"+currentRequest.getEndDate());
 
         TextView totalPrice = (TextView) listItem.findViewById(R.id.totalP);
-        totalPrice.setText("Total "+String.valueOf(currentRequest.getTotalprice())+"SR");
+        totalPrice.setText("الاجمالي "+String.valueOf(currentRequest.getTotalprice())+"SR");
 
 
 

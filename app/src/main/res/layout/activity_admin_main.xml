@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E7E7E7"
     tools:context=".AdminMain"
     >
 
@@ -23,30 +22,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-            <ImageButton
-                android:id="@+id/ViewEmplyer"
-                android:layout_width="144dp"
-                android:layout_height="169dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="120dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="#FFFFFF"
+                android:orientation="horizontal"
+                android:layout_marginTop="25dp">
 
-                 />
+                <ImageButton
+                    android:id="@+id/ViewEmplyer"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="8dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                    android:cropToPadding="false"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/emp2" />
 
 
                 <ImageButton
                     android:id="@+id/ViewWorkerPoster"
-                    android:layout_width="144dp"
-                    android:layout_height="169dp"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginLeft="120dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_marginStart="30dp"
                     android:adjustViewBounds="true"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
                     android:cropToPadding="false"
                     android:scaleType="fitXY"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -55,7 +53,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.194"
-                    android:src="@drawable/wppp" />
+                    app:srcCompat="@drawable/wp2" />
 
             </LinearLayout>
 
@@ -66,25 +64,25 @@
 
                 <TextView
                     android:id="@+id/viewWPText"
-                    android:layout_width="144dp"
+                    android:layout_width="170dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:background="#FFFFFF"
+                    android:layout_marginStart="15dp"
                     android:text="عرض الباحثين عن عمال"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/viewEmpText"
-                    android:layout_width="144dp"
+                    android:layout_width="170dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="58dp"
-                    android:background="#FFFFFF"
+                    android:layout_marginStart="40dp"
                     android:text="عرض عارضين العمال"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
 
 
@@ -108,27 +106,24 @@
 
         <ImageButton
             android:id="@+id/reports"
-            android:layout_width="144dp"
-            android:layout_height="169dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="15dp"
             android:layout_marginEnd="8dp"
-            android:background="#FFFFFF"
+            android:adjustViewBounds="true"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:cropToPadding="false"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/reports" />
 
 
         <ImageButton
             android:id="@+id/ViewAllContract"
-            android:layout_width="144dp"
-            android:layout_height="169dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="30dp"
             android:adjustViewBounds="true"
-            android:background="#FFFFFF"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:cropToPadding="false"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -149,25 +144,26 @@
 
            <TextView
                android:id="@+id/viewReportText"
-               android:layout_width="144dp"
+               android:layout_width="170dp"
                android:layout_height="match_parent"
-               android:layout_marginStart="30dp"
-               android:background="#FFFFFF"
+               android:layout_marginStart="15dp"
+               android:layout_marginEnd="8dp"
                android:text="عرض التقارير"
                android:textAlignment="center"
                android:textColor="@color/colorPrimaryDark"
-               android:textSize="18sp" />
+               android:textSize="18sp"
+               android:textStyle="bold" />
 
            <TextView
                android:id="@+id/viewContractText"
-               android:layout_width="144dp"
+               android:layout_width="170dp"
                android:layout_height="match_parent"
-               android:layout_marginStart="58dp"
-               android:background="#FFFFFF"
-               android:text="عرض التقارير"
+               android:layout_marginStart="30dp"
+               android:text="عرض العقود"
                android:textAlignment="center"
                android:textColor="@color/colorPrimaryDark"
-               android:textSize="18sp" />
+               android:textSize="18sp"
+               android:textStyle="bold" />
 
 
 

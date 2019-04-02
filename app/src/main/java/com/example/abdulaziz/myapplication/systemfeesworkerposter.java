@@ -84,7 +84,7 @@ public class systemfeesworkerposter extends AppCompatActivity {
 
                  poster1 = dataSnapshot.child(posterUID).getValue(WorkerPoster.class);
                 fees = String.valueOf(poster1.getSystemfees());
-                systemfeeinput.setText(fees);
+                systemfeeinput.setText(fees+" SR");
                 systemfeeupload.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

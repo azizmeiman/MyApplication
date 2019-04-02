@@ -66,11 +66,13 @@ public class lowestrateworkerposter extends AppCompatActivity{
                                     @Override
                                     public int compare(Worker o1, Worker o2) {
 
-                                        if (o1.getTotalRate() ==
-                                                o2.getTotalRate()) {
+                                        float fo1 = o1.getTotalRate()/o1.getnRate();
+                                        float fo2 = o2.getTotalRate()/o2.getnRate();
+
+                                        if (fo1 ==
+                                                fo2) {
                                             return 0;
-                                        } else if (o1.getTotalRate() <
-                                                o2.getTotalRate()) {
+                                        } else if (fo1 < fo2) {
                                             return -1;
                                         }
                                         return 1;

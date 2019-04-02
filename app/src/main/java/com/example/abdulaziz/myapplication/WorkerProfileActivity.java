@@ -73,15 +73,15 @@ public class WorkerProfileActivity extends AppCompatActivity {
                    if(child.child("id").getValue().toString().equals(id)) {
 
                      worker = new Worker(child.getValue(Worker.class));
-                     name.setText("Worker name: "+worker.getName());
-                     skills.setText("Skills: "+worker.getSkills());
-                     price.setText("price perH: "+String.valueOf(worker.getPrice())+".00 SR");
+                     name.setText("اسم العامل: "+worker.getName());
+                     skills.setText("المهارات: "+worker.getSkills());
+                     price.setText("السعر بالساعة: "+String.valueOf(worker.getPrice())+".00 SR");
                      monthD = months*30;
                      monthD=monthD+days;
                      float r =  worker.getTotalRate()/worker.getnRate();
                      rate.setRating(r);
                      totalPrice1 = worker.getPrice()*monthD;
-                     totalPrice.setText("Total price: "+String.valueOf(totalPrice1)+".00 SR");
+                     totalPrice.setText("الاجمالي: "+String.valueOf(totalPrice1)+".00 SR");
 
 
                        break;

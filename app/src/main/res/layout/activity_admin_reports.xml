@@ -1,66 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminReports">
+    tools:context=".AdminReports"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    android:background="#F1F1F1">
 
-    <Button
-        android:id="@+id/highestContP"
-        android:layout_width="147dp"
-        android:layout_height="104dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
-        android:text="الأكثر عقود من عارضين العمال"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.83"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229" />
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
 
-    <Button
-        android:id="@+id/highestContE"
-        android:layout_width="147dp"
-        android:layout_height="104dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
-        android:text="الأكثر عقود من طالبين العمال"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.227" />
+        <ImageButton
+            android:id="@+id/highestContP"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="8dp"
 
-    <Button
+            android:adjustViewBounds="true"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:cropToPadding="false"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/wp2" />
+
+        <ImageButton
+            android:id="@+id/highestContE"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="30dp"
+
+            android:adjustViewBounds="true"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:cropToPadding="false"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/emp2" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="الاكثر عقود من عارضين العمال"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="8dp"
+            android:text="الاكثر عقود من الباحثين عن عمال"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <ImageButton
         android:id="@+id/highestBalaceP"
-        android:layout_width="147dp"
-        android:layout_height="104dp"
+        android:layout_width="394dp"
+        android:layout_height="85dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
-        android:text="عارضين العمال المهملين"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+        android:src="@drawable/creaditor"
+        />
+
+    <TextView
+        android:layout_width="393dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="عارضين العمال الاكثر مطالبات"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="23sp" />
+</LinearLayout>

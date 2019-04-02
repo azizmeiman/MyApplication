@@ -23,19 +23,19 @@
             android:label="عقد" />
         <activity
             android:name=".highestBalancePoster"
-            android:label="انشاء حساب" />
+            android:label="عارضين العمال - الاكثر مطالبات" />
         <activity
             android:name=".highestContractEmp"
-            android:label="انشاء حساب" />
+            android:label="الباحثين عن عمال - الاكثر عقود" />
         <activity
             android:name=".highestContractPoster"
-            android:label="انشاء حساب" />
+            android:label="عارضين العمال - الاكثر عقود" />
         <activity
             android:name=".AdminReports"
-            android:label="انشاء حساب" />
+            android:label="التقارير" />
         <activity
             android:name=".ResetTheBalance"
-            android:label="انشاء حساب" />
+            android:label="ادارة المطالبات" />
         <activity
             android:name=".EmpContractViewActivity"
             android:label="العقود" />
@@ -51,19 +51,20 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".workerposterreports"
-            android:label="انشاء حساب" />
+            android:label="التقارير" />
         <activity
             android:name=".highestincomeworkerposter"
-            android:label="انشاء حساب" />
+            android:label="العمال - الاعلى دخلاً" />
         <activity
             android:name=".lowestrateworkerposter"
-            android:label="انشاء حساب" />
+            android:label="العمال - الاسواء تقييماً" />
         <activity
             android:name=".highestrateworkeposter"
-            android:label="انشاء حساب" />
+            android:label="العمال - الافضل تقييماً" />
         <activity
             android:name=".lowestincomeworker"
-            android:label="انشاء حساب" />
+            android:label="العمال - الاقل دخلاً" />
+
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -136,7 +137,7 @@
             android:label="الملف الشخصي لعارض العمال" />
         <activity
             android:name=".postercontacttheadmin"
-            android:label="Contact" />
+            android:label="العقود" />
         <activity
             android:name=".ContractView"
             android:label="العقود" />

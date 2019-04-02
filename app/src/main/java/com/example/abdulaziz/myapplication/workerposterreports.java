@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class workerposterreports extends AppCompatActivity {
 
@@ -12,10 +13,10 @@ public class workerposterreports extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workerposterreports);
-        final Button HighestRate = (Button) findViewById(R.id.workerpostertoprate);
-        final Button LowestRate = (Button) findViewById(R.id.workerposterbadrate);
-        final Button HighestIncome = (Button) findViewById(R.id.workerpostehighesticome);
-        final Button LowestIncome = (Button) findViewById(R.id.workerposterlowesticome);
+        final ImageButton HighestRate = (ImageButton) findViewById(R.id.workerpostertoprate);
+        final ImageButton LowestRate = (ImageButton) findViewById(R.id.workerposterbadrate);
+        final ImageButton HighestIncome = (ImageButton) findViewById(R.id.workerpostehighesticome);
+        final ImageButton LowestIncome = (ImageButton) findViewById(R.id.workerposterlowesticome);
         //final Button pastcontracts = (Button) findViewById(R.id.pastContractsPoster);
         final Button systemfees = (Button)findViewById(R.id.systemfees);
 

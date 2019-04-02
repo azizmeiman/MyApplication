@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class AdminReports extends AppCompatActivity {
 
@@ -14,7 +15,7 @@ public class AdminReports extends AppCompatActivity {
         setContentView(R.layout.activity_admin_reports);
 
 
-        final Button mostCont = (Button) findViewById(R.id.highestContP);
+        final ImageButton mostCont = (ImageButton) findViewById(R.id.highestContP);
 
         mostCont.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,7 +25,7 @@ public class AdminReports extends AppCompatActivity {
             }
         });
 
-        final Button mostContE = (Button) findViewById(R.id.highestContE);
+        final ImageButton mostContE = (ImageButton) findViewById(R.id.highestContE);
 
         mostContE.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +35,7 @@ public class AdminReports extends AppCompatActivity {
             }
         });
 
-        final Button mostbalanc = (Button) findViewById(R.id.highestBalaceP);
+        final ImageButton mostbalanc = (ImageButton) findViewById(R.id.highestBalaceP);
 
 
         mostbalanc.setOnClickListener(new View.OnClickListener() {

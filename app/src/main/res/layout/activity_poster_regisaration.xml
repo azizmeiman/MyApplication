@@ -31,6 +31,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="79dp"
                     app:srcCompat="@drawable/logop" />
+                <ProgressBar
+                    android:id="@+id/progressbar"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-7dp"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/colorPrimary"
+                    android:max="100" />
 
                 <EditText
                     android:id="@+id/EmailP"
@@ -68,15 +77,7 @@
                     android:maxLength="10"
                   />
 
-                <ProgressBar
-                    android:id="@+id/progressbar"
-                    style="@style/Widget.AppCompat.ProgressBar"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-7dp"
-                    android:indeterminate="true"
-                    android:indeterminateTint="@color/colorPrimary"
-                    android:max="100" />
+
 
 
                 <LinearLayout

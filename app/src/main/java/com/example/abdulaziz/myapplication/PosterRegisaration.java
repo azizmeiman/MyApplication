@@ -92,7 +92,27 @@ public class PosterRegisaration extends AppCompatActivity {
         mprogressE  = (ProgressBar) findViewById(R.id.progressbar);
         mprogressE.setVisibility(View.INVISIBLE);
 
-
+        EmailP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(EmailP.getText().length()<10)
+                    EmailP.setError("الرجاء كاتبة الايميل بالطريقة الصحيحة ");
+            }
+        });
+        PasswordP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(PasswordP.getText().length()<6)
+                    PasswordP.setError("يجب ان يكون 6 خانات فما فوق ");
+            }
+        });
+        RPphoneNumP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(RPphoneNumP.getText().length()<9)
+                    RPphoneNumP.setError("الرجاء كتابة الرقم كاملا بدون صفر ");
+            }
+        });
 
 
         final Spinner Cityposter = (Spinner) findViewById(R.id.cityPoster);

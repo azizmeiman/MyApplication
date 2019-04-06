@@ -160,25 +160,32 @@ public class RequestActivity extends AppCompatActivity {
         sendRequst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int currentdate = (Calendar.getInstance().get(Calendar.YEAR)*12)+Calendar.getInstance().get(Calendar.DATE)+((1+Calendar.getInstance().get(Calendar.MONTH))*30);
+                if(startInDay>endInDay  ||currentdate > startInDay || startInDay==0 || endInDay==0)
+    Toast.makeText(RequestActivity.this,"الرجاء اختيار فترة صحيحة",Toast.LENGTH_SHORT).show();
 
+
+                else {
                 DatabaseReference pushRef = myRef2.child("Request").push();
                 String Empmobile = e.getRPphoneNum();
                 String key_ID = pushRef.getKey();
 
                 Request r;
                 int p,t;
-
+                        if(period >1){
+                            r = new Request(key_ID,workerID,empID,posterID,Empmobile,workerName,emp.getOrgName(),period,startDate,endDate,totalPrice,3);
+                        }else {
                             p = endInDay-startInDay;
                             t = p*workerPrice;
                             r =  new Request(key_ID,workerID,empID,posterID,Empmobile,workerName,emp.getOrgName(),p,startDate,endDate,t,3);
-
+                        }
 
                 pushRef.setValue(r);
                 Toast.makeText(RequestActivity.this,"تم إرسال الطلب",Toast.LENGTH_SHORT).show();
                 finish();
 
 
-            }
+            } }
         });
 
 

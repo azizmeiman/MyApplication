@@ -14,6 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -24,7 +29,10 @@ public class PosterAdapter extends ArrayAdapter<WorkerPoster> {
 
     private Context PosterContext;
     private List<WorkerPoster> PosterList = new ArrayList<>();
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference myRef = database.getReference();
 
+     static String feees ;
 
     public PosterAdapter(@NonNull Context context, @SuppressLint("SupportAnnotationUsage") @LayoutRes ArrayList<WorkerPoster> list) {
         super(context, 0 , list);
@@ -39,7 +47,7 @@ public class PosterAdapter extends ArrayAdapter<WorkerPoster> {
         if(listItemPoster == null)
             listItemPoster = LayoutInflater.from(PosterContext).inflate(R.layout.activity_list__item_poster,parent,false);
 
-        WorkerPoster currentPoster = PosterList.get(position);
+        final WorkerPoster currentPoster = PosterList.get(position);
 
         ImageView image = (ImageView)listItemPoster.findViewById(R.id.imageView_poster);
         if(currentPoster.getOrgPic() == null)
@@ -54,6 +62,18 @@ public class PosterAdapter extends ArrayAdapter<WorkerPoster> {
         TextView Orgname = (TextView) listItemPoster.findViewById(R.id.textView6poster);
         Orgname.setText(currentPoster.getOrgName());
 
+
+        myRef.child("WorkerPoster").addValueEventListener(new ValueEventListener() {
+            WorkerPoster poster1=new  WorkerPoster();
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                poster1 = dataSnapshot.child(currentPoster.getIDP()).getValue(WorkerPoster.class);
+                feees = String.valueOf(poster1.getSystemfees()); }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) { }});
+
+        TextView fees = (TextView) listItemPoster.findViewById(R.id.textViewfess);
+        fees.setText("The total balance: "+feees);
         return listItemPoster;
     }
 }

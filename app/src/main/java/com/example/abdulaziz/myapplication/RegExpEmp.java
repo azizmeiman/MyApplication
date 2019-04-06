@@ -92,6 +92,29 @@ public class RegExpEmp extends AppCompatActivity  {
         //final EditText orgDoc = (EditText) findViewById(R.id.orgDoc);
        // final EditText orgPic = (EditText) findViewById(R.id.orgPic);
 
+        EmailE.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(EmailE.getText().length()<10)
+                    EmailE.setError("الرجاء كاتبة الايميل بالطريقة الصحيحة ");
+            }
+        });
+        PasswordE.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(PasswordE.getText().length()<6)
+                    PasswordE.setError("يجب ان يكون 6 خانات فما فوق ");
+            }
+        });
+        RPphoneNum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(RPphoneNum.getText().length()<9)
+                    RPphoneNum.setError("الرجاء كتابة الرقم كاملا بدون صفر ");
+            }
+        });
+
+
         mprogress = new ProgressDialog(this);
         mprogressE  = (ProgressBar) findViewById(R.id.progressbar);
         mprogressE.setVisibility(View.INVISIBLE);

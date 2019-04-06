@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
@@ -222,7 +223,6 @@ public class addworker extends AppCompatActivity  {
                  WorkerNationality = WorkerNationalityEdit.getSelectedItem().toString();
                  WorkerCity = cityID.getSelectedItem().toString();
                  WorkerSkills = skillID.getSelectedItem().toString();
-                 WorkerFees = Integer.parseInt(WorkerFeesEdit.getText().toString());
                  PosterUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                  totalincome = 0; // When worker added total income will be 0
                  isAvailable=true;
@@ -232,8 +232,12 @@ public class addworker extends AppCompatActivity  {
 
 
 
+                if (TextUtils.isEmpty(WorkerName) || TextUtils.isEmpty(WorkerID)  || TextUtils.isEmpty(WorkerMobile) || TextUtils.isEmpty(WorkerNationality) ) {
+                    Toast.makeText(addworker.this, "املئ جميع الحقول. . .", Toast.LENGTH_LONG).show();
+                }
+                else{
 
-
+                    WorkerFees = Integer.parseInt(WorkerFeesEdit.getText().toString());
 
                  DatabaseReference pushRef = myRef2.child("Worker").push();
                  String key_ID = pushRef.getKey();
@@ -252,7 +256,7 @@ public class addworker extends AppCompatActivity  {
 
 
 
-            }
+            }}
         });
 
 

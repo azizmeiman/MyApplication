@@ -38,5 +38,14 @@
         android:layout_toEndOf="@id/imageView_poster"
         android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/textViewfess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView7poster"
+        android:layout_margin="10dp"
+        android:layout_toEndOf="@id/imageView_poster"
+        android:textSize="20sp" />
+
 
 </RelativeLayout>

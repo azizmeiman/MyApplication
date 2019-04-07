@@ -199,8 +199,7 @@ public class PosterRegisaration extends AppCompatActivity {
                                     cityIDposter,
                                     orgNamePoster,
                                     orgDocPoster,
-                                    orgPicPoster,
-                                    0
+                                    orgPicPoster
 
 
 

@@ -23,7 +23,7 @@ public class WorkerPoster {
 
     }
 
-    public WorkerPoster(String idp,String Email, String RPname, String RPID, String RPphone, String cityID, String orgName, String orgPic, String orgDoc, double systemfees) {
+    public WorkerPoster(String idp,String Email, String RPname, String RPID, String RPphone, String cityID, String orgName, String orgPic, String orgDoc) {
         this.IDP=idp;
         this.Email=Email;
         this.RPname = RPname;
@@ -36,7 +36,7 @@ public class WorkerPoster {
         this.FeesRelesPic="empty";
         this.isBlucked=false;
         this.ContractNumber=0;
-        this.systemfees = systemfees;
+
     }
 
     public WorkerPoster(WorkerPoster value) {

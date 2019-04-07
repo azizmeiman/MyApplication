@@ -13,15 +13,9 @@ public class WorkerPoster {
     private String orgName;
     private String orgPic;
     private String orgDoc;
-
-    private ArrayList workers;
-
     private double systemfees;
     private String IDP;
     private boolean isBlucked;
-
-
-
     private int ContractNumber;
     private String FeesRelesPic;
 
@@ -29,7 +23,7 @@ public class WorkerPoster {
 
     }
 
-    public WorkerPoster(String idp,String Email, String RPname, String RPID, String RPphone, String cityID, String orgName, String orgPic, String orgDoc) {
+    public WorkerPoster(String idp,String Email, String RPname, String RPID, String RPphone, String cityID, String orgName, String orgPic, String orgDoc, double systemfees) {
         this.IDP=idp;
         this.Email=Email;
         this.RPname = RPname;
@@ -39,11 +33,10 @@ public class WorkerPoster {
         this.orgName = orgName;
         this.orgPic = orgPic;
         this.orgDoc = orgDoc;
-        this.workers = workers;
         this.FeesRelesPic="empty";
         this.isBlucked=false;
         this.ContractNumber=0;
-
+        this.systemfees = systemfees;
     }
 
     public WorkerPoster(WorkerPoster value) {
@@ -61,7 +54,9 @@ public class WorkerPoster {
         this.FeesRelesPic=value.getFeesRelesPic();
         this.isBlucked=value.isBlucked();
         this.ContractNumber=value.getContractNumber();
+        this.systemfees = value.getSystemfees();
     }
+
 
     public String getEmail() {
         return Email;
@@ -127,13 +122,6 @@ public class WorkerPoster {
         this.orgDoc = orgDoc;
     }
 
-    public ArrayList getWorkers() {
-        return workers;
-    }
-
-    public void setWorkers(ArrayList workers) {
-        this.workers = workers;
-    }
 
     public double getSystemfees() {
         return systemfees;
@@ -176,6 +164,10 @@ public class WorkerPoster {
     public void setContractNumber(int contractNumber) {
         ContractNumber = contractNumber;
     }
+
+
+
+
 
 
 }

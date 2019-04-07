@@ -77,7 +77,16 @@ public class ResetTheBalance extends AppCompatActivity {
                                 double fse= WorkerPoster.getSystemfees()- Double.parseDouble(newP);
 
                                 myRef.child("WorkerPoster").child(WorkerPoster.getIDP()).child("systemfees").setValue(fse);
-                                finish();
+                                final DBAccess DBA = new DBAccess();
+                                PaymentRecord paymentRecord = new PaymentRecord(WorkerPoster.getFeesRelesPic(),WorkerPoster.getIDP(), Double.parseDouble(reset.getText().toString()));
+                                DBA.insertPaymentRecord(paymentRecord);
+                                addedPaymentRecord();
+
+                                reset.setText("");
+                                Toast.makeText(ResetTheBalance.this, "تم تعديل المبلغ ", Toast.LENGTH_LONG).show();
+
+                                myRef.child("WorkerPoster").child(WorkerPoster.getIDP()).child("feesRelesPic").setValue("empty");
+
                             }
                         });
 
@@ -99,6 +108,11 @@ public class ResetTheBalance extends AppCompatActivity {
 
 
         });
+
+    }
+
+    private void addedPaymentRecord() {
+
 
     }
 }

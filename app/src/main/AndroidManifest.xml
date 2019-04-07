@@ -11,10 +11,12 @@
         android:roundIcon="@drawable/logop"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".employer_contact_admin"></activity>
+        <activity android:name=".ViewPaymenthistory"></activity>
+        <activity android:name=".PaymantAdapter" />
+        <activity android:name=".employer_contact_admin" />
         <activity
             android:name=".addRateActivity"
-            android:theme="@style/AppTheme.popup"></activity>
+            android:theme="@style/AppTheme.popup" />
         <activity
             android:name=".FeedbackActivity"
             android:label="ردود الفعل" />
@@ -64,7 +66,6 @@
         <activity
             android:name=".lowestincomeworker"
             android:label="العمال - الاقل دخلاً" />
-
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

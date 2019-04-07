@@ -109,6 +109,17 @@ public class viewPosterAdmin extends AppCompatActivity {
                             }
                         });
 
+                        final Button paymenthestory = (Button) findViewById(R.id.historoy);
+                        paymenthestory.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent ViewposterIntent = new Intent(viewPosterAdmin.this, ViewPaymenthistory.class );
+                                ViewposterIntent.putExtra("idp",WorkerPoster.getIDP());
+                                startActivity(ViewposterIntent);
+                            }
+                        });
+
+
                         break;
 
 

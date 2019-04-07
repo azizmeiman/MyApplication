@@ -53,6 +53,10 @@ public class EmpAdapter extends ArrayAdapter<Employer> {
         TextView Orgname = (TextView) listItemEmp.findViewById(R.id.textView6emp);
         Orgname.setText(currentEmp.getOrgName());
 
+        TextView cotnractnumber = (TextView) listItemEmp.findViewById(R.id.textView7);
+        cotnractnumber.setText("Number of contract:"+currentEmp.getContractNomE());
+
+
         return listItemEmp;
     }
 }

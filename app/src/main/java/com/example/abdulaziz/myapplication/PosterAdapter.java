@@ -62,18 +62,35 @@ public class PosterAdapter extends ArrayAdapter<WorkerPoster> {
         TextView Orgname = (TextView) listItemPoster.findViewById(R.id.textView6poster);
         Orgname.setText(currentPoster.getOrgName());
 
+        TextView cotnractnumber = (TextView) listItemPoster.findViewById(R.id.textView7poster);
+        cotnractnumber.setText("Number of contract:"+currentPoster.getContractNumber());
 
+
+        final View finalListItemPoster = listItemPoster;
         myRef.child("WorkerPoster").addValueEventListener(new ValueEventListener() {
-            WorkerPoster poster1=new  WorkerPoster();
-            @Override
+           WorkerPoster poster1=new  WorkerPoster();
+           @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                poster1 = dataSnapshot.child(currentPoster.getIDP()).getValue(WorkerPoster.class);
-                feees = String.valueOf(poster1.getSystemfees()); }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) { }});
+               for (DataSnapshot child : dataSnapshot.getChildren()) {
+                   if(child.child("idp").getValue().toString().equals(currentPoster.getIDP())) {
 
-        TextView fees = (TextView) listItemPoster.findViewById(R.id.textViewfess);
-        fees.setText("The total balance: "+feees);
+
+
+                       poster1 =  dataSnapshot.child(currentPoster.getIDP()).getValue(WorkerPoster.class);
+
+                  //     poster1 = dataSnapshot.child(currentPoster.getIDP()).getValue(WorkerPoster.class);
+                feees = String.valueOf(poster1.getSystemfees());
+
+
+
+                   TextView fees = (TextView) finalListItemPoster.findViewById(R.id.textViewfess);
+                   fees.setText("The total balance: "+feees);
+                   break;
+
+               }}}
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) { }});
         return listItemPoster;
     }
 }

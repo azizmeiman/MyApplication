@@ -66,6 +66,11 @@ public class DBAccess {
         myRef.push().setValue(r);
     }
 
+    public void insertPaymentRecord(PaymentRecord p) {
+        myRef = database.getReference("PaymentRecord");
+        myRef.push().setValue(p);
+    }
+
     public void deleteEmployer(String id) {
         myRef = database.getReference("Employer");
         myRef.child(id);

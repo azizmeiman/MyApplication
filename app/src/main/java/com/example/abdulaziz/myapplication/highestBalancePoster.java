@@ -54,12 +54,12 @@ public class highestBalancePoster extends AppCompatActivity {
                         @Override
                         public int compare(WorkerPoster o1, WorkerPoster o2) {
 
-                            if (o1.getSystemfees() == o2.getSystemfees())
+                            if (o1.getContractNumber() == o2.getContractNumber())
                             {
                                 return 0;
                             }
-                            else if (o1.getSystemfees() >
-                                    o2.getSystemfees())
+                            else if (o1.getContractNumber() >
+                                    o2.getContractNumber())
                             {
                                 return -1;
                             }

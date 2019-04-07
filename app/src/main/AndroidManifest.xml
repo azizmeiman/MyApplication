@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/logop"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewPaymenthistory"></activity>
+        <activity android:name=".admin_chat_with_poster"></activity>
+        <activity android:name=".ViewPaymenthistory" />
         <activity android:name=".PaymantAdapter" />
         <activity android:name=".employer_contact_admin" />
         <activity

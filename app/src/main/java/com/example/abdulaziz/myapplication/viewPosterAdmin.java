@@ -49,7 +49,7 @@ public class viewPosterAdmin extends AppCompatActivity {
         myRef.child("WorkerPoster").addValueEventListener(new ValueEventListener() {
             WorkerPoster WorkerPoster = new WorkerPoster();
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(final DataSnapshot dataSnapshot) {
 
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
@@ -115,6 +115,20 @@ public class viewPosterAdmin extends AppCompatActivity {
                             public void onClick(View v) {
                                 Intent ViewposterIntent = new Intent(viewPosterAdmin.this, ViewPaymenthistory.class );
                                 ViewposterIntent.putExtra("idp",WorkerPoster.getIDP());
+                                startActivity(ViewposterIntent);
+                            }
+                        });
+
+                        final Button chatWithPoster = (Button)findViewById(R.id.chatwithposter);
+                        chatWithPoster.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent ViewposterIntent = new Intent(viewPosterAdmin.this, admin_chat_with_poster.class );
+                                ViewposterIntent.putExtra("Name",WorkerPoster.getRPname());
+                                ViewposterIntent.putExtra("Email",WorkerPoster.getEmail());
+                                String idp = WorkerPoster.getIDP();
+                                String systemfees = String.valueOf(dataSnapshot.child(idp).child("systemfees").getValue());
+                                ViewposterIntent.putExtra("Fees",systemfees);
                                 startActivity(ViewposterIntent);
                             }
                         });

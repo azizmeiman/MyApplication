@@ -203,16 +203,15 @@
         android:id="@+id/chatwithposter"
         android:layout_width="387dp"
         android:layout_height="52dp"
-        android:layout_marginStart="8dp"
+        android:layout_below="@+id/historoy"
 
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:layout_below="@+id/historoy"
         android:background="@drawable/btnshapecolor"
         android:text="التحدث مع العارض"
         android:textColor="#FFFF"
         android:textSize="20sp"
-        android:textStyle="bold"
-         />
+        android:textStyle="bold" />
 
 </RelativeLayout>

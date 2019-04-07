@@ -14,10 +14,11 @@
         android:id="@+id/textViewposter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="3dp"
         android:layout_toEndOf="@id/imageView_poster"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/textView6poster"
@@ -25,27 +26,30 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewposter"
 
-        android:layout_margin="05dp"
+        android:layout_margin="3dp"
         android:layout_toEndOf="@id/imageView_poster"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/textView7poster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView6poster"
-        android:layout_margin="10dp"
+        android:layout_margin="3dp"
         android:layout_toEndOf="@id/imageView_poster"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/textViewfess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView7poster"
-        android:layout_margin="10dp"
+        android:layout_margin="3dp"
         android:layout_toEndOf="@id/imageView_poster"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"/>
 
 
 </RelativeLayout>

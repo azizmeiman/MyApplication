@@ -24,6 +24,7 @@ public class highestBalancePoster extends AppCompatActivity {
     private ListView listViewposter;
     private PosterAdapter pAdapter;
     private ArrayList<WorkerPoster> posterList;
+    private ArrayList<WorkerPoster> currentList;
     private FirebaseAuth mAuth;
     int n = 0;
     @Override
@@ -36,7 +37,7 @@ public class highestBalancePoster extends AppCompatActivity {
 
         listViewposter = (ListView) findViewById(R.id.highestBalancePosterList);
         posterList = new ArrayList<>();
-
+        currentList = new ArrayList<>();
 
         myRef.child("WorkerPoster").addValueEventListener(new ValueEventListener() {
 
@@ -50,26 +51,10 @@ public class highestBalancePoster extends AppCompatActivity {
                     WorkerPoster workerPoster =  new WorkerPoster(child.getValue(WorkerPoster.class));
                     posterList.add(workerPoster);
 
-                    Collections.sort(posterList, new Comparator<WorkerPoster>() {
-                        @Override
-                        public int compare(WorkerPoster o1, WorkerPoster o2) {
-
-                            if (o1.getContractNumber() == o2.getContractNumber())
-                            {
-                                return 0;
-                            }
-                            else if (o1.getContractNumber() >
-                                    o2.getContractNumber())
-                            {
-                                return -1;
-                            }
-                            return 1;
-                        }
-                    });
 
                 }
-                pAdapter = new PosterAdapter(highestBalancePoster.this, posterList);
-                listViewposter.setAdapter(pAdapter);
+                currentList = sortByBalance(posterList);
+                listViewposter.setAdapter(new PosterAdapter(highestBalancePoster.this, currentList));
 
             }
 
@@ -92,4 +77,25 @@ public class highestBalancePoster extends AppCompatActivity {
 
 
     }
+    public ArrayList<WorkerPoster> sortByBalance(ArrayList<WorkerPoster> a){
+
+        Collections.sort(a, new Comparator<WorkerPoster>() {
+            @Override
+            public int compare(WorkerPoster o1, WorkerPoster o2) {
+
+                if (o1.getSystemfees() ==
+                        o2.getSystemfees())
+                {
+                    return 0;
+                }
+                else if (o1.getSystemfees() <
+                        o2.getSystemfees())
+                {
+                    return 1;
+                }
+                return -1;
+            }
+        });
+
+        return a;}
 }

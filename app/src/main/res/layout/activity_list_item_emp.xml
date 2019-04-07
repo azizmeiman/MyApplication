@@ -14,10 +14,11 @@
         android:id="@+id/textViewEmp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="3dp"
         android:layout_toEndOf="@id/imageView_emp"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/textView6emp"
@@ -27,7 +28,8 @@
 
         android:layout_margin="3dp"
         android:layout_toEndOf="@id/imageView_emp"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -36,7 +38,8 @@
         android:layout_below="@id/textView6emp"
         android:layout_margin="3dp"
         android:layout_toEndOf="@id/imageView_emp"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"/>
 
 
 </RelativeLayout>

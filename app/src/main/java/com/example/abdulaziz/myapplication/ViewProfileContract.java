@@ -33,8 +33,7 @@ public class ViewProfileContract extends AppCompatActivity {
         final TextView StertDate = (TextView) findViewById(R.id.StrarDateC);
         final TextView EndDate = (TextView) findViewById(R.id.EndDatec);
         final TextView TotalPrice = (TextView) findViewById(R.id.TotalPriceC);
-        final TextView empid = (TextView) findViewById(R.id.empid);
-        final TextView posterid = (TextView) findViewById(R.id.posterid);
+
 
 
 
@@ -71,14 +70,13 @@ public class ViewProfileContract extends AppCompatActivity {
                     if(child.child("contractID").getValue().toString().equals(email)) {
 
                         Contract = new Contract(child.getValue(Contract.class));
-                        contractID.setText("Contract ID: "+Contract.getContractID());
-                        EmpN.setText("Employer:"+Contract.getEmpName());
-                        workerN.setText("Worker:"+Contract.getWorkerName());
-                        StertDate.setText("Stert Date:"+Contract.getStartDate());
-                        EndDate.setText("End Date:"+Contract.getEndDate());
-                        TotalPrice.setText("Total Price:"+Contract.getTotalprice());
-                        empid.setText("Employer ID:"+Contract.getEmpID());
-                        posterid.setText("Poster ID:"+Contract.getPosterID());
+                        contractID.setText("رقم العقد: "+Contract.getContractID());
+                        EmpN.setText("الموظِف: "+Contract.getEmpName());
+                        workerN.setText("العامل: "+Contract.getWorkerName());
+                        StertDate.setText("من "+Contract.getStartDate());
+                        EndDate.setText("حتى "+Contract.getEndDate());
+                        TotalPrice.setText("الاجمالي "+Contract.getTotalprice()+"SR");
+
 
 
                         ImageView image = (ImageView)findViewById(R.id.imageView12);

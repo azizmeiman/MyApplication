@@ -47,8 +47,10 @@ public class WorkerProfileActivity extends AppCompatActivity {
         final TextView totalPrice = (TextView) findViewById(R.id.totalPrice);
         final ListView feedback = (ListView) findViewById(R.id.feedback);
         final RatingBar rate = (RatingBar) findViewById(R.id.workerRate);
+        final TextView rateText = (TextView) findViewById(R.id.workerRateText);
         final  Button hire = (Button) findViewById(R.id.Hire);
         final Button chat = (Button)findViewById(R.id.button2);
+
 
 
 
@@ -78,8 +80,15 @@ public class WorkerProfileActivity extends AppCompatActivity {
                      price.setText("السعر بالساعة: "+String.valueOf(worker.getPrice())+".00 SR");
                      monthD = months*30;
                      monthD=monthD+days;
-                     float r =  worker.getTotalRate()/worker.getnRate();
-                     rate.setRating(r);
+                     float ra =  worker.getTotalRate()/worker.getnRate();
+                     rate.setRating(ra);
+
+                     if(worker.getnRate() == 0){
+                         rateText.setText("0.0");
+                     }else {
+                         String rs = Float.toString(ra);
+                     rateText.setText(rs);}
+
                      totalPrice1 = worker.getPrice()*monthD;
                      totalPrice.setText("الاجمالي: "+String.valueOf(totalPrice1)+".00 SR");
 

@@ -43,16 +43,20 @@ public class ContractAdapter extends ArrayAdapter<Contract> {
             image.setImageResource(R.drawable.contract2);
 
         TextView Workername = (TextView) listItemConract.findViewById(R.id.textViewWorkername);
-        Workername.setText("Worker name: "+currentContract.getWorkerName());
+        //Workername.setText("Worker name: "+currentContract.getWorkerName());
+        Workername.setText("اسم العامل "+currentContract.getWorkerName());
 
         TextView StartDate = (TextView) listItemConract.findViewById(R.id.textViewStartDate);
-        StartDate.setText("Start Date: "+currentContract.getStartDate());
+        //StartDate.setText("Start Date: "+currentContract.getStartDate());
+        StartDate.setText("من "+currentContract.getStartDate());
 
         TextView EndtDate = (TextView) listItemConract.findViewById(R.id.textViewEndDate);
-        EndtDate.setText("End Date: "+currentContract.getEndDate());
+      //  EndtDate.setText("End Date: "+currentContract.getEndDate());
+        EndtDate.setText("حتى "+currentContract.getEndDate());
 
         TextView TotalPrice = (TextView) listItemConract.findViewById(R.id.textViewTotalPrice);
-        TotalPrice.setText("Total Price: "+currentContract.getTotalprice());
+       // TotalPrice.setText("Total Price: "+currentContract.getTotalprice());
+        TotalPrice.setText("الاجمالي "+currentContract.getTotalprice()+"SR");
 
         return listItemConract;
     }

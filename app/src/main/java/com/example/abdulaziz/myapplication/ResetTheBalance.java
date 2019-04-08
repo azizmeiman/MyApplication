@@ -86,6 +86,7 @@ public class ResetTheBalance extends AppCompatActivity {
                                 Toast.makeText(ResetTheBalance.this, "تم تعديل المبلغ ", Toast.LENGTH_LONG).show();
 
                                 myRef.child("WorkerPoster").child(WorkerPoster.getIDP()).child("feesRelesPic").setValue("empty");
+                                finish();
 
                             }
                         });

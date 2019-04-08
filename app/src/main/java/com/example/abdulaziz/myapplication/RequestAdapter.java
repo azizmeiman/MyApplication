@@ -1,6 +1,7 @@
 package com.example.abdulaziz.myapplication;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -84,7 +85,7 @@ public class RequestAdapter extends ArrayAdapter<Request>{
                 newsystemfees(currentRequest.getPosterID(),currentRequest.getTotalprice());
 
                 Toast.makeText(cContext, "تم قبول الطلب", Toast.LENGTH_SHORT).show();
-
+                ((Activity)cContext).finish();
                 DBA.deleteRequest(currentRequest.getContractID());
             }
         });
@@ -93,6 +94,7 @@ public class RequestAdapter extends ArrayAdapter<Request>{
         Reject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((Activity)cContext).finish();
                 DBA.deleteRequest(currentRequest.getContractID());
                 Toast.makeText(cContext, "تم رفض الطلب", Toast.LENGTH_SHORT).show();
             }

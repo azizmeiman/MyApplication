@@ -81,6 +81,8 @@ public class RequestAdapter extends ArrayAdapter<Request>{
                 incresstheContractEmp(currentRequest.getEmpID());
                 DBA.insertContract(c);
 
+                newsystemfees(currentRequest.getPosterID(),currentRequest.getTotalprice());
+
                 Toast.makeText(cContext, "تم قبول الطلب", Toast.LENGTH_SHORT).show();
 
                 DBA.deleteRequest(currentRequest.getContractID());
@@ -154,7 +156,9 @@ public class RequestAdapter extends ArrayAdapter<Request>{
                int cpo=1;
                final int   cp = WorkerPoster.getContractNumber()+cpo;
 
-                    myRef.child("WorkerPoster").child(id).child("contractNumber").setValue(cp);}
+                    myRef.child("WorkerPoster").child(id).child("contractNumber").setValue(cp);
+
+            }
 
 
 
@@ -186,6 +190,28 @@ public class RequestAdapter extends ArrayAdapter<Request>{
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+    }
+
+    public void newsystemfees(final String id, final double newRequestAmount){
+
+
+        myRef.child("WorkerPoster").addListenerForSingleValueEvent(new ValueEventListener() {
+            WorkerPoster wp = new WorkerPoster();
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                wp = dataSnapshot.child(id).getValue(WorkerPoster.class);
+                double newFees = (newRequestAmount*0.01) + wp.getSystemfees();
+
+                myRef.child("WorkerPoster").child(id).child("systemfees").setValue(newFees);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
 

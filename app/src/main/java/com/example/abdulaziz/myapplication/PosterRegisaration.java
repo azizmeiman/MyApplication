@@ -218,6 +218,7 @@ public class PosterRegisaration extends AppCompatActivity {
                                         Intent intentLogin = new Intent(PosterRegisaration.this, Login.class);
                                         intentLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         mprogressE.setVisibility(View.INVISIBLE);
+                                        sendVerficationEmail();
                                         startActivity(intentLogin);
                                     }
                                     else {

@@ -53,7 +53,7 @@ public class ResetTheBalance extends AppCompatActivity {
 
                         WorkerPoster =  dataSnapshot.child(idp).getValue(WorkerPoster.class);
 
-                       fees = String.valueOf(WorkerPoster.getSystemfees());
+                        fees = String.valueOf(WorkerPoster.getSystemfees());
                         balance.setText(fees);
 
                         ImageView image = (ImageView) findViewById(R.id.imageView13);

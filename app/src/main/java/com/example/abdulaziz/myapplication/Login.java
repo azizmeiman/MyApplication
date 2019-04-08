@@ -101,8 +101,9 @@ public class Login extends AppCompatActivity {
 
         if (TextUtils.isEmpty(Email) || TextUtils.isEmpty(password)) {
             mprogress.setVisibility(View.INVISIBLE);
-            Toast.makeText(this, "Enter user Name / password first . . .", Toast.LENGTH_SHORT).show();}
+            Toast.makeText(this, "يجب إدخال الايميل والرقم السري .....", Toast.LENGTH_SHORT).show();}
             else{
+
         mAuth.signInWithEmailAndPassword(Email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
             public void onComplete(final Task<AuthResult> task) {
@@ -110,11 +111,13 @@ public class Login extends AppCompatActivity {
 
                     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                     String RegisteredUserID = currentUser.getUid();
+                if(currentUser.isEmailVerified()) {
+
 
                     jLoginDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(RegisteredUserID);
 
-                    blockDatabase =FirebaseDatabase.getInstance().getReference().child("WorkerPoster").child(RegisteredUserID);
-                    blockDatabaseE =FirebaseDatabase.getInstance().getReference().child("Employer").child(RegisteredUserID);
+                    blockDatabase = FirebaseDatabase.getInstance().getReference().child("WorkerPoster").child(RegisteredUserID);
+                    blockDatabaseE = FirebaseDatabase.getInstance().getReference().child("Employer").child(RegisteredUserID);
                     jLoginDatabase.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -132,12 +135,12 @@ public class Login extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         boolean is = (boolean) dataSnapshot.child("blucked").getValue();
-                                        if(is==false){
+                                        if (is == false) {
                                             Intent intentMain = new Intent(Login.this, WorkerPosterMain.class);
                                             intentMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             mprogress.setVisibility(View.INVISIBLE);
-                                            startActivity(intentMain);}
-                                            else {
+                                            startActivity(intentMain);
+                                        } else {
                                             mprogress.setVisibility(View.INVISIBLE);
                                             Toast.makeText(Login.this, "Sorry you are blocked ", Toast.LENGTH_SHORT).show();
                                         }
@@ -155,8 +158,6 @@ public class Login extends AppCompatActivity {
                                 });
 
 
-
-
                             } else if (userType.equals("Employer")) {
 
                                 blockDatabaseE.addValueEventListener(new ValueEventListener() {
@@ -164,15 +165,14 @@ public class Login extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         boolean is = (boolean) dataSnapshot.child("blucked").getValue();
-                                        if(is==false){
+                                        if (is == false) {
 
 
                                             Intent intentMain = new Intent(Login.this, EmployerMainActivity.class);
                                             intentMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             mprogress.setVisibility(View.INVISIBLE);
                                             startActivity(intentMain);
-                                        }
-                                        else {
+                                        } else {
                                             mprogress.setVisibility(View.INVISIBLE);
                                             Toast.makeText(Login.this, "Sorry you are blocked ", Toast.LENGTH_SHORT).show();
                                         }
@@ -196,15 +196,20 @@ public class Login extends AppCompatActivity {
                             mprogress.setVisibility(View.INVISIBLE);
                             Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             return;
-                   //         databaseError.getMessage();
+                            //         databaseError.getMessage();
                         }
 
                     });
+                }else{
+                    mprogress.setVisibility(View.INVISIBLE);
+                    Toast.makeText(Login.this, "يجب تفعيل الايميل اولاً....." , Toast.LENGTH_SHORT).show();
+                }
+
 
                 }else{
                     mprogress.setVisibility(View.INVISIBLE);
                     String error = task.getException().toString();
-                    Toast.makeText(Login.this, "Wrong Email or Password: " + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "الرقم السري أو الايميل غير صحيح......" , Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -217,7 +222,7 @@ public class Login extends AppCompatActivity {
                 public void onFailure(@NonNull Exception e) {
                     mprogress.setVisibility(View.INVISIBLE);
                     String error = e.getLocalizedMessage();
-                    Toast.makeText(Login.this, "Wrong Email or Password: " + error, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(Login.this, "Wrong Email or Password: " + error, Toast.LENGTH_SHORT).show();
 
                 }
             });

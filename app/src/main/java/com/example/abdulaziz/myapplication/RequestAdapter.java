@@ -82,6 +82,8 @@ public class RequestAdapter extends ArrayAdapter<Request>{
                 incresstheContractEmp(currentRequest.getEmpID());
                 DBA.insertContract(c);
 
+                workerTotalincome(currentRequest.getWorkerID(),currentRequest.getTotalprice());
+
                 newsystemfees(currentRequest.getPosterID(),currentRequest.getTotalprice());
 
                 Toast.makeText(cContext, "تم قبول الطلب", Toast.LENGTH_SHORT).show();
@@ -120,29 +122,6 @@ public class RequestAdapter extends ArrayAdapter<Request>{
         return listItem;
     }
 
-
-//        public String empNumber(String empID) {
-//        final String EmpID = empID;
-//
-//
-//        myRef.child("Employer").addListenerForSingleValueEvent(new ValueEventListener() {
-//        @Override
-//        public void onDataChange(DataSnapshot dataSnapshot) {
-//            final String[] mobilephone = {""};
-//            Employer emp = dataSnapshot.child(EmpID).getValue(Employer.class);
-//            mobilephone[0] = emp.getRPphoneNum();
-//
-//        }
-//
-//
-//        @Override
-//        public void onCancelled(DatabaseError databaseError) {
-//        }
-//
-//    });
-//
-//    return mobilephone[0];
-//  }
 
 
     public void incresstheContractPoster(final String id){
@@ -216,6 +195,29 @@ public class RequestAdapter extends ArrayAdapter<Request>{
 
 
     }
+
+    public void workerTotalincome(final String id, final double newRequestAmount){
+
+        //id = workerID
+        myRef.child("Worker").addListenerForSingleValueEvent(new ValueEventListener() {
+            Worker w = new Worker();
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                w = dataSnapshot.child(id).getValue(Worker.class);
+                double newTotalIncome = newRequestAmount + w.getTotalIncome();
+
+                myRef.child("Worker").child(id).child("totalIncome").setValue(newTotalIncome);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
 
 
 }

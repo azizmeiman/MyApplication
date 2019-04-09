@@ -65,7 +65,7 @@ public class WorkerAdapter extends ArrayAdapter<Worker> {
 
         TextView price = (TextView) listItem.findViewById(R.id.textView6);
         int priceS = currentWorker.getPrice();
-        price.setText(String.valueOf(priceS));
+        price.setText("باليوم "+String.valueOf(priceS)+"SR");
 
 
         TextView city = (TextView) listItem.findViewById(R.id.textView7);

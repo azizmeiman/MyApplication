@@ -79,7 +79,7 @@ public class WorkerProfileActivity extends AppCompatActivity {
                      worker = new Worker(child.getValue(Worker.class));
                      name.setText("اسم العامل: "+worker.getName());
                      skills.setText("المهارات: "+worker.getSkills());
-                     price.setText("السعر بالساعة: "+String.valueOf(worker.getPrice())+".00 SR");
+                     price.setText("السعر باليوم: "+String.valueOf(worker.getPrice())+".00 SR");
                      monthD = months*30;
                      monthD=monthD+days;
                      float ra =  worker.getTotalRate()/worker.getnRate();

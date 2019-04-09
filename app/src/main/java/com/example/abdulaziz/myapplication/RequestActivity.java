@@ -176,6 +176,9 @@ public class RequestActivity extends AppCompatActivity {
                             r = new Request(key_ID,workerID,empID,posterID,Empmobile,workerName,emp.getOrgName(),period,startDate,endDate,totalPrice,3);
                         }else {
                             p = endInDay-startInDay;
+                            if (p == 0)
+                                t=workerPrice;
+                            else
                             t = p*workerPrice;
                             r =  new Request(key_ID,workerID,empID,posterID,Empmobile,workerName,emp.getOrgName(),p,startDate,endDate,t,3);
                         }

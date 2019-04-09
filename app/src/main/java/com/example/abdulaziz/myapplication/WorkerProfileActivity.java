@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -92,6 +94,11 @@ public class WorkerProfileActivity extends AppCompatActivity {
                      totalPrice1 = worker.getPrice()*monthD;
                      totalPrice.setText("الاجمالي: "+String.valueOf(totalPrice1)+".00 SR");
 
+                       ImageView image = (ImageView)findViewById(R.id.imageView11);
+                       if(worker.getPicture() == null)
+                           image.setImageResource(R.drawable.profile);
+                       else
+                           Picasso.get().load(worker.getPicture()).into(image);
 
                        break;
                    }

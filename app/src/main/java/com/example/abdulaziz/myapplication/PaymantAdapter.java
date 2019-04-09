@@ -43,7 +43,7 @@ public class PaymantAdapter extends ArrayAdapter<PaymentRecord> {
         //image.setImageResource(currentWorker.getPicture());
 
         TextView name = (TextView) listItempay.findViewById(R.id.textViewAmaunt);
-        name.setText("المبلغ المدفوع"+String.valueOf(currentEmp.getAmountOfPayment()));
+        name.setText("المبلغ المدفوع"+String.valueOf(currentEmp.getAmountOfPayment()+" SR"));
 
 
 
